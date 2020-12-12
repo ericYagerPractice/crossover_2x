@@ -1,47 +1,52 @@
+import React, { useEffect, useState } from 'react';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import awsconfig from './aws-exports';
-import React, {Component} from 'react';
 
 Amplify.configure(awsconfig);
 
+function App() {
+  const [user, setUser] = useState(null);
 
-class App extends Component {
-  state = { user: null, customState: null };
-
-  componentDidMount() {
-    Hub.listen("auth", ({ payload: { event, data } }) => {
+  useEffect(() => {
+    Hub.listen('auth', ({ payload: { event, data } }) => {
       switch (event) {
-        case "signIn":
-          this.setState({ user: data });
+        case 'signIn':
+        case 'cognitoHostedUI':
+          getUser().then(userData => setUser(userData));
           break;
-        case "signOut":
-          this.setState({ user: null });
+        case 'signOut':
+          setUser(null);
           break;
-        case "customOAuthState":
-          this.setState({ customState: data });
-          break;
-        default:
+        case 'signIn_failure':
+        case 'cognitoHostedUI_failure':
+          console.log('Sign in failure', data);
           break;
       }
     });
 
-    Auth.currentAuthenticatedUser()
-      .then(user => this.setState({ user }))
-      .catch(() => console.log("Not signed in"));
+    getUser().then(userData => setUser(userData));
+  }, []);
+
+  function getUser() {
+    return Auth.currentAuthenticatedUser()
+      .then(userData => userData)
+      .catch(() => console.log('Not signed in'));
   }
 
-  render() {
-    const { user } = this.state;
-
-    return (
-      <div className="App">
+  return (
+    <div>
+      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
+      {user ? (
+        <button onClick={() => Auth.signOut()}>Sign Out</button>
+      ) : (
+        <>
         <button onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}>Open Facebook</button>
         <button onClick={() => Auth.federatedSignIn({provider: 'Google'})}>Open Google</button>
-        <button onClick={() => Auth.federatedSignIn()}>Open Hosted UI</button>
-        <button onClick={() => Auth.signOut()}>Sign Out </button>
-      </div>
-    );
-  }
+        <button onClick={() => Auth.federatedSignIn()}>Federated Sign In</button>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default App;
