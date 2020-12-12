@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "crossover2xb12c8f74": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
