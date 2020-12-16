@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css'
+import '../App.css'
 
 import { Auth } from 'aws-amplify'
 import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
-import AmplifyOrange from './amplifyorange.png'
+import AmplifyOrange from '../amplifyorange.png'
 
 function Buttons(props) {
   return (

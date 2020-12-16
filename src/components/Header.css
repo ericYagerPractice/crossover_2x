@@ -1,0 +1,10 @@
+.sectionPage::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: url('../staticfiles/headline.png');
+  background-position: center center;
+  background-size: cover;
+  filter: opacity(.1);
+}

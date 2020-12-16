@@ -7,6 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import Amplify, { Auth } from 'aws-amplify'
 import config from './aws-exports'
 
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
+import 'bootstrap-css-only/css/bootstrap.min.css'; 
+import 'mdbreact/dist/css/mdb.css';
+window.React1 = require('react');
+
 var urlsIn = config.oauth.redirectSignIn.split(",");
 var urlsOut = config.oauth.redirectSignOut.split(",");
 const oauth = {
@@ -23,7 +28,6 @@ var isLocalhost   = hasLocalhost(window.location.hostname);
 if (isLocalhost) {
   urlsIn.forEach((e) =>   { if (hasLocalhost(e)) { oauth.redirectSignIn = e; }});
   urlsOut.forEach((e) =>  { if (hasLocalhost(e)) { oauth.redirectSignOut = e; }});
-  console.log(oauth);
 }
 else {
   urlsIn.forEach((e) =>   { if (hasHostname(e)) { oauth.redirectSignIn = e; }});

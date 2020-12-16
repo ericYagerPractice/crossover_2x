@@ -1,8 +1,13 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import './App.css'
-import Header from './Header'
-import Buttons from './Buttons'
-import Login from './Login'
+import Header from './components/Header'
+import Buttons from './components/Buttons'
+import Login from './pages/Login'
+import Footer from './components/Footer';
+import { BrowserRouter as Router } from 'react-router-dom';
+import checkUser, { signOut } from './CheckAuth';
+
+import { reducer } from './Helper';
 
 import { Hub, Auth } from 'aws-amplify'
 import { FaSignOutAlt } from 'react-icons/fa'
@@ -44,82 +49,42 @@ function App() {
   }
 
   return (
-    <div style={styles.appContainer}>
-      <Header updateFormState={updateFormState} />
-      {
-        userState.loading && (
-          <div style={styles.body}>
-            <p>Loading...</p>
-          </div>
-        )
-      }
-      {
-        !userState.user && !userState.loading && (
-          <Buttons
-            updateFormState={updateFormState}
-          />
-        )
-      }
-      {
-        userState.user && userState.user.signInUserSession && (
-          <div style={styles.body}>
-            <h4>
-              Welcome {userState.user.signInUserSession.idToken.payload.email}
-            </h4>
-            <button
-              style={{ ...styles.button, ...styles.signOut }}
-              onClick={signOut}
-            >
-              <FaSignOutAlt color='white' />
-              <p style={{...styles.text}}>Sign Out</p>
-            </button>
-          </div>
-        )
-      }
-      <Footer />
-    </div>
-  )
-}
-
-function reducer (state, action) {
-  switch(action.type) {
-    case 'setUser':
-      return { ...state, user: action.user, loading: false }
-    case 'loaded':
-      return { ...state, loading: false }
-    default:
-      return state
-  }
-}
-
-async function checkUser(dispatch) {
-  try {
-    const user = await Auth.currentAuthenticatedUser()
-    console.log('user: ', user)
-    dispatch({ type: 'setUser', user })
-  } catch (err) {
-    console.log('err: ', err)
-    dispatch({ type: 'loaded' })
-  }
-}
-
-function signOut() {
-  Auth.signOut()
-    .then(data => {
-      console.log('signed out: ', data)
-    })
-    .catch(err => console.log(err));
-}
-
-function Footer () {
-  return (
-    <div>
-      <p style={styles.footer}>To view the code for this app, click <a
-        href='https://github.com/dabit3/amplify-auth-demo' target="_blank" rel="noopener noreferrer"
-      style={styles.anchor}>here</a>. To learn more about AWS Amplify, click <a
-        href='https://aws-amplify.github.io/' target="_blank" rel="noopener noreferrer"
-      style={styles.anchor}>here.</a></p>
-    </div>
+    <Router>
+      <div style={styles.appContainer}>
+        <Header updateFormState={updateFormState} />
+        {
+          userState.loading && (
+            <div style={styles.body}>
+              <p>Loading...</p>
+            </div>
+          )
+        }
+        {
+          !userState.user && !userState.loading && (
+            <Buttons
+              updateFormState={updateFormState}
+            />
+          )
+        }
+        {
+          userState.user && userState.user.signInUserSession && (
+            <div style={styles.body}>
+              <h4>
+                Welcome {userState.user.signInUserSession.idToken.payload.email}
+              </h4>
+              <button
+                style={{ ...styles.button, ...styles.signOut }}
+                onClick={signOut}
+              >
+                <FaSignOutAlt color='white' />
+                <p style={{...styles.text}}>Sign Out</p>
+              </button>
+            </div>
+          )
+        }
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
@@ -172,57 +137,3 @@ const styles = {
 }
 
 export default App
-
-/*
-import React, { useEffect, useState } from 'react';
-import Amplify, { Auth, Hub } from 'aws-amplify';
-import awsconfig from './aws-exports';
-
-Amplify.configure(awsconfig);
-
-function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    Hub.listen('auth', ({ payload: { event, data } }) => {
-      switch (event) {
-        case 'signIn':
-        case 'cognitoHostedUI':
-          getUser().then(userData => setUser(userData));
-          break;
-        case 'signOut':
-          setUser(null);
-          break;
-        case 'signIn_failure':
-        case 'cognitoHostedUI_failure':
-          console.log('Sign in failure', data);
-          break;
-      }
-    });
-
-    getUser().then(userData => setUser(userData));
-  }, []);
-
-  function getUser() {
-    return Auth.currentAuthenticatedUser()
-      .then(userData => userData)
-      .catch(() => console.log('Not signed in'));
-  }
-
-  return (
-    <div>
-      <p>User: {user ? JSON.stringify(user.attributes) : 'None'}</p>
-      {user ? (
-        <button onClick={() => Auth.signOut()}>Sign Out</button>
-      ) : (
-        <>
-        <button onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}>Open Facebook</button>
-        <button onClick={() => Auth.federatedSignIn({provider: 'Google'})}>Open Google</button>
-        <button onClick={() => Auth.federatedSignIn()}>Federated Sign In</button>
-        </>
-      )}
-    </div>
-  );
-}
-
-export default App; */
