@@ -7,10 +7,12 @@
     "aws-amplify": "^3.3.12",
     "mdbreact": "./mdbreact-5.0.1.tgz",
     "react": "^17.0.1",
+    "react-animations": "^1.0.0",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "4.0.1"
+    "react-scripts": "4.0.1",
+    "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

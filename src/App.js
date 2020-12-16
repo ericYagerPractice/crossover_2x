@@ -1,15 +1,17 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import './App.css'
 import Header from './components/Header'
-import Buttons from './components/Buttons'
+
 import Login from './pages/Login'
 import Footer from './components/Footer';
 import { BrowserRouter as Router } from 'react-router-dom';
-import checkUser, { signOut } from './CheckAuth';
+import checkUser from './CheckAuth';
+
+import Routes from './Routes';
 
 import { reducer } from './Helper';
 
-import { Hub, Auth } from 'aws-amplify'
+import { Hub } from 'aws-amplify'
 import { FaSignOutAlt } from 'react-icons/fa'
 
 const initialUserState = { user: null, loading: true }
@@ -52,36 +54,9 @@ function App() {
     <Router>
       <div style={styles.appContainer}>
         <Header updateFormState={updateFormState} />
-        {
-          userState.loading && (
-            <div style={styles.body}>
-              <p>Loading...</p>
-            </div>
-          )
-        }
-        {
-          !userState.user && !userState.loading && (
-            <Buttons
-              updateFormState={updateFormState}
-            />
-          )
-        }
-        {
-          userState.user && userState.user.signInUserSession && (
-            <div style={styles.body}>
-              <h4>
-                Welcome {userState.user.signInUserSession.idToken.payload.email}
-              </h4>
-              <button
-                style={{ ...styles.button, ...styles.signOut }}
-                onClick={signOut}
-              >
-                <FaSignOutAlt color='white' />
-                <p style={{...styles.text}}>Sign Out</p>
-              </button>
-            </div>
-          )
-        }
+        <main className="mainContent" style={{ marginTop: '4rem' }}>
+          <Routes />
+        </main>
         <Footer />
       </div>
     </Router>
@@ -137,3 +112,4 @@ const styles = {
 }
 
 export default App
+//<Header updateFormState={updateFormState} />
