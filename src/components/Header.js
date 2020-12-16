@@ -6,17 +6,16 @@ import {
   MDBNavItem,
   MDBNavLink,
   MDBNavbarToggler,
-  MDBBtn,
   Row
 } from 'mdbreact';
 import React, { useReducer, useEffect, useState } from 'react';
 import './Header.css';
 import c2xlogonav from '../staticfiles/c2xlogonav.png';
 import checkUser, { signOut } from '../CheckAuth';
-import Buttons from './Buttons'
+import LoginButtons from './Buttons'
 import { reducer } from '../Helper';
-import { MdVerifiedUser } from "react-icons/md";
 import { Hub } from 'aws-amplify'
+import {AccountButton, SignOutButton} from './Buttons'
 
 const initialUserState = { user: null, loading: true }
 
@@ -88,27 +87,16 @@ export default function Header() {
               }
               {
                 !userState.user && !userState.loading && (
-                  <Buttons
+                  <LoginButtons
                     updateFormState={updateFormState}
                   />
                 )
               }
               {
                 userState.user && userState.user.signInUserSession && (
-                  <Row>
-                    <h6 style={{color: 'white'}}>
-                      {userState.user.signInUserSession.idToken.payload.email}
-                    </h6>
-                    <MDBBtn rounded color="danger"
-                      onClick={signOut}
-                    >
-                      <MdVerifiedUser color='white' className="ml-1" /> <b>Sign Out</b>
-                      </MDBBtn>
-
-                  </Row>
-
-
-
+                    <Row>
+                        <AccountButton />
+                    </Row>
                 )
               }
             </MDBNavbarNav>
@@ -118,3 +106,7 @@ export default function Header() {
     </>
   );
 }
+/*
+<h6 style={{color: 'white'}}>
+                      {userState.user.signInUserSession.idToken.payload.email}
+                    </h6>*/

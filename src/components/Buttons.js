@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import '../App.css'
 import { Auth } from 'aws-amplify'
 import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
-import { HiOutlineUser } from "react-icons/hi";
-import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtnFixed, MDBBtnFixedItem } from "mdbreact";
-
-export default function Buttons(props) {
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBTooltip } from "mdbreact";
+import { signOut } from '../CheckAuth';
+import { GoBook,GoShield } from "react-icons/go";
+export default function LoginButtons(props) {
   return (
     <div>
       <MDBDropdown>
@@ -26,65 +26,33 @@ export default function Buttons(props) {
 
 export class AccountButton extends Component {
 
-  state = {
-    buttonStyle: {
-      transform: "scaleY(0.4) scaleX(0.4) translateY(40px) translateX(0)",
-      opacity: "0"
-    }
-  }
-
-
-  onHover = () => {
-    this.setState({
-      buttonStyle: {
-        transform: "scaleY(1) scaleX(1) translateY(0) translateX(0)",
-        opacity: "1"
-      }
-    });
-  }
-
-  onMouseLeave = () => {
-    this.setState({
-      buttonStyle: {
-        transform: "scaleY(0.4) scaleX(0.4) translateY(40px) translateX(0)",
-        opacity: "0"
-      }
-    });
-  }
-
   render() {
     return (
-        <MDBBtnFixed
-          onMouseEnter={this.onHover}
-          onMouseLeave={this.onMouseLeave}
-          floating
-          size="md"
-          color="red"
-          icon="user-cog"
-          style={style}
-        >
-          <MDBBtnFixedItem
-            buttonStyle={this.state.buttonStyle}
-            color="red"
-            icon="sign-out-alt"
-          />
-          <MDBBtnFixedItem
-            buttonStyle={this.state.buttonStyle}
-            color="blue"
-            icon="user"
-          />
-          
-        </MDBBtnFixed>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="danger">
+              <MDBIcon icon="user-astronaut" size="lg" /> Account
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem header>Account Tools</MDBDropdownItem>
+              <MDBDropdownItem ><GoShield color='red' /> Go to my account</MDBDropdownItem>
+              <MDBDropdownItem ><GoBook color='red' /> Go to my learning</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <div className="text-center"><SignOutButton /></div>
+            </MDBDropdownMenu>
+          </MDBDropdown>    
     );
   }
 }
 
-const style = {
-  margin: 0,
-  top: 'auto',
-  right: 900,
-  bottom: 20,
-  left: 'auto',
-  position: 'fixed',
-};
-
+export class SignOutButton extends Component{
+  
+  render() {
+    return (
+      <MDBBtn className="btn btn-rounded" color="danger"
+      onClick={signOut}
+      >
+      <MDBIcon icon="sign-out-alt" size="lg" />
+    </MDBBtn>
+    );
+  }
+}

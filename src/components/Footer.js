@@ -6,12 +6,10 @@ import {
     MDBBtnFixed,
 } from 'mdbreact';
 
-import {AccountButton} from './Buttons'
-
 export default function Footer() { 
     return(
         <>
-            <MDBFooter color="elegant-color-dark" className="page-footer font-small fixed-bottom px-3 pt-2 pb-1" style={{height:"65px"}}>  
+            <MDBFooter color="elegant-color-dark" className="page-footer font-small fixed-bottom px-3 pt-2 pb-1" >  
                 <MDBRow className="d-flex align-items-center">
                     <MDBCol className="text-left">
                         <ul className="list-unstyled list-inline">  
@@ -39,7 +37,7 @@ export default function Footer() {
                         <p className="text-right">&copy; {new Date().getFullYear()} Copyright: <a href="https://www.crossover2x.net"> Crossover 2X </a></p>
                     </MDBCol>
                 </MDBRow>
-                <AccountButton />
+
             </MDBFooter>  
         </>
     )
