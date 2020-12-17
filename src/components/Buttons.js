@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import '../App.css'
 import { Auth } from 'aws-amplify'
 import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
-import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBTooltip } from "mdbreact";
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
 import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
 export default function LoginButtons(props) {
@@ -10,7 +10,7 @@ export default function LoginButtons(props) {
     <div>
       <MDBDropdown>
         <MDBDropdownToggle caret color="primary">
-          Login / Signup
+        <MDBIcon icon="user-astronaut" size="3x" /> Login / Signup
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem header>Social Authentication</MDBDropdownItem>
@@ -54,5 +54,31 @@ export class SignOutButton extends Component{
       <MDBIcon icon="sign-out-alt" size="lg" />
     </MDBBtn>
     );
+  }
+}
+
+export class SocialButtons extends Component{
+  render(){
+    return(
+      <MDBCol className="text-left">
+          <ul className="list-unstyled list-inline">  
+              <li className="list-inline-item"> 
+                  <a href="https://www.facebook.com/crossover2x" className="btn-floating btn-sm btn-fb mx-1" target="_blank"> 
+                      <i className="fab fa-facebook-f"> </i>  
+                  </a>  
+              </li> 
+              <li className="list-inline-item"> 
+                  <a href="/" className="btn-floating btn-sm btn-tw mx-1"> 
+                      <i className="fab fa-twitter"> </i> 
+                  </a>  
+              </li> 
+              <li className="list-inline-item"> 
+                  <a href="https://www.linkedin.com/company/crossover2x" className="btn-floating btn-sm btn-li mx-1" target="_blank"> 
+                      <i className="fab fa-linkedin-in"> </i> 
+                  </a>  
+              </li> 
+          </ul> 
+      </MDBCol>
+    )
   }
 }

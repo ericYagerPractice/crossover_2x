@@ -15,7 +15,7 @@ import checkUser, { signOut } from '../CheckAuth';
 import LoginButtons from './Buttons'
 import { reducer } from '../Helper';
 import { Hub } from 'aws-amplify'
-import {AccountButton, SignOutButton} from './Buttons'
+import {AccountButton } from './Buttons'
 
 const initialUserState = { user: null, loading: true }
 

@@ -1,0 +1,6 @@
+type UserData @model {
+  id: ID!
+  email: String!
+  first: String
+  last: String
+}
