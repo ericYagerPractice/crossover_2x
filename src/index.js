@@ -4,13 +4,12 @@ import './index.css';
 import App from './App';
 
 import * as serviceWorker from './serviceWorker';
-import Amplify, { Auth } from 'aws-amplify'
+import Amplify from 'aws-amplify'
 import config from './aws-exports'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
-window.React1 = require('react');
 
 var urlsIn = config.oauth.redirectSignIn.split(",");
 var urlsOut = config.oauth.redirectSignOut.split(",");

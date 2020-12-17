@@ -32,7 +32,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <>
-        <MDBContainer className="w-100 mw-100">
+        <MDBContainer className="w-100 mw-100 black-background" style={styles.appContainer}>
           <MDBRow>
             <MDBCol className="px-0">
               <MDBJumbotron fluid className="w-100 mw-100 p-0 m-0" >
@@ -71,7 +71,7 @@ class HomePage extends React.Component {
                 <MDBRow>
                   <MDBCol md='12' className='mx-auto'>
                     <h2 className='pt-5 text-center text-uppercase font-weight-bold display-4'>
-                      What is<br/> Crossover <span class="text-danger">2X</span>?
+                      What is<br/> Crossover <span className="text-danger">2X</span>?
                     </h2>
                     <hr className="w-25 border-dark" />
                     <p className='text-center text--lg mt-3 mx-auto font-weight-bolder'>
@@ -98,7 +98,7 @@ class HomePage extends React.Component {
                 <MDBRow id='categories'>
                   <MDBCol md='12' className='mx-auto'>
                     <h2 className='pt-5 text-center text-uppercase font-weight-bold display-4'>
-                      C<span class="text-danger">2X</span><br/> Atomic Framework
+                      C<span className="text-danger">2X</span><br/> Atomic Framework
                     </h2>
                     <hr className="w-25 border-dark" />
                   </MDBCol>
@@ -122,3 +122,9 @@ class HomePage extends React.Component {
 }
 
 export default HomePage;
+
+const styles = {
+  appContainer: {
+    paddingBottom: 80,
+  }
+}

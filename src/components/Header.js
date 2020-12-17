@@ -11,11 +11,12 @@ import {
 import React, { useReducer, useEffect, useState } from 'react';
 import './Header.css';
 import c2xlogonav from '../staticfiles/c2xlogonav.png';
-import checkUser, { signOut } from '../CheckAuth';
-import LoginButtons from './Buttons'
+import checkUser from '../CheckAuth';
+import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
-import { Hub } from 'aws-amplify'
-import {AccountButton } from './Buttons'
+import { Hub } from 'aws-amplify';
+import {AccountButton } from './Buttons';
+import { checkHost } from '../Helper';
 
 const initialUserState = { user: null, loading: true }
 
@@ -25,12 +26,13 @@ export default function Header() {
   const [formState, updateFormState] = useState('base')
 
   useEffect(() => {
+    var hostName=checkHost();
     // set listener for auth events
     Hub.listen('auth', (data) => {
       const { payload } = data
       if (payload.event === 'signIn') {
         setImmediate(() => dispatch({ type: 'setUser', user: payload.data }))
-        setImmediate(() => window.history.pushState({}, null, 'http://localhost:3000/'))
+        setImmediate(() => window.history.pushState({}, null, hostName))
         updateFormState('base')
       }
       // this listener is needed for form sign ups since the OAuth will redirect & reload
@@ -51,7 +53,7 @@ export default function Header() {
               <img
                   src={c2xlogonav}
                   alt="Crossover2X"
-                  style={{width:"200px"}}
+                  style={{width:"250px"}}
               />
           </MDBNavbarBrand>
           <MDBNavbarToggler

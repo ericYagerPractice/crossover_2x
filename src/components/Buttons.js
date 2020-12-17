@@ -10,7 +10,7 @@ export default function LoginButtons(props) {
     <div>
       <MDBDropdown>
         <MDBDropdownToggle caret color="primary">
-        <MDBIcon icon="user-astronaut" size="3x" /> Login / Signup
+          <MDBIcon icon="user-astronaut" size="lg" />  Login / Signup
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem header>Social Authentication</MDBDropdownItem>

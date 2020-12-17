@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
-import { Auth, Storage, API, graphqlOperation } from "aws-amplify";
-import {getUserDataByEmail} from '../graphql/queries';
+import { Auth, Storage } from "aws-amplify";
+import { withAuthenticator } from '@aws-amplify/ui-react'
 import ModalUpload from "../components/ModalUpload"
 import { onError } from "../libs/errorLib";
 import { 
@@ -16,7 +16,7 @@ import {
 } from 'mdbreact';
 import './Account.css'
 
-export default function Account() {
+function Account() {
     const [userAvatar, getUserAvatar] = useState("");
     const [isAuthenticating, setIsAuthenticating] = useState(true);
     const [isAuthenticated, userHasAuthenticated] = useState(false);  
@@ -133,3 +133,5 @@ export default function Account() {
     </>
   );
 }
+
+export default withAuthenticator(Account);

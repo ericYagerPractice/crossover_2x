@@ -65,7 +65,7 @@ function App() {
 
 const styles = {
   appContainer: {
-    paddingTop: 85,
+    paddingTop: 0,
   },
   loading: {
 
