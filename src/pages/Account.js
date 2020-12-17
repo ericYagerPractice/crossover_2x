@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react';
-import { Auth, Storage } from "aws-amplify";
+import { Auth, Storage, API, graphqlOperation } from "aws-amplify";
+import {getUserDataByEmail} from '../graphql/queries';
 import ModalUpload from "../components/ModalUpload"
 import { onError } from "../libs/errorLib";
 import { 
@@ -23,9 +24,11 @@ export default function Account() {
     const [emailVerified, checkUserEmail] = useState(false);
     const [userPhone, getUserPhone] = useState("");
     const [phoneVerified, checkUserPhone] = useState(false);
-    const [userFirst, getUserFirst] = useState("");
-    const [userLast, getUserLast] = useState("");
-
+    const [name, getName] = useState({
+        first:"",
+        last:"",
+    });
+  
     useEffect(() => {
       onLoad();
     }, []);
@@ -33,37 +36,27 @@ export default function Account() {
 
     async function onLoad() {
       try {
-        //Start session data pull
         const userInfoPromise = await Auth.currentSession();
-        const userTokenEmail = userInfoPromise.idToken.payload.email;
-        //End session data pull
-
-        var pictureName = "avatar.jpg"; //generic picture name since they're all named this
-
-        userHasAuthenticated(true); //Signal that the user has authenticated
-
-        //Begin variable assignments for user info
-        getUserFirst(userInfoPromise.idToken.payload['custom:firstName']);
-        getUserLast(userInfoPromise.idToken.payload['custom:lastName']);
+        const userTokenEmail = userInfoPromise.idToken.payload.email
+        console.log(typeof(userTokenEmail));
+        //const userData = API.graphql(graphqlOperation(getUserDataByEmail(userTokenEmail)));
+        userHasAuthenticated(true)
         getUserEmail(userTokenEmail);
-        checkUserEmail((userInfoPromise.idToken.payload.email_verified)) //Check if email is verified
+        checkUserEmail((userInfoPromise.idToken.payload.email_verified))
         getUserPhone(userInfoPromise.idToken.payload.phone_number);
-        checkUserPhone((userInfoPromise.idToken.payload.phone_number_verified)) //Check if phone is verified
-        //End variable assignements for user info
-
+        checkUserPhone((userInfoPromise.idToken.payload.phone_number_verified))
+        var pictureName = "avatar.jpg";
         var pictureKey =  userTokenEmail+"/"+pictureName;
         const signedURL = await Storage.get(pictureKey)
-        getUserAvatar(signedURL); //Get the signed URL to load picture
+        getUserAvatar(signedURL);
       }
       catch(e) {
         if (e !== 'No current user') {
           onError(e);
-          setIsAuthenticating(false);
         }
       }
       setIsAuthenticating(false);
     }
-
 
   
   return (
@@ -71,50 +64,50 @@ export default function Account() {
     <>
     {isAuthenticated ?
       <MDBRow>
-      <MDBCol md='4'></MDBCol>
-      <MDBCol md='4'>
-          <MDBCard testimonial>
-          <MDBCardUp className='indigo lighten-1' />
-          <MDBAvatar className='mx-auto white'>
-              <img
-              src={userAvatar}
-              alt=''
-              className="img-fluid z-depth-1 rounded-circle"
-              id="Avatar"
-              />
-              
-          </MDBAvatar>
-          <MDBCardBody>
-              <h4 className='card-title'>Your Account</h4>
-              <MDBTable id="userAccount>">
-                  <MDBTableBody>
-                      <tr>
-                          <td>First Name</td>
-                          <td>{userFirst}</td>
-                      </tr>
-                      <tr>
-                          <td>Last Name</td>
-                          <td>{userLast}</td>
-                      </tr>
-                      <tr>
-                          <td>Email {emailVerified? <MDBIcon icon="check-circle" className="green-text" />:<MDBIcon icon="times-circle" className="amber-text" />}</td>
-                          <td>{userEmail}</td>
-                      </tr>
-                      <tr>
-                          <td>Phone Number {phoneVerified? <MDBIcon icon="check-circle" className="green-text" />:<MDBIcon icon="times-circle" className="amber-text" />}</td>
-                          <td>{userPhone}</td>
-                      </tr>
-                  </MDBTableBody>
-              </MDBTable>
+        <MDBCol md='4'></MDBCol>
+        <MDBCol md='4'>
+            <MDBCard testimonial>
+            <MDBCardUp className='indigo lighten-1' />
+            <MDBAvatar className='mx-auto white'>
+                <img
+                src={userAvatar}
+                alt=''
+                className="img-fluid z-depth-1 rounded-circle"
+                id="Avatar"
+                />
+                
+            </MDBAvatar>
+            <MDBCardBody>
+                <h4 className='card-title'>Your Account</h4>
+                <MDBTable id="userAccount>">
+                    <MDBTableBody>
+                        <tr>
+                            <td>First Name</td>
+                            <td>{userEmail}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td>
+                            <td>{userPhone}</td>
+                        </tr>
+                        <tr>
+                            <td>Email {emailVerified? <MDBIcon icon="check-circle" className="green-text" />:<MDBIcon icon="times-circle" className="amber-text" />}</td>
+                            <td>{userEmail}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number {phoneVerified? <MDBIcon icon="check-circle" className="green-text" />:<MDBIcon icon="times-circle" className="amber-text" />}</td>
+                            <td>{userPhone}</td>
+                        </tr>
+                    </MDBTableBody>
+                </MDBTable>
 
 
-              <ModalUpload />
-          </MDBCardBody>
-          </MDBCard>
-      </MDBCol>
-      <MDBCol md='4'></MDBCol>
-      
-  </MDBRow>
+                <ModalUpload />
+            </MDBCardBody>
+            </MDBCard>
+        </MDBCol>
+        <MDBCol md='4'></MDBCol>
+        
+    </MDBRow>
     : 
     <MDBRow>
         <MDBCol md='4'></MDBCol>
