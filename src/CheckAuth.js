@@ -7,7 +7,6 @@ export default async function checkUser(dispatch) {
   try {
     const user = await Auth.currentAuthenticatedUser()
     dispatch({ type: 'setUser', user })
-    console.log(user.signInUserSession.idToken.payload['cognito:groups'].includes('Admin'));
   } catch (err) {
     if(err != "The user is not authenticated"){
       console.log('err: ', err)
@@ -24,9 +23,11 @@ export async function checkAdmin(){
     })
     .catch(err=>{
       console.log("error checking for admin: ",err);
+      return(false);
     })
   } catch(err){
     console.log("error checking authentication: ",err);
+    return(false);
   }
 }
 export function useUserStatus() {

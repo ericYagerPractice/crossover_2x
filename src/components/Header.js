@@ -15,7 +15,7 @@ import checkUser from '../CheckAuth';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
 import { Auth, Hub } from 'aws-amplify';
-import {AccountButton, AdminButton } from './Buttons';
+import {AccountButton, AdminButton, MessageButton } from './Buttons';
 import { checkHost } from '../Helper';
 
 const initialUserState = { user: null, loading: true }
@@ -97,7 +97,7 @@ export default function Header() {
               {
                 userState.loading && (
                   <div>
-                    <p style={{color: 'white'}}>Loading...</p>
+                    <p className="btn btn-rounded" style={{color: 'white'}}>Loading...</p>
                   </div>
                 )
               }
@@ -111,10 +111,8 @@ export default function Header() {
               {
                 userState.user && userState.user.signInUserSession && (
                     <Row>
-                        {isAdmin && (
-                          <AdminButton />
-                        )}
                         <AccountButton />
+                        <MessageButton />
                     </Row>
                 )
               }
@@ -125,7 +123,3 @@ export default function Header() {
     </>
   );
 }
-/*
-<h6 style={{color: 'white'}}>
-                      {userState.user.signInUserSession.idToken.payload.email}
-                    </h6>*/
