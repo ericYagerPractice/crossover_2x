@@ -5,6 +5,7 @@ import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
 import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
+import {GrUserAdmin} from "react-icons/gr"
 export default function LoginButtons(props) {
   return (
     <div>
@@ -79,6 +80,15 @@ export class SocialButtons extends Component{
               </li> 
           </ul> 
       </MDBCol>
+    )
+  }
+}
+
+export class AdminButton extends Component{
+  render(){
+    return(
+      <MDBBtn className="btn btn-rounded" color="primary" href="/Admin"
+      ><MDBIcon icon="tools" /> My Admin</MDBBtn>
     )
   }
 }
