@@ -1,11 +1,11 @@
 import React from 'react';
 import './Account.css'
 
-function Admin() {
+function Learning() {
    
   return (
-    <p>My admin fuctions</p>
+    <p>My Learning</p>
   );
 }
 
-export default Admin;
+export default Learning;

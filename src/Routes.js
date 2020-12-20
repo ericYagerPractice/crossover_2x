@@ -9,6 +9,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CourseOverview from './pages/CourseOverview';
 import Checkout from './pages/PaymentProcessing';
 import Admin from './pages/Admin';
+import Learning from './pages/Learning';
 
 class Routes extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class Routes extends React.Component {
         <Route exact path='/CourseOverview' component={CourseOverview} />
         <Route exact path='/Checkout' component={Checkout} />
         <Route exact path='/Admin' component={Admin} />
+        <Route exact path='/Learning' component={Learning} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;
