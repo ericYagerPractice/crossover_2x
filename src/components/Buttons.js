@@ -46,9 +46,9 @@ export class AccountButton extends Component{
             </MDBDropdownToggle>
             <MDBDropdownMenu basic>
               <MDBDropdownItem header>  Account Tools</MDBDropdownItem>
-              <MDBDropdownItem ><GoShield color='red' /> Go to my account</MDBDropdownItem>
-              <MDBDropdownItem ><GoBook color='red' /> Go to my learning</MDBDropdownItem>
-              {this.state.admin &&(<MDBDropdownItem ><MDBIcon icon="tools" className='red-text' /> Go to my Admin Functions</MDBDropdownItem>)}
+              <MDBDropdownItem href="/Account"><GoShield color='red' /> Go to my account</MDBDropdownItem>
+              <MDBDropdownItem href="/Learning"><GoBook color='red' /> Go to my learning</MDBDropdownItem>
+              {this.state.admin &&(<MDBDropdownItem href="/Admin"  ><MDBIcon icon="tools" className='red-text' /> Go to my Admin Functions</MDBDropdownItem>)}
               <MDBDropdownItem divider />
               <div className="text-center"><SignOutButton /></div>
             </MDBDropdownMenu>
