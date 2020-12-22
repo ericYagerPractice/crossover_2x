@@ -25,12 +25,20 @@ var hasHostname   = (hostname) => Boolean(hostname.includes(window.location.host
 var isLocalhost   = hasLocalhost(window.location.hostname);
 
 if (isLocalhost) {
-  urlsIn.forEach((e) =>   { if (hasLocalhost(e)) { oauth.redirectSignIn = e; }});
-  urlsOut.forEach((e) =>  { if (hasLocalhost(e)) { oauth.redirectSignOut = e; }});
+  urlsIn.forEach((e) =>   { if (hasLocalhost(e)) { 
+    console.log(e);
+    oauth.redirectSignIn = e; }});
+  urlsOut.forEach((e) =>  { if (hasLocalhost(e)) { 
+    console.log(e);
+    oauth.redirectSignOut = e; }});
 }
 else {
-  urlsIn.forEach((e) =>   { if (hasHostname(e)) { oauth.redirectSignIn = e; }});
-  urlsOut.forEach((e) =>  { if (hasHostname(e)) { oauth.redirectSignOut = e; }});
+  urlsIn.forEach((e) =>   { if (hasHostname(e)) { 
+    console.log(e);
+    oauth.redirectSignIn = 'https://main.d3s7jqy33emiq1.amplifyapp.com/'; }});
+  urlsOut.forEach((e) =>  { if (hasHostname(e)) { 
+    console.log(e);
+    oauth.redirectSignOut = 'https://main.d3s7jqy33emiq1.amplifyapp.com/'; }});
 }
 var configUpdate = config;
 configUpdate.oauth = oauth;
