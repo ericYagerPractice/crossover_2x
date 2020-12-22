@@ -35,10 +35,10 @@ if (isLocalhost) {
 else {
   urlsIn.forEach((e) =>   { if (hasHostname(e)) { 
     console.log(e);
-    oauth.redirectSignIn = e; }});
+    oauth.redirectSignIn = 'https://main.d3s7jqy33emiq1.amplifyapp.com/'; }});
   urlsOut.forEach((e) =>  { if (hasHostname(e)) { 
     console.log(e);
-    oauth.redirectSignOut = e; }});
+    oauth.redirectSignOut = 'https://main.d3s7jqy33emiq1.amplifyapp.com/'; }});
 }
 var configUpdate = config;
 configUpdate.oauth = oauth;

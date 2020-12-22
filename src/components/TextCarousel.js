@@ -17,7 +17,7 @@ export default function TextCarousel() {
               showControls={false}
               showIndicators={false}
               className="text-carousel"
-              fade={true}
+              fade="true"
               interval={1600}
             >
               <MDBCarouselInner>
