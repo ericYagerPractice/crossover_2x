@@ -12,7 +12,6 @@ import Routes from './Routes';
 import { reducer } from './Helper';
 
 import { Hub } from 'aws-amplify'
-import { FaSignOutAlt } from 'react-icons/fa'
 
 const initialUserState = { user: null, loading: true }
 

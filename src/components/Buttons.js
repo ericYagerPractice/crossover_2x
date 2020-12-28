@@ -99,7 +99,7 @@ export class SocialButtons extends Component{
 export class MessageButton extends Component{
   render(){
     return(
-      <MDBBtn tag="a" size="sm" floating color="warning">
+      <MDBBtn href="/Messaging" tag="a" size="sm" floating color="warning">
         <MDBIcon icon="comment" size="3x"/>
       </MDBBtn>
     )
