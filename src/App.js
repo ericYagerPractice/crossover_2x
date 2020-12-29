@@ -1,17 +1,40 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import './App.css'
 import Header from './components/Header'
-
 import Login from './pages/Login'
 import Footer from './components/Footer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import checkUser from './CheckAuth';
-
 import Routes from './Routes';
-
 import { reducer } from './Helper';
+import Amplify, { API,Hub } from 'aws-amplify'
+import awsmobile from './aws-exports';
 
-import { Hub } from 'aws-amplify'
+
+var urlsIn = awsmobile.oauth.redirectSignIn.split(",");
+var urlsOut = awsmobile.oauth.redirectSignOut.split(",");
+const oauth = awsmobile.oauth;
+var hasLocalhost  = (hostname) => Boolean(hostname.match(/localhost/) || hostname.match(/127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}/));
+var hasHostname   = (hostname) => Boolean(hostname.includes(window.location.hostname));
+var isLocalhost   = hasLocalhost(window.location.hostname);
+
+if (isLocalhost) {
+  urlsIn.forEach((e) =>   { if (hasLocalhost(e)) { 
+    oauth.redirectSignIn = e; }});
+  urlsOut.forEach((e) =>  { if (hasLocalhost(e)) { 
+    oauth.redirectSignOut = e; }});
+}
+else {
+  urlsIn.forEach((e) =>   { if (hasHostname(e)) { 
+    oauth.redirectSignIn = e; }});
+  urlsOut.forEach((e) =>  { if (hasHostname(e)) { 
+    oauth.redirectSignOut = e; }});
+}
+var configUpdate = awsmobile;
+configUpdate.oauth = oauth;
+Amplify.configure(configUpdate);
+API.configure();
+
 
 const initialUserState = { user: null, loading: true }
 

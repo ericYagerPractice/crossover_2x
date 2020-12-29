@@ -1,0 +1,8 @@
+type User 
+@model 
+{
+  id: ID!
+  email: String!
+  cognitoID: String!
+  lastLogin: String!
+}

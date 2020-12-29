@@ -1,6 +1,6 @@
 projects:
-  userData:
-    schemaPath: src/graphql/schema.json
+  c2xMessaging:
+    schemaPath: amplify/backend/api/c2xMessaging/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:

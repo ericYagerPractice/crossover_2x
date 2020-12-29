@@ -6,14 +6,7 @@ import "./Messaging.css";
 export function getData() { 
   const apiName = 'c2xMessaging';
   const path = '/Messaging';
-  const myInit = { 
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      
-  }, 
-  };
-
-  return API.get(apiName, path, myInit);
+    return API.get(apiName, path);
 }
 
 
