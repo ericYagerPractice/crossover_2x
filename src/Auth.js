@@ -1,7 +1,8 @@
 import { Auth } from 'aws-amplify'
+import { useEffect } from 'react';
 
 
-export default function signIn(authProvider){
+function signIn(authProvider){
     if(authProvider){
         Auth.federatedSignIn({provider: authProvider})
         .then(data=> {
@@ -17,10 +18,17 @@ export default function signIn(authProvider){
     }
 }
 
-export function signOut() {
+function signOut() {
     Auth.signOut()
       .then(data => {
         console.log('signed out: ', data)
       })
       .catch(err => console.log('sign out failure: ',err));
   }
+
+
+export{
+    signIn,
+    signOut
+
+}

@@ -6,3 +6,23 @@ type User
   cognitoID: String!
   lastLogin: String!
 }
+
+type Conversation 
+@model
+{
+  id: ID!
+  participants: [User]! 
+  messages: [Message]! @connection(keyName: "byConversationID", fields: ["id"])
+  originationDate: AWSDateTime
+}
+
+type Message 
+@model
+@key(name: "byConversationID", fields: ["conversationID"]) 
+{
+  id: ID!
+  author: String!
+  messageText: String!
+  time: AWSDateTime
+  conversationID: ID!
+}

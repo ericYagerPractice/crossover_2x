@@ -70,7 +70,6 @@ async function createOrUpdateUser(email, cognitoId) {
   const awsDateTime = currentDateTime.toISOString();
   const userData = await Auth.currentSession()
   const users = await fetchUsers();
-  console.log(users);
   const userIDsandEmail = users.data.listUsers.items.map(user=>[user.id,user.email]);
   var userExists = false;
   var userID = "";
@@ -100,6 +99,17 @@ async function fetchUsers(){
   }
 } 
 
+async function fetchUserEmails(){
+  try{
+      const listUserData = await API.graphql(graphqlOperation(listUsers))
+      const userIDsandEmail = listUserData.data.listUsers.items.map(user=>user.email);
+      return(userIDsandEmail);
+  } catch (error){
+      console.log("error getting users: ", error);
+      return(null);
+  }
+} 
+
 export default checkUser;
 
 export{
@@ -107,5 +117,6 @@ export{
   useUserStatus,
   signOut,
   createOrUpdateUser,
-  fetchUsers
+  fetchUsers,
+  fetchUserEmails
 }
