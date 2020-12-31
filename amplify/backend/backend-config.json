@@ -8,20 +8,23 @@
     }
   },
   "api": {
-    "userData": {
+    "c2xMessaging": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authcrossover2xb12c8f74"
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "description": "messaging"
             }
           },
           "additionalAuthenticationProviders": []
         }
       }
     }
-  }
+  },
+  "storage": {},
+  "function": {}
 }

@@ -59,5 +59,5 @@
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.d3s7jqy33emiq1.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.d3s7jqy33emiq1.amplifyapp.com/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://main.d3s7jqy33emiq1.amplifyapp.com/\",\"https://crossover2x.net/\",\"https://feature.d3s7jqy33emiq1.amplifyapp.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://main.d3s7jqy33emiq1.amplifyapp.com/\",\"https://crossover2x.net/\",\"https://feature.d3s7jqy33emiq1.amplifyapp.com/\"]}"
 }
