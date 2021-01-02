@@ -18,23 +18,27 @@ p, li {
 	}
 }
 
-.display-4 {
+.display-4.title-primary {
 	font-size: 3em;
 	line-height: 1.1;
 }
 
 @media (max-width: 576px) {
-	.display-4 {
+	.display-4.title-primary {
 		font-size: 2.5em;
 	}
 
-	.carousel-item .display-4 {
+	.carousel-item .display-4.title-primary {
 		font-size: 2.25em;
 	}
 }
 
 @media (max-width: 321px) {
-	.carousel-item .display-4 {
+	.display-4.title-primary {
+		font-size: 2em;
+	}
+	
+	.carousel-item .display-4.title-primary {
 		font-size: 1.75em;
 	}
 }
@@ -120,22 +124,25 @@ body {
 .card-category {
 	letter-spacing: 1px;
 }
+.card-icon {
+	max-width: 80px;
+}
 /* END Cards */
 
 /* Carousels */
-.carousel-indicators {
+.carousel.carousel--primary .carousel-indicators {
 	margin: 0;
 	bottom: 5px;
 }
 
-.carousel .carousel-indicators li {
+.carousel.carousel--primary .carousel-indicators li {
 	width: 12px;
 	height: 12px;
 	margin: 0 4px;
 }
 
 @media (min-width: 576px) {
-	.carousel .carousel-indicators li {
+	.carousel.carousel--primary .carousel-indicators li {
 		width: 16px;
 		height: 16px;
 		margin: 0 6px;
