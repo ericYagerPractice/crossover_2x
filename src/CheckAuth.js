@@ -1,5 +1,8 @@
 import { Auth, Hub } from 'aws-amplify'
 
+/* CheckAuth.js will house all functions intended to check a user's status.  This includes "Check User" which will set Auth Dispatch to the user's information
+or push a console error.  "useUserStatus" will return the user. */
+
 export default async function checkUser(dispatch) {
   try {
     const user = await Auth.currentAuthenticatedUser()
@@ -12,6 +15,21 @@ export default async function checkUser(dispatch) {
   }
 }
 
+export async function checkAdmin(){
+  try{
+    await Auth.currentAuthenticatedUser()
+    .then(userData=>{
+      return(userData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin'));
+    })
+    .catch(err=>{
+      console.log("error checking for admin: ",err);
+      return(false);
+    })
+  } catch(err){
+    console.log("error checking authentication: ",err);
+    return(false);
+  }
+}
 export function useUserStatus() {
   let [user, setUser] = useState(null)
   

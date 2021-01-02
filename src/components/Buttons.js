@@ -3,8 +3,9 @@ import '../App.css'
 import { Auth } from 'aws-amplify'
 import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
-import { signOut } from '../CheckAuth';
+import { checkAdmin, signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
+
 export default function LoginButtons(props) {
   return (
     <div>
@@ -24,22 +25,34 @@ export default function LoginButtons(props) {
   );
 }
 
-export class AccountButton extends Component {
+export class AccountButton extends Component{ 
+  state={admin:false};
 
-  render() {
+  async componentDidMount(){
+    const returnData = await Auth.currentAuthenticatedUser()
+    try{
+      this.setState({admin:returnData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin')});
+    } catch(err){
+      console.log("error checking admin status in buttons.js: ",err);
+    }
+    
+  }
+
+  render(){
     return (
           <MDBDropdown>
-            <MDBDropdownToggle caret color="danger">
-              <MDBIcon icon="user-astronaut" size="lg" /> Account
+            <MDBDropdownToggle caret color="danger" className="btn btn-rounded">
+              <MDBIcon icon="user-astronaut" size="lg" /> My Account
             </MDBDropdownToggle>
             <MDBDropdownMenu basic>
-              <MDBDropdownItem header>Account Tools</MDBDropdownItem>
-              <MDBDropdownItem ><GoShield color='red' /> Go to my account</MDBDropdownItem>
-              <MDBDropdownItem ><GoBook color='red' /> Go to my learning</MDBDropdownItem>
+              <MDBDropdownItem header>  Account Tools</MDBDropdownItem>
+              <MDBDropdownItem href="/Account"><GoShield color='red' /> Go to my account</MDBDropdownItem>
+              <MDBDropdownItem href="/Learning"><GoBook color='red' /> Go to my learning</MDBDropdownItem>
+              {this.state.admin &&(<MDBDropdownItem href="/Admin"  ><MDBIcon icon="tools" className='red-text' /> Go to my Admin Functions</MDBDropdownItem>)}
               <MDBDropdownItem divider />
               <div className="text-center"><SignOutButton /></div>
             </MDBDropdownMenu>
-          </MDBDropdown>    
+          </MDBDropdown>  
     );
   }
 }
@@ -79,6 +92,16 @@ export class SocialButtons extends Component{
               </li> 
           </ul> 
       </MDBCol>
+    )
+  }
+}
+
+export class MessageButton extends Component{
+  render(){
+    return(
+      <MDBBtn href="/Messaging" tag="a" size="sm" floating color="warning">
+        <MDBIcon icon="comment" size="3x"/>
+      </MDBBtn>
     )
   }
 }
