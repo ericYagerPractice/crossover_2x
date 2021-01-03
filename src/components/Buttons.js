@@ -3,7 +3,7 @@ import '../App.css'
 import { Auth } from 'aws-amplify'
 import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
-import { checkAdmin, signOut } from '../CheckAuth';
+import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
 
 export default function LoginButtons(props) {
@@ -99,7 +99,7 @@ export class SocialButtons extends Component{
 export class MessageButton extends Component{
   render(){
     return(
-      <MDBBtn href="/Messaging" tag="a" size="sm" floating color="warning">
+      <MDBBtn href="/Mail" tag="a" size="sm" floating color="warning">
         <MDBIcon icon="comment" size="3x"/>
       </MDBBtn>
     )

@@ -1,7 +1,9 @@
 
-import {fetchUserEmails } from '../CheckAuth';
+import { returnUser, fetchUserEmails } from '../CheckAuth';
 import React, { Component } from "react";
 import { MDBContainer, MDBAutocomplete, MDBInput, MDBCol, MDBRow, MDBBtn, MDBIcon} from "mdbreact";
+import { createMessage} from '../graphql/mutations'
+import { API, graphqlOperation, Auth, Hub } from 'aws-amplify'
 import "./Messaging.css";
 
 const states = fetchUserEmails();
@@ -12,6 +14,7 @@ class Messaging extends Component {
     super();
     this.state = { 
       email: [],
+      sender:"",
       recipient: "",
       message: "",    
     };
@@ -20,15 +23,24 @@ class Messaging extends Component {
   componentDidMount() {
     fetchUserEmails()
       .then(emailData => this.setState({email:emailData}));
+    returnUser()
+      .then(userData => this.setState({sender:userData.attributes.email}))
   }
 
   emailValue = value => {
-    console.log(value);
     this.setState({recipient:value})
   };
 
+  messageValue = value => {
+    this.setState({message:value})
+  };
+
   clickEvent = () => {
-    console.log(this.state.recipient);
+    //await API.graphql(graphqlOperation(createMessage, {input: {email: email, cognitoID: userData.idToken.payload.identities[0].userId, lastLogin: awsDateTime}}))
+    //.then(console.log("record created for :",email, "at: ", currentDateTime ));
+    console.log("As submitted sender: ", this.state.sender);
+    console.log("As submitted email: ",this.state.recipient);
+    console.log("As Submitted message:", this.state.message)
   }
 
   render() {
@@ -37,7 +49,7 @@ class Messaging extends Component {
       <MDBContainer className="w-100">
         <MDBRow>
           <MDBCol md="6">
-            <form id="messagingService" onSubmit={handleFormSubmit}>
+            <form id="messagingService">
 
                   <MDBAutocomplete
                     data={this.state.email}
@@ -45,7 +57,7 @@ class Messaging extends Component {
                     icon="envelope-open"
                     clear
                     id="input"
-                    getValue={this.logValue}
+                    getValue={this.emailValue}
                   />
 
                   <MDBInput 
@@ -53,6 +65,7 @@ class Messaging extends Component {
                     label="Message Text" 
                     rows="5" 
                     icon="edit"
+                    getValue={this.messageValue}
                   />
 
 
@@ -70,16 +83,6 @@ class Messaging extends Component {
       </MDBContainer>
       </>
     );
-  }
-}
-
-async function handleFormSubmit(event) {
-  event.preventDefault();
-  try {
-      console.log(event);
-    
-  } catch (e) {
-    console.log(e);
   }
 }
 

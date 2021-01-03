@@ -18,6 +18,16 @@ async function checkUser(dispatch) {
   }
 }
 
+async function returnUser(){
+  try{
+    const userData = await Auth.currentAuthenticatedUser();
+    return(userData);
+  } catch(err){
+    console.log(err);
+    return(null);
+  }
+}
+
 async function checkAdmin(){
   try{
     await Auth.currentAuthenticatedUser()
@@ -114,6 +124,7 @@ export default checkUser;
 
 export{
   checkAdmin,
+  returnUser,
   useUserStatus,
   signOut,
   createOrUpdateUser,

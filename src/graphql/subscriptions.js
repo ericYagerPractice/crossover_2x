@@ -53,6 +53,7 @@ export const onCreateConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -83,6 +84,7 @@ export const onUpdateConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -113,6 +115,7 @@ export const onDeleteConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -132,6 +135,7 @@ export const onCreateMessage = /* GraphQL */ `
     onCreateMessage {
       id
       author
+      recipient
       messageText
       time
       conversationID
@@ -145,6 +149,7 @@ export const onUpdateMessage = /* GraphQL */ `
     onUpdateMessage {
       id
       author
+      recipient
       messageText
       time
       conversationID
@@ -158,6 +163,7 @@ export const onDeleteMessage = /* GraphQL */ `
     onDeleteMessage {
       id
       author
+      recipient
       messageText
       time
       conversationID

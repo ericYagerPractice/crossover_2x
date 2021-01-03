@@ -48,6 +48,7 @@ export const getConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -95,6 +96,7 @@ export const getMessage = /* GraphQL */ `
     getMessage(id: $id) {
       id
       author
+      recipient
       messageText
       time
       conversationID
@@ -113,6 +115,7 @@ export const listMessages = /* GraphQL */ `
       items {
         id
         author
+        recipient
         messageText
         time
         conversationID

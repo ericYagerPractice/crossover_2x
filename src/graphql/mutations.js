@@ -65,6 +65,7 @@ export const createConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -98,6 +99,7 @@ export const updateConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -131,6 +133,7 @@ export const deleteConversation = /* GraphQL */ `
         items {
           id
           author
+          recipient
           messageText
           time
           conversationID
@@ -153,6 +156,7 @@ export const createMessage = /* GraphQL */ `
     createMessage(input: $input, condition: $condition) {
       id
       author
+      recipient
       messageText
       time
       conversationID
@@ -169,6 +173,7 @@ export const updateMessage = /* GraphQL */ `
     updateMessage(input: $input, condition: $condition) {
       id
       author
+      recipient
       messageText
       time
       conversationID
@@ -185,6 +190,7 @@ export const deleteMessage = /* GraphQL */ `
     deleteMessage(input: $input, condition: $condition) {
       id
       author
+      recipient
       messageText
       time
       conversationID

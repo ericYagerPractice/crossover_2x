@@ -15,10 +15,9 @@ import checkUser, {createOrUpdateUser} from '../CheckAuth';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
 import { Auth, Hub } from 'aws-amplify';
-import {AccountButton, AdminButton, MessageButton } from './Buttons';
+import {AccountButton, MessageButton } from './Buttons';
 import { checkHost } from '../Helper';
-import { API, graphqlOperation } from 'aws-amplify'
-import { createUser } from '../graphql/mutations'
+
 
 const initialUserState = { user: null, loading: true }
 
