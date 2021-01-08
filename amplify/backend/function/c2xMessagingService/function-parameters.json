@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "auth": {
+      "crossover2xb12c8f74": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

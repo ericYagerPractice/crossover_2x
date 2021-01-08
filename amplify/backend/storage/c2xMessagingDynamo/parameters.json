@@ -1,0 +1,5 @@
+{
+    "tableName": "c2xMessagingDynamo",
+    "partitionKeyName": "ID",
+    "partitionKeyType": "S"
+}

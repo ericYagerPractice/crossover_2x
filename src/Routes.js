@@ -8,6 +8,9 @@ import Account from './pages/Account';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CourseOverview from './pages/CourseOverview';
 import Checkout from './pages/PaymentProcessing';
+import Admin from './pages/Admin';
+import Learning from './pages/Learning';
+import Messaging from './pages/Messaging';
 
 class Routes extends React.Component {
   render() {
@@ -20,6 +23,9 @@ class Routes extends React.Component {
         <Route exact path='/Privacy' component={PrivacyPolicy}/>
         <Route exact path='/CourseOverview' component={CourseOverview} />
         <Route exact path='/Checkout' component={Checkout} />
+        <Route exact path='/Admin' component={Admin} />
+        <Route exact path='/Learning' component={Learning} />
+        <Route exact path='/Mail' component={Messaging} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

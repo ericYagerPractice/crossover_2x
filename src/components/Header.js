@@ -14,8 +14,8 @@ import c2xlogonav from '../staticfiles/c2xlogonav.png';
 import checkUser from '../CheckAuth';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
-import { Hub } from 'aws-amplify';
-import {AccountButton } from './Buttons';
+import { Auth, Hub } from 'aws-amplify';
+import {AccountButton, AdminButton, MessageButton } from './Buttons';
 import { checkHost } from '../Helper';
 
 const initialUserState = { user: null, loading: true }
@@ -24,20 +24,34 @@ export default function Header() {
   const [collapseID, setcollapseID] =useState(false);
   const [userState, dispatch] = useReducer(reducer, initialUserState)
   const [formState, updateFormState] = useState('base')
+  const [isAdmin, checkAdminStatus] = useState(false);
+
+  async function onload(){
+    await Auth.currentSession()
+    .then(data=>{
+      checkAdminStatus(data.idToken.payload['cognito:groups'].includes('Admin'));
+    })
+    .catch(err=>console.log('error checking admin status: ',err));
+  }
 
   useEffect(() => {
+    onload();
     var hostName=checkHost();
-    // set listener for auth events
     Hub.listen('auth', (data) => {
       const { payload } = data
       if (payload.event === 'signIn') {
-        setImmediate(() => dispatch({ type: 'setUser', user: payload.data }))
+        setImmediate(() => {
+          dispatch({ type: 'setUser', user: payload.data })
+        })
         setImmediate(() => window.history.pushState({}, null, hostName))
         updateFormState('base')
       }
       // this listener is needed for form sign ups since the OAuth will redirect & reload
       if (payload.event === 'signOut') {
-        setTimeout(() => dispatch({ type: 'setUser', user: null }), 350)
+        setTimeout(() => {
+          dispatch({ type: 'setUser', user: null })
+          console.log(userState)
+        }, 350)
       }
     })
     // we check for the current user unless there is a redirect to ?signedIn=true
@@ -83,7 +97,7 @@ export default function Header() {
               {
                 userState.loading && (
                   <div>
-                    <p>Loading...</p>
+                    <p className="btn btn-rounded" style={{color: 'white'}}>Loading...</p>
                   </div>
                 )
               }
@@ -98,6 +112,7 @@ export default function Header() {
                 userState.user && userState.user.signInUserSession && (
                     <Row>
                         <AccountButton />
+                        <MessageButton />
                     </Row>
                 )
               }
@@ -108,7 +123,3 @@ export default function Header() {
     </>
   );
 }
-/*
-<h6 style={{color: 'white'}}>
-                      {userState.user.signInUserSession.idToken.payload.email}
-                    </h6>*/

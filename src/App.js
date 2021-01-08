@@ -12,7 +12,6 @@ import Routes from './Routes';
 import { reducer } from './Helper';
 
 import { Hub } from 'aws-amplify'
-import { FaSignOutAlt } from 'react-icons/fa'
 
 const initialUserState = { user: null, loading: true }
 
@@ -54,7 +53,7 @@ function App() {
     <Router>
       <div style={styles.appContainer}>
         <Header updateFormState={updateFormState} />
-        <main className="mainContent" style={{ marginTop: '4rem' }}>
+        <main className="mainContent" style={styles.postHeader}>
           <Routes />
         </main>
         <Footer />
@@ -67,48 +66,9 @@ const styles = {
   appContainer: {
     paddingTop: 0,
   },
-  loading: {
-
+  postHeader: {
+    marginTop: '5.5rem'
   },
-  button: {
-    marginTop: 15,
-    width: '100%',
-    maxWidth: 250,
-    marginBottom: 10,
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    padding: '0px 16px',
-    borderRadius: 2,
-    boxShadow: '0px 1px 3px rgba(0, 0, 0, .3)',
-    cursor: 'pointer',
-    outline: 'none',
-    border: 'none',
-    minHeight: 40
-  },
-  text: {
-    color: 'white',
-    fontSize: 14,
-    marginLeft: 10,
-    fontWeight: 'bold'
-  },
-  signOut: {
-    backgroundColor: 'black'
-  },
-  footer: {
-    fontWeight: '600',
-    padding: '0px 25px',
-    textAlign: 'right',
-    color: 'rgba(0, 0, 0, 0.6)'
-  },
-  anchor: {
-    color: 'rgb(255, 153, 0)',
-    textDecoration: 'none'
-  },
-  body: {
-    padding: '0px 30px',
-    height: '78vh'
-  }
 }
 
 export default App
