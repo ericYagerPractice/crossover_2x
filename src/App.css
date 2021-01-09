@@ -127,6 +127,12 @@ body {
 .card-icon {
 	max-width: 80px;
 }
+.card-text a {
+	color: #000;
+}
+.card-text a:hover {
+	color: #ff3547;
+}
 /* END Cards */
 
 /* Carousels */

@@ -30,7 +30,7 @@ export default function ImageCarousel() {
               showControls={false}
               showIndicators={false}
               fade={true}
-              interval={2200}
+              interval={2400}
             >
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
