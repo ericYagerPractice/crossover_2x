@@ -127,10 +127,14 @@ body {
 .card-icon {
 	max-width: 80px;
 }
-.card-text a {
+.card-list {
+	font-size: 14px;
+	padding: 0 0 0 20px;
+}
+.card-list a {
 	color: #000;
 }
-.card-text a:hover {
+.card-list a:hover {
 	color: #ff3547;
 }
 /* END Cards */
