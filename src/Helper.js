@@ -1,7 +1,7 @@
-import { FaRegObjectUngroup } from 'react-icons/fa';
+import { API, graphqlOperation } from 'aws-amplify'
 import RootPathways from './Config'
 
-export function reducer (state, action) {
+function reducer (state, action) {
     switch(action.type) {
       case 'setUser':
         return { ...state, user: action.user, loading: false }
@@ -12,7 +12,7 @@ export function reducer (state, action) {
     }
   }
   
-  export function checkHost(){
+ function checkHost(){
     var hasLocalhost  = (hostname) => Boolean(hostname.match(/localhost/) || hostname.match(/127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}/));
     var hasHostname   = (hostname) => Boolean(hostname.includes(window.location.hostname));
     var isLocalhost   = hasLocalhost(window.location.hostname);
@@ -32,3 +32,18 @@ export function reducer (state, action) {
       return("nohost://nohost");
     }
   }
+
+  function addUser(inputEmail,id){
+    async function addUserFunction(){
+      await API.graphql(graphqlOperation(createUser, {input: {email:inputEmail,cognitoID:id}}))
+    }
+    addUserFunction()
+    .then(console.log("User updated/added"))
+    .catch(error=>console.log(error));
+  }
+
+export{
+  reducer,
+  checkHost,
+  addUser
+}
