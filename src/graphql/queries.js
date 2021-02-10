@@ -1,30 +1,124 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUserData = /* GraphQL */ `
-  query GetUserData($id: ID!) {
-    getUserData(id: $id) {
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
       id
       email
-      first
-      last
+      cognitoID
+      lastLogin
       createdAt
       updatedAt
     }
   }
 `;
-export const listUserDatas = /* GraphQL */ `
-  query ListUserDatas(
-    $filter: ModelUserDataFilterInput
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listUserDatas(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         email
-        first
-        last
+        cognitoID
+        lastLogin
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getConversation = /* GraphQL */ `
+  query GetConversation($id: ID!) {
+    getConversation(id: $id) {
+      id
+      participants {
+        id
+        email
+        cognitoID
+        lastLogin
+        createdAt
+        updatedAt
+      }
+      messages {
+        items {
+          id
+          author
+          recipient
+          messageText
+          time
+          conversationID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      originationDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listConversations = /* GraphQL */ `
+  query ListConversations(
+    $filter: ModelConversationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listConversations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        participants {
+          id
+          email
+          cognitoID
+          lastLogin
+          createdAt
+          updatedAt
+        }
+        messages {
+          nextToken
+        }
+        originationDate
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getMessage = /* GraphQL */ `
+  query GetMessage($id: ID!) {
+    getMessage(id: $id) {
+      id
+      author
+      recipient
+      messageText
+      time
+      conversationID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listMessages = /* GraphQL */ `
+  query ListMessages(
+    $filter: ModelMessageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        author
+        recipient
+        messageText
+        time
+        conversationID
         createdAt
         updatedAt
       }

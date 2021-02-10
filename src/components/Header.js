@@ -11,12 +11,13 @@ import {
 import React, { useReducer, useEffect, useState } from 'react';
 import './Header.css';
 import c2xlogonav from '../staticfiles/c2xlogonav.png';
-import checkUser from '../CheckAuth';
+import checkUser, {createOrUpdateUser} from '../CheckAuth';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
 import { Auth, Hub } from 'aws-amplify';
-import {AccountButton, AdminButton, MessageButton } from './Buttons';
+import {AccountButton, MessageButton } from './Buttons';
 import { checkHost } from '../Helper';
+
 
 const initialUserState = { user: null, loading: true }
 
@@ -27,9 +28,11 @@ export default function Header() {
   const [isAdmin, checkAdminStatus] = useState(false);
 
   async function onload(){
-    await Auth.currentSession()
+    const userData = await Auth.currentSession()
     .then(data=>{
       checkAdminStatus(data.idToken.payload['cognito:groups'].includes('Admin'));
+      createOrUpdateUser(data.idToken.payload.email);
+      //API.graphql(graphqlOperation(createUser, {input: {email: data.idToken.payload.email, cognitoID: data.idToken.payload.identities[0].userId}}))
     })
     .catch(err=>console.log('error checking admin status: ',err));
   }
