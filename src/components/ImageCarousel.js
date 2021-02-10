@@ -18,6 +18,10 @@ import slide9 from '../staticfiles/carousel-slides/c2x-intro-slide-9.jpg';
 import slide10 from '../staticfiles/carousel-slides/c2x-intro-slide-10.jpg';
 import slide11 from '../staticfiles/carousel-slides/c2x-intro-slide-11.jpg';
 import slide12 from '../staticfiles/carousel-slides/c2x-intro-slide-12.jpg';
+import slide13 from '../staticfiles/carousel-slides/c2x-intro-slide-13.jpg';
+import slide14 from '../staticfiles/carousel-slides/c2x-intro-slide-14.jpg';
+import slide15 from '../staticfiles/carousel-slides/c2x-intro-slide-15.jpg';
+import slide16 from '../staticfiles/carousel-slides/c2x-intro-slide-16.jpg';
 
 export default function ImageCarousel() {
     return(
@@ -26,11 +30,11 @@ export default function ImageCarousel() {
             <MDBCarousel
               className="carousel--primary"
               activeItem={1}
-              length={12}
+              length={16}
               showControls={false}
               showIndicators={false}
               fade={true}
-              interval={2400}
+              interval={2600}
             >
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
@@ -138,6 +142,42 @@ export default function ImageCarousel() {
                       className="d-block w-100"
                       src={slide12}
                       alt="Crossover 2X Intro Slide 12"
+                    />
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="9">
+                  <MDBView>
+                    <img
+                      className="d-block w-100"
+                      src={slide13}
+                      alt="Crossover 2X Intro Slide 13"
+                    />
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="10">
+                  <MDBView>
+                    <img
+                      className="d-block w-100"
+                      src={slide14}
+                      alt="Crossover 2X Intro Slide 14"
+                    />
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="11">
+                  <MDBView>
+                    <img
+                      className="d-block w-100"
+                      src={slide15}
+                      alt="Crossover 2X Intro Slide 15"
+                    />
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="12">
+                  <MDBView>
+                    <img
+                      className="d-block w-100"
+                      src={slide16}
+                      alt="Crossover 2X Intro Slide 16"
                     />
                   </MDBView>
                 </MDBCarouselItem>

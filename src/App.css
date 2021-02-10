@@ -121,6 +121,9 @@ body {
 /* END Base/Global Styles */
 
 /* Cards */
+.card-title {
+	font-size: 1.25em;
+}
 .card-category {
 	letter-spacing: 1px;
 }
