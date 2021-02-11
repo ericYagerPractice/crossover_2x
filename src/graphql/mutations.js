@@ -11,8 +11,6 @@ export const createUser = /* GraphQL */ `
       email
       cognitoID
       lastLogin
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -26,8 +24,6 @@ export const updateUser = /* GraphQL */ `
       email
       cognitoID
       lastLogin
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -41,8 +37,6 @@ export const deleteUser = /* GraphQL */ `
       email
       cognitoID
       lastLogin
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -58,8 +52,6 @@ export const createConversation = /* GraphQL */ `
         email
         cognitoID
         lastLogin
-        createdAt
-        updatedAt
       }
       messages {
         items {
@@ -69,14 +61,10 @@ export const createConversation = /* GraphQL */ `
           messageText
           time
           conversationID
-          createdAt
-          updatedAt
         }
         nextToken
       }
       originationDate
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -92,8 +80,6 @@ export const updateConversation = /* GraphQL */ `
         email
         cognitoID
         lastLogin
-        createdAt
-        updatedAt
       }
       messages {
         items {
@@ -103,14 +89,10 @@ export const updateConversation = /* GraphQL */ `
           messageText
           time
           conversationID
-          createdAt
-          updatedAt
         }
         nextToken
       }
       originationDate
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -126,8 +108,6 @@ export const deleteConversation = /* GraphQL */ `
         email
         cognitoID
         lastLogin
-        createdAt
-        updatedAt
       }
       messages {
         items {
@@ -137,14 +117,10 @@ export const deleteConversation = /* GraphQL */ `
           messageText
           time
           conversationID
-          createdAt
-          updatedAt
         }
         nextToken
       }
       originationDate
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -160,8 +136,6 @@ export const createMessage = /* GraphQL */ `
       messageText
       time
       conversationID
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -177,8 +151,6 @@ export const updateMessage = /* GraphQL */ `
       messageText
       time
       conversationID
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -194,8 +166,363 @@ export const deleteMessage = /* GraphQL */ `
       messageText
       time
       conversationID
+    }
+  }
+`;
+export const createLearningPathway = /* GraphQL */ `
+  mutation CreateLearningPathway(
+    $input: CreateLearningPathwayInput!
+    $condition: ModellearningPathwayConditionInput
+  ) {
+    createLearningPathway(input: $input, condition: $condition) {
+      id
+      title
+      pods {
+        items {
+          id
+          createdAt
+        }
+        nextToken
+      }
+      facilitator {
+        id
+        email
+        cognitoID
+        lastLogin
+      }
+    }
+  }
+`;
+export const updateLearningPathway = /* GraphQL */ `
+  mutation UpdateLearningPathway(
+    $input: UpdateLearningPathwayInput!
+    $condition: ModellearningPathwayConditionInput
+  ) {
+    updateLearningPathway(input: $input, condition: $condition) {
+      id
+      title
+      pods {
+        items {
+          id
+          createdAt
+        }
+        nextToken
+      }
+      facilitator {
+        id
+        email
+        cognitoID
+        lastLogin
+      }
+    }
+  }
+`;
+export const deleteLearningPathway = /* GraphQL */ `
+  mutation DeleteLearningPathway(
+    $input: DeleteLearningPathwayInput!
+    $condition: ModellearningPathwayConditionInput
+  ) {
+    deleteLearningPathway(input: $input, condition: $condition) {
+      id
+      title
+      pods {
+        items {
+          id
+          createdAt
+        }
+        nextToken
+      }
+      facilitator {
+        id
+        email
+        cognitoID
+        lastLogin
+      }
+    }
+  }
+`;
+export const createPod = /* GraphQL */ `
+  mutation CreatePod(
+    $input: CreatePodInput!
+    $condition: ModelPodConditionInput
+  ) {
+    createPod(input: $input, condition: $condition) {
+      id
+      creator {
+        id
+        email
+        cognitoID
+        lastLogin
+      }
+      title
+      description
+      resourceUrls
+      createDate
+      learningPathway {
+        items {
+          id
+          createdAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const updatePod = /* GraphQL */ `
+  mutation UpdatePod(
+    $input: UpdatePodInput!
+    $condition: ModelPodConditionInput
+  ) {
+    updatePod(input: $input, condition: $condition) {
+      id
+      creator {
+        id
+        email
+        cognitoID
+        lastLogin
+      }
+      title
+      description
+      resourceUrls
+      createDate
+      learningPathway {
+        items {
+          id
+          createdAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const deletePod = /* GraphQL */ `
+  mutation DeletePod(
+    $input: DeletePodInput!
+    $condition: ModelPodConditionInput
+  ) {
+    deletePod(input: $input, condition: $condition) {
+      id
+      creator {
+        id
+        email
+        cognitoID
+        lastLogin
+      }
+      title
+      description
+      resourceUrls
+      createDate
+      learningPathway {
+        items {
+          id
+          createdAt
+        }
+        nextToken
+      }
+    }
+  }
+`;
+export const createPathwayPod = /* GraphQL */ `
+  mutation CreatePathwayPod(
+    $input: CreatePathwayPodInput!
+    $condition: ModelPathwayPodConditionInput
+  ) {
+    createPathwayPod(input: $input, condition: $condition) {
+      id
       createdAt
-      updatedAt
+      pathway {
+        id
+        title
+        pods {
+          nextToken
+        }
+        facilitator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+      }
+      pod {
+        id
+        creator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+        title
+        description
+        resourceUrls
+        createDate
+        learningPathway {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const updatePathwayPod = /* GraphQL */ `
+  mutation UpdatePathwayPod(
+    $input: UpdatePathwayPodInput!
+    $condition: ModelPathwayPodConditionInput
+  ) {
+    updatePathwayPod(input: $input, condition: $condition) {
+      id
+      createdAt
+      pathway {
+        id
+        title
+        pods {
+          nextToken
+        }
+        facilitator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+      }
+      pod {
+        id
+        creator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+        title
+        description
+        resourceUrls
+        createDate
+        learningPathway {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const deletePathwayPod = /* GraphQL */ `
+  mutation DeletePathwayPod(
+    $input: DeletePathwayPodInput!
+    $condition: ModelPathwayPodConditionInput
+  ) {
+    deletePathwayPod(input: $input, condition: $condition) {
+      id
+      createdAt
+      pathway {
+        id
+        title
+        pods {
+          nextToken
+        }
+        facilitator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+      }
+      pod {
+        id
+        creator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+        title
+        description
+        resourceUrls
+        createDate
+        learningPathway {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const createPodComments = /* GraphQL */ `
+  mutation CreatePodComments(
+    $input: CreatePodCommentsInput!
+    $condition: ModelPodCommentsConditionInput
+  ) {
+    createPodComments(input: $input, condition: $condition) {
+      id
+      podID {
+        id
+        creator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+        title
+        description
+        resourceUrls
+        createDate
+        learningPathway {
+          nextToken
+        }
+      }
+      author
+      commentText
+    }
+  }
+`;
+export const updatePodComments = /* GraphQL */ `
+  mutation UpdatePodComments(
+    $input: UpdatePodCommentsInput!
+    $condition: ModelPodCommentsConditionInput
+  ) {
+    updatePodComments(input: $input, condition: $condition) {
+      id
+      podID {
+        id
+        creator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+        title
+        description
+        resourceUrls
+        createDate
+        learningPathway {
+          nextToken
+        }
+      }
+      author
+      commentText
+    }
+  }
+`;
+export const deletePodComments = /* GraphQL */ `
+  mutation DeletePodComments(
+    $input: DeletePodCommentsInput!
+    $condition: ModelPodCommentsConditionInput
+  ) {
+    deletePodComments(input: $input, condition: $condition) {
+      id
+      podID {
+        id
+        creator {
+          id
+          email
+          cognitoID
+          lastLogin
+        }
+        title
+        description
+        resourceUrls
+        createDate
+        learningPathway {
+          nextToken
+        }
+      }
+      author
+      commentText
     }
   }
 `;
