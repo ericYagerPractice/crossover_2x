@@ -2,7 +2,7 @@ import { Auth } from 'aws-amplify'
 import { useEffect } from 'react';
 
 
-function signIn(authProvider){
+function signIn(){
     if(authProvider){
         Auth.federatedSignIn({provider: authProvider})
         .then(data=> {

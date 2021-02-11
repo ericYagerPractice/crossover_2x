@@ -1,5 +1,4 @@
-type User 
-@model 
+type User @model 
 {
   id: ID!
   email: String!
@@ -7,8 +6,7 @@ type User
   lastLogin: String!
 }
 
-type Conversation 
-@model
+type Conversation @model
 {
   id: ID!
   participants: [User]! 
@@ -16,8 +14,7 @@ type Conversation
   originationDate: AWSDateTime
 }
 
-type Message 
-@model
+type Message  @model
 @key(name: "byConversationID", fields: ["conversationID"]) 
 {
   id: ID!
@@ -26,4 +23,39 @@ type Message
   messageText: String!
   time: AWSDateTime!
   conversationID: ID!
+}
+
+type learningPathway @model 
+{
+  id: ID!
+  title: String!
+  pods: [PathwayPod] @connection(name: "pathwayToPod")
+  facilitator: User!
+}
+
+type Pod @model
+{
+  id: ID!
+  creator: User!
+  title: String!
+  description: String!
+  resourceUrls: [String!]
+  createDate: AWSDateTime!
+  learningPathway: [PathwayPod] @connection(name: "podToPathway")
+}
+
+type PathwayPod @model
+{
+  id: ID!
+  createdAt: AWSDateTime!
+  pathway: learningPathway @connection(name: "pathwayToPod")
+  pod: Pod @connection(name: "podToPathway", sortField: "updatedAt")
+}
+
+type PodComments @model
+{
+  id: ID!
+  podID: Pod!
+  author: String!
+  commentText: String!
 }

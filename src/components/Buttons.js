@@ -14,10 +14,6 @@ export default function LoginButtons(props) {
           <MDBIcon icon="user-astronaut" size="lg" />  Login / Signup
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
-          <MDBDropdownItem header>Social Authentication</MDBDropdownItem>
-          <MDBDropdownItem onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}><FaFacebook color='blue' /> Facebook </MDBDropdownItem>
-          <MDBDropdownItem onClick={() => Auth.federatedSignIn({provider: 'Google'})}><FaGoogle color='red' /> Google</MDBDropdownItem>
-          <MDBDropdownItem divider />
           <MDBDropdownItem onClick={() => Auth.federatedSignIn()}><FaEnvelope /> Email/Password</MDBDropdownItem>
         </MDBDropdownMenu>
       </MDBDropdown>
