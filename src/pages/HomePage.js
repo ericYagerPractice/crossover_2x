@@ -71,7 +71,7 @@ class HomePage extends React.Component {
                 <MDBRow>
                   <MDBCol md='12' className='mx-auto'>
                     <h3 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
-                      What is<br/> Crossover <span class="text-danger">2X</span>?
+                      What is<br/> Crossover <span className="text-danger">2X</span>?
                     </h3>
                     <hr className="w-25 border-dark" />
                     <p className='text-center text--lg mt-3 mx-auto font-weight-bolder'>
@@ -145,7 +145,7 @@ class HomePage extends React.Component {
                 <MDBRow id='categories'>
                   <MDBCol md='12' className='mx-auto'>
                     <h3 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
-                      C<span class="text-danger">2X</span><br/> Content Experience<br/> Framework (CXF)
+                      C<span className="text-danger">2X</span><br/> Content Experience<br/> Framework (CXF)
                     </h3>
                     <hr className="w-25 border-dark" />
                   </MDBCol>
