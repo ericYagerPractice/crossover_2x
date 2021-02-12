@@ -1,11 +1,11 @@
 #set( $limit = $util.defaultIfNull($context.args.limit, 100) )
 #set( $query = {
-  "expression": "#partitionKey = :partitionKey",
+  "expression": "#connectionAttribute = :connectionAttribute",
   "expressionNames": {
-      "#partitionKey": "conversationID"
+      "#connectionAttribute": "playlistPostPostId"
   },
   "expressionValues": {
-      ":partitionKey": {
+      ":connectionAttribute": {
           "S": "$context.source.id"
     }
   }
@@ -34,5 +34,5 @@ $util.toJson($context.args.nextToken)
   #else
 null
   #end,
-  "index": "byConversationID"
+  "index": "gsi-PostPlaylist"
 }
