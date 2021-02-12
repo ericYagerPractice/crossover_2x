@@ -39,7 +39,7 @@ export default function AnimatedCards() {
                     to='/CourseOverview'
                     className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
                   >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
+                    Learn More <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
                   </MDBNavLink>
                 </MDBCardBody>
               </MDBCard>
@@ -68,7 +68,7 @@ export default function AnimatedCards() {
                     to='/CourseOverview'
                     className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
                   >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
+                    Learn More <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
                   </MDBNavLink>
                 </MDBCardBody>
               </MDBCard>
@@ -97,7 +97,7 @@ export default function AnimatedCards() {
                     to='/CourseOverview'
                     className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
                   >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
+                    Learn More <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
                   </MDBNavLink>
                 </MDBCardBody>
               </MDBCard>
@@ -126,122 +126,7 @@ export default function AnimatedCards() {
                     to='/CourseOverview'
                     className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
                   >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
-                  </MDBNavLink>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBAnimation>
-          </MDBCol>
-
-          <MDBCol md='6' xl='3'>
-            <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
-                <img
-                  className="d-block mx-auto my-4 card-icon"
-                  src={cardIconC}
-                  alt="C"
-                />
-                <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Classes
-                  </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
-                  <MDBCardText className='text-white'>
-                    Known for Vibrant Slack Communities w/ Buy-In Polls, Cash-Out Pods, ...
-                  </MDBCardText>
-                  <MDBNavLink
-                    tag='button'
-                    to='/CourseOverview'
-                    className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
-                  >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
-                  </MDBNavLink>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBAnimation>
-          </MDBCol>
-
-
-          <MDBCol md='6' xl='3'>
-            <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
-                <img
-                  className="d-block mx-auto my-4 card-icon"
-                  src={cardIconP}
-                  alt="P"
-                />
-                <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Programs
-                  </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
-                  <MDBCardText className='text-white'>
-                    Our 360° Pod Process Lets Users Go Full-Circle in re. to <i>Subject Matter Worth Probing</i>
-                  </MDBCardText>
-                  <MDBNavLink
-                    tag='button'
-                    to='/CourseOverview'
-                    className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
-                  >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
-                  </MDBNavLink>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBAnimation>
-          </MDBCol>
-
-
-          <MDBCol md='6' xl='3'>
-            <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
-                 <img
-                  className="d-block mx-auto my-4 card-icon"
-                  src={cardIconT}
-                  alt="T"
-                />
-                <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Tool Blocs
-                  </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
-                  <MDBCardText className='text-white'>
-                    T-Shaped Skills 360° RoundTable Discussions, <i>Tool Up, Tack On, T'app Out</i>.
-                  </MDBCardText>
-                  <MDBNavLink
-                    tag='button'
-                    to='/CourseOverview'
-                    className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
-                  >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
-                  </MDBNavLink>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBAnimation>
-          </MDBCol>
-
-
-          <MDBCol md='6' xl='3'>
-            <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
-                <img
-                  className="d-block mx-auto my-4 card-icon"
-                  src={cardIconS}
-                  alt="S"
-                />
-                <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Schedules
-                  </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
-                  <MDBCardText className='text-white'>
-                    S-Level providing users w/ Real World Opportunities to Ship, <i>Get Specs. Show Skills. Track Stats</i>
-                  </MDBCardText>
-                  <MDBNavLink
-                    tag='button'
-                    to='/CourseOverview'
-                    className='btn btn-danger btn-lg mt-4 py-2 d-flex align-items-center justify-content-center'
-                  >
-                    Start Now <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
+                    Learn More <MDBIcon icon='caret-right' className='ml-3' size='2x'></MDBIcon>
                   </MDBNavLink>
                 </MDBCardBody>
               </MDBCard>

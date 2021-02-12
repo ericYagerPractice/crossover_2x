@@ -121,11 +121,24 @@ body {
 /* END Base/Global Styles */
 
 /* Cards */
+.card-title {
+	font-size: 1.25em;
+}
 .card-category {
 	letter-spacing: 1px;
 }
 .card-icon {
 	max-width: 80px;
+}
+.card-list {
+	font-size: 14px;
+	padding: 0 0 0 20px;
+}
+.card-list a {
+	color: #000;
+}
+.card-list a:hover {
+	color: #ff3547;
 }
 /* END Cards */
 
