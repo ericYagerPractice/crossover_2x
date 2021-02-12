@@ -9,8 +9,9 @@ import Routes from './Routes';
 import { reducer } from './Helper';
 import Amplify, { API,Hub } from 'aws-amplify'
 import awsmobile from './aws-exports';
+import { withAuthenticator } from '@aws-amplify/ui-react'
 
-
+/*
 var urlsIn = awsmobile.oauth.redirectSignIn.split(",");
 var urlsOut = awsmobile.oauth.redirectSignOut.split(",");
 const oauth = awsmobile.oauth;
@@ -18,21 +19,26 @@ var hasLocalhost  = (hostname) => Boolean(hostname.match(/localhost/) || hostnam
 var hasHostname   = (hostname) => Boolean(hostname.includes(window.location.hostname));
 var isLocalhost   = hasLocalhost(window.location.hostname);
 
+
+
 if (isLocalhost) {
-  urlsIn.forEach((e) =>   { if (hasLocalhost(e)) { 
-    oauth.redirectSignIn = e; }});
-  urlsOut.forEach((e) =>  { if (hasLocalhost(e)) { 
-    oauth.redirectSignOut = e; }});
+  urlsIn.forEach((url) =>   { if (hasLocalhost(url)) { 
+    oauth.redirectSignIn = url; }});
+  urlsOut.forEach((url) =>  { if (hasLocalhost(url)) { 
+    oauth.redirectSignOut = url; }});
 }
 else {
-  urlsIn.forEach((e) =>   { if (hasHostname(e)) { 
-    oauth.redirectSignIn = e; }});
-  urlsOut.forEach((e) =>  { if (hasHostname(e)) { 
-    oauth.redirectSignOut = e; }});
+  urlsIn.forEach((url) =>   { if (hasHostname(url)) { 
+    oauth.redirectSignIn = url; }});
+  urlsOut.forEach((url) =>  { if (hasHostname(url)) { 
+    oauth.redirectSignOut = url; }});
 }
+console.log("app.js: ", oauth);
+
 var configUpdate = awsmobile;
 configUpdate.oauth = oauth;
-Amplify.configure(configUpdate);
+*/
+Amplify.configure(awsmobile);
 API.configure();
 
 
@@ -94,5 +100,5 @@ const styles = {
   },
 }
 
-export default App
+export default withAuthenticator(App)
 //<Header updateFormState={updateFormState} />

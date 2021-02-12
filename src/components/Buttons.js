@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import '../App.css'
 import { Auth } from 'aws-amplify'
-import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
+import { FaEnvelope } from 'react-icons/fa'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
 import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
