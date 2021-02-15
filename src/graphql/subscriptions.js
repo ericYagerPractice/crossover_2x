@@ -1,58 +1,73 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
 export const onCreateConversation = /* GraphQL */ `
   subscription OnCreateConversation {
     onCreateConversation {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -60,24 +75,69 @@ export const onUpdateConversation = /* GraphQL */ `
   subscription OnUpdateConversation {
     onUpdateConversation {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -85,24 +145,69 @@ export const onDeleteConversation = /* GraphQL */ `
   subscription OnDeleteConversation {
     onDeleteConversation {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -110,11 +215,99 @@ export const onCreateMessage = /* GraphQL */ `
   subscription OnCreateMessage {
     onCreateMessage {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
+      conversation {
+        id
+        ownerID
+        owner {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      messageText
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -122,11 +315,99 @@ export const onUpdateMessage = /* GraphQL */ `
   subscription OnUpdateMessage {
     onUpdateMessage {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
+      conversation {
+        id
+        ownerID
+        owner {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      messageText
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -134,332 +415,318 @@ export const onDeleteMessage = /* GraphQL */ `
   subscription OnDeleteMessage {
     onDeleteMessage {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
-    }
-  }
-`;
-export const onCreateLearningPathway = /* GraphQL */ `
-  subscription OnCreateLearningPathway {
-    onCreateLearningPathway {
-      id
-      title
-      pods {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-      facilitator {
+      conversation {
         id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const onUpdateLearningPathway = /* GraphQL */ `
-  subscription OnUpdateLearningPathway {
-    onUpdateLearningPathway {
-      id
-      title
-      pods {
-        items {
+        ownerID
+        owner {
           id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
           createdAt
+          updatedAt
         }
-        nextToken
-      }
-      facilitator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const onDeleteLearningPathway = /* GraphQL */ `
-  subscription OnDeleteLearningPathway {
-    onDeleteLearningPathway {
-      id
-      title
-      pods {
-        items {
-          id
-          createdAt
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
         }
-        nextToken
+        createdAt
+        updatedAt
       }
-      facilitator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const onCreatePod = /* GraphQL */ `
-  subscription OnCreatePod {
-    onCreatePod {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const onUpdatePod = /* GraphQL */ `
-  subscription OnUpdatePod {
-    onUpdatePod {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const onDeletePod = /* GraphQL */ `
-  subscription OnDeletePod {
-    onDeletePod {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const onCreatePathwayPod = /* GraphQL */ `
-  subscription OnCreatePathwayPod {
-    onCreatePathwayPod {
-      id
+      messageText
       createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
+      updatedAt
     }
   }
 `;
-export const onUpdatePathwayPod = /* GraphQL */ `
-  subscription OnUpdatePathwayPod {
-    onUpdatePathwayPod {
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
       id
+      cognitoId
+      conversations {
+        items {
+          id
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
       createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
+      updatedAt
     }
   }
 `;
-export const onDeletePathwayPod = /* GraphQL */ `
-  subscription OnDeletePathwayPod {
-    onDeletePathwayPod {
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
       id
+      cognitoId
+      conversations {
+        items {
+          id
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
       createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
+      updatedAt
     }
   }
 `;
-export const onCreatePodComments = /* GraphQL */ `
-  subscription OnCreatePodComments {
-    onCreatePodComments {
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
       id
-      podID {
-        id
-        creator {
+      cognitoId
+      conversations {
+        items {
           id
-          email
-          cognitoID
-          lastLogin
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
         }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
+        nextToken
       }
-      author
-      commentText
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
+      createdAt
+      updatedAt
     }
   }
 `;
-export const onUpdatePodComments = /* GraphQL */ `
-  subscription OnUpdatePodComments {
-    onUpdatePodComments {
+export const onCreateFaq = /* GraphQL */ `
+  subscription OnCreateFaq {
+    onCreateFAQ {
       id
-      podID {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
-      author
-      commentText
+      question
+      answer
+      createdAt
+      updatedAt
     }
   }
 `;
-export const onDeletePodComments = /* GraphQL */ `
-  subscription OnDeletePodComments {
-    onDeletePodComments {
+export const onUpdateFaq = /* GraphQL */ `
+  subscription OnUpdateFaq {
+    onUpdateFAQ {
       id
-      podID {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
-      author
-      commentText
+      question
+      answer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteFaq = /* GraphQL */ `
+  subscription OnDeleteFaq {
+    onDeleteFAQ {
+      id
+      question
+      answer
+      createdAt
+      updatedAt
     }
   }
 `;

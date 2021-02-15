@@ -1,5 +1,0 @@
-{
-    "AppSyncApiName": "c2xMessaging",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false
-}

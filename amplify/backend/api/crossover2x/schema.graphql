@@ -1,0 +1,42 @@
+type Conversation 
+@model 
+@key(name: "conversationsByUser", fields: ["ownerID"])
+{
+  id: ID!
+  ownerID: ID!
+  owner: User! @connection(fields: ["ownerID"])
+  messages: [Message]! @connection(keyName: "byConversation", fields: ["id"])
+}
+
+type Message 
+@model
+@key(name: "byConversation", fields: ["conversationID"])
+@key(name: "messagesByUser", fields: ["recipientID"])
+{
+  id: ID!
+  initiator: User! @connection(fields: ["initiatorID"])
+  initiatorID: ID!
+  recipient: User! @connection(fields: ["recipientID"])
+  recipientID: ID!
+  conversationID: ID!
+  conversation: Conversation! @connection(fields: ["conversationID"])
+  messageText: String!
+}
+
+type User 
+@model 
+{
+  id: ID!
+  cognitoId: ID!
+  conversations: [Conversation] @connection(keyName: "conversationsByUser", fields: ["id"]) 
+  messages: [Message] @connection(keyName: "messagesByUser", fields: ["id"])
+  username: String!
+}
+
+type FAQ
+@model
+{
+  id: ID!
+  question: String!
+  answer: String!
+}
