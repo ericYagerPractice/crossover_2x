@@ -1,20 +1,20 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-crossover2x-dev-170522-authRole",
-            "UnauthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-dev-170522-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-dev-170522-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-crossover2x-dev-170522-deployment",
-            "UnauthRoleName": "amplify-crossover2x-dev-170522-unauthRole",
-            "StackName": "amplify-crossover2x-dev-170522",
-            "StackId": "arn:aws:cloudformation:us-east-1:820626187184:stack/amplify-crossover2x-dev-170522/5b168e40-3c05-11eb-aeff-0e4a688d3275",
-            "AmplifyAppId": "d3s7jqy33emiq1"
-        },
-        "categories": {
-            "auth": {
-                "crossover2xecda4dbf": {}
-            }
-        }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-crossover2x-dev-170522-authRole",
+      "UnauthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-dev-170522-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-dev-170522-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-crossover2x-dev-170522-deployment",
+      "UnauthRoleName": "amplify-crossover2x-dev-170522-unauthRole",
+      "StackName": "amplify-crossover2x-dev-170522",
+      "StackId": "arn:aws:cloudformation:us-east-1:820626187184:stack/amplify-crossover2x-dev-170522/5b168e40-3c05-11eb-aeff-0e4a688d3275",
+      "AmplifyAppId": "d3s7jqy33emiq1"
+    },
+    "categories": {
+      "auth": {
+        "crossover2xecda4dbf": {}
+      }
     }
+  }
 }

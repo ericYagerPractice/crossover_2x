@@ -1,55 +1,73 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      nextToken
-    }
-  }
-`;
 export const getConversation = /* GraphQL */ `
   query GetConversation($id: ID!) {
     getConversation(id: $id) {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -62,16 +80,34 @@ export const listConversations = /* GraphQL */ `
     listConversations(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        participants {
+        ownerID
+        owner {
           id
-          email
-          cognitoID
-          lastLogin
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
         }
         messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
           nextToken
         }
-        originationDate
+        createdAt
+        updatedAt
       }
       nextToken
     }
@@ -81,11 +117,99 @@ export const getMessage = /* GraphQL */ `
   query GetMessage($id: ID!) {
     getMessage(id: $id) {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
+      conversation {
+        id
+        ownerID
+        owner {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      messageText
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -98,222 +222,184 @@ export const listMessages = /* GraphQL */ `
     listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        author
-        recipient
-        messageText
-        time
+        initiator {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        initiatorID
+        recipient {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        recipientID
         conversationID
-      }
-      nextToken
-    }
-  }
-`;
-export const getLearningPathway = /* GraphQL */ `
-  query GetLearningPathway($id: ID!) {
-    getLearningPathway(id: $id) {
-      id
-      title
-      pods {
-        items {
+        conversation {
           id
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
           createdAt
+          updatedAt
         }
-        nextToken
-      }
-      facilitator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const listLearningPathways = /* GraphQL */ `
-  query ListLearningPathways(
-    $filter: ModellearningPathwayFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listLearningPathways(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      nextToken
-    }
-  }
-`;
-export const getPod = /* GraphQL */ `
-  query GetPod($id: ID!) {
-    getPod(id: $id) {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const listPods = /* GraphQL */ `
-  query ListPods(
-    $filter: ModelPodFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPods(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
-      nextToken
-    }
-  }
-`;
-export const getPathwayPod = /* GraphQL */ `
-  query GetPathwayPod($id: ID!) {
-    getPathwayPod(id: $id) {
-      id
-      createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
-    }
-  }
-`;
-export const listPathwayPods = /* GraphQL */ `
-  query ListPathwayPods(
-    $filter: ModelPathwayPodFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPathwayPods(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
+        messageText
         createdAt
-        pathway {
-          id
-          title
-        }
-        pod {
-          id
-          title
-          description
-          resourceUrls
-          createDate
-        }
+        updatedAt
       }
       nextToken
     }
   }
 `;
-export const getPodComments = /* GraphQL */ `
-  query GetPodComments($id: ID!) {
-    getPodComments(id: $id) {
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
       id
-      podID {
-        id
-        creator {
+      cognitoId
+      conversations {
+        items {
           id
-          email
-          cognitoID
-          lastLogin
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
         }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
+        nextToken
       }
-      author
-      commentText
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
+      createdAt
+      updatedAt
     }
   }
 `;
-export const listPodCommentss = /* GraphQL */ `
-  query ListPodCommentss(
-    $filter: ModelPodCommentsFilterInput
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPodCommentss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        podID {
-          id
-          title
-          description
-          resourceUrls
-          createDate
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
         }
-        author
-        commentText
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getFaq = /* GraphQL */ `
+  query GetFaq($id: ID!) {
+    getFAQ(id: $id) {
+      id
+      question
+      answer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listFaQs = /* GraphQL */ `
+  query ListFaQs(
+    $filter: ModelFAQFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFAQs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        question
+        answer
+        createdAt
+        updatedAt
       }
       nextToken
     }

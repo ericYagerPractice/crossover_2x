@@ -1,45 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      email
-      cognitoID
-      lastLogin
-    }
-  }
-`;
 export const createConversation = /* GraphQL */ `
   mutation CreateConversation(
     $input: CreateConversationInput!
@@ -47,24 +8,69 @@ export const createConversation = /* GraphQL */ `
   ) {
     createConversation(input: $input, condition: $condition) {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -75,24 +81,69 @@ export const updateConversation = /* GraphQL */ `
   ) {
     updateConversation(input: $input, condition: $condition) {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -103,24 +154,69 @@ export const deleteConversation = /* GraphQL */ `
   ) {
     deleteConversation(input: $input, condition: $condition) {
       id
-      participants {
+      ownerID
+      owner {
         id
-        email
-        cognitoID
-        lastLogin
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
       }
       messages {
         items {
           id
-          author
-          recipient
-          messageText
-          time
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
           conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
         }
         nextToken
       }
-      originationDate
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -131,11 +227,99 @@ export const createMessage = /* GraphQL */ `
   ) {
     createMessage(input: $input, condition: $condition) {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
+      conversation {
+        id
+        ownerID
+        owner {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      messageText
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -146,11 +330,99 @@ export const updateMessage = /* GraphQL */ `
   ) {
     updateMessage(input: $input, condition: $condition) {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
+      conversation {
+        id
+        ownerID
+        owner {
+          id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
+          createdAt
+          updatedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      messageText
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -161,368 +433,336 @@ export const deleteMessage = /* GraphQL */ `
   ) {
     deleteMessage(input: $input, condition: $condition) {
       id
-      author
-      recipient
-      messageText
-      time
+      initiator {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      initiatorID
+      recipient {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        username
+        createdAt
+        updatedAt
+      }
+      recipientID
       conversationID
-    }
-  }
-`;
-export const createLearningPathway = /* GraphQL */ `
-  mutation CreateLearningPathway(
-    $input: CreateLearningPathwayInput!
-    $condition: ModellearningPathwayConditionInput
-  ) {
-    createLearningPathway(input: $input, condition: $condition) {
-      id
-      title
-      pods {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-      facilitator {
+      conversation {
         id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const updateLearningPathway = /* GraphQL */ `
-  mutation UpdateLearningPathway(
-    $input: UpdateLearningPathwayInput!
-    $condition: ModellearningPathwayConditionInput
-  ) {
-    updateLearningPathway(input: $input, condition: $condition) {
-      id
-      title
-      pods {
-        items {
+        ownerID
+        owner {
           id
+          cognitoId
+          conversations {
+            nextToken
+          }
+          messages {
+            nextToken
+          }
+          username
           createdAt
+          updatedAt
         }
-        nextToken
-      }
-      facilitator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const deleteLearningPathway = /* GraphQL */ `
-  mutation DeleteLearningPathway(
-    $input: DeleteLearningPathwayInput!
-    $condition: ModellearningPathwayConditionInput
-  ) {
-    deleteLearningPathway(input: $input, condition: $condition) {
-      id
-      title
-      pods {
-        items {
-          id
-          createdAt
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            createdAt
+            updatedAt
+          }
+          nextToken
         }
-        nextToken
+        createdAt
+        updatedAt
       }
-      facilitator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-    }
-  }
-`;
-export const createPod = /* GraphQL */ `
-  mutation CreatePod(
-    $input: CreatePodInput!
-    $condition: ModelPodConditionInput
-  ) {
-    createPod(input: $input, condition: $condition) {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const updatePod = /* GraphQL */ `
-  mutation UpdatePod(
-    $input: UpdatePodInput!
-    $condition: ModelPodConditionInput
-  ) {
-    updatePod(input: $input, condition: $condition) {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const deletePod = /* GraphQL */ `
-  mutation DeletePod(
-    $input: DeletePodInput!
-    $condition: ModelPodConditionInput
-  ) {
-    deletePod(input: $input, condition: $condition) {
-      id
-      creator {
-        id
-        email
-        cognitoID
-        lastLogin
-      }
-      title
-      description
-      resourceUrls
-      createDate
-      learningPathway {
-        items {
-          id
-          createdAt
-        }
-        nextToken
-      }
-    }
-  }
-`;
-export const createPathwayPod = /* GraphQL */ `
-  mutation CreatePathwayPod(
-    $input: CreatePathwayPodInput!
-    $condition: ModelPathwayPodConditionInput
-  ) {
-    createPathwayPod(input: $input, condition: $condition) {
-      id
+      messageText
       createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
+      updatedAt
     }
   }
 `;
-export const updatePathwayPod = /* GraphQL */ `
-  mutation UpdatePathwayPod(
-    $input: UpdatePathwayPodInput!
-    $condition: ModelPathwayPodConditionInput
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    updatePathwayPod(input: $input, condition: $condition) {
+    createUser(input: $input, condition: $condition) {
       id
+      cognitoId
+      conversations {
+        items {
+          id
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
       createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
+      updatedAt
     }
   }
 `;
-export const deletePathwayPod = /* GraphQL */ `
-  mutation DeletePathwayPod(
-    $input: DeletePathwayPodInput!
-    $condition: ModelPathwayPodConditionInput
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    deletePathwayPod(input: $input, condition: $condition) {
+    updateUser(input: $input, condition: $condition) {
       id
+      cognitoId
+      conversations {
+        items {
+          id
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
       createdAt
-      pathway {
-        id
-        title
-        pods {
-          nextToken
-        }
-        facilitator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-      }
-      pod {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
+      updatedAt
     }
   }
 `;
-export const createPodComments = /* GraphQL */ `
-  mutation CreatePodComments(
-    $input: CreatePodCommentsInput!
-    $condition: ModelPodCommentsConditionInput
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    createPodComments(input: $input, condition: $condition) {
+    deleteUser(input: $input, condition: $condition) {
       id
-      podID {
-        id
-        creator {
+      cognitoId
+      conversations {
+        items {
           id
-          email
-          cognitoID
-          lastLogin
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+          }
+          createdAt
+          updatedAt
         }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
+        nextToken
       }
-      author
-      commentText
+      messages {
+        items {
+          id
+          initiator {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          initiatorID
+          recipient {
+            id
+            cognitoId
+            username
+            createdAt
+            updatedAt
+          }
+          recipientID
+          conversationID
+          conversation {
+            id
+            ownerID
+            createdAt
+            updatedAt
+          }
+          messageText
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      username
+      createdAt
+      updatedAt
     }
   }
 `;
-export const updatePodComments = /* GraphQL */ `
-  mutation UpdatePodComments(
-    $input: UpdatePodCommentsInput!
-    $condition: ModelPodCommentsConditionInput
+export const createFaq = /* GraphQL */ `
+  mutation CreateFaq(
+    $input: CreateFAQInput!
+    $condition: ModelFAQConditionInput
   ) {
-    updatePodComments(input: $input, condition: $condition) {
+    createFAQ(input: $input, condition: $condition) {
       id
-      podID {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
-      author
-      commentText
+      question
+      answer
+      createdAt
+      updatedAt
     }
   }
 `;
-export const deletePodComments = /* GraphQL */ `
-  mutation DeletePodComments(
-    $input: DeletePodCommentsInput!
-    $condition: ModelPodCommentsConditionInput
+export const updateFaq = /* GraphQL */ `
+  mutation UpdateFaq(
+    $input: UpdateFAQInput!
+    $condition: ModelFAQConditionInput
   ) {
-    deletePodComments(input: $input, condition: $condition) {
+    updateFAQ(input: $input, condition: $condition) {
       id
-      podID {
-        id
-        creator {
-          id
-          email
-          cognitoID
-          lastLogin
-        }
-        title
-        description
-        resourceUrls
-        createDate
-        learningPathway {
-          nextToken
-        }
-      }
-      author
-      commentText
+      question
+      answer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteFaq = /* GraphQL */ `
+  mutation DeleteFaq(
+    $input: DeleteFAQInput!
+    $condition: ModelFAQConditionInput
+  ) {
+    deleteFAQ(input: $input, condition: $condition) {
+      id
+      question
+      answer
+      createdAt
+      updatedAt
     }
   }
 `;

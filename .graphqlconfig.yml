@@ -1,6 +1,6 @@
 projects:
-  c2xMessaging:
-    schemaPath: amplify/backend/api/c2xMessaging/build/schema.graphql
+  crossover2x:
+    schemaPath: amplify/backend/api/crossover2x/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:
@@ -10,6 +10,9 @@ projects:
         codeGenTarget: javascript
         generatedFileName: ''
         docsFilePath: src/graphql
+        region: us-east-1
+        apiId: null
+        maxDepth: 4
 extensions:
   amplify:
     version: 3

@@ -101,4 +101,3 @@ const styles = {
 }
 
 export default withAuthenticator(App)
-//<Header updateFormState={updateFormState} />
