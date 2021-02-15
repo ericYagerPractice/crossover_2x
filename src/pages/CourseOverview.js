@@ -38,8 +38,8 @@ class CourseOverview extends React.Component {
               <MDBJumbotron fluid className="w-100 mw-100 p-0 shadow-none">
                 <MDBCol className="text-dark text-center p-0 mx-auto">
                   <MDBCol className="py-0">
-                    <MDBCardTitle className="p-0 m-3 font-weight-bold text-uppercase display-4">POD Overview</MDBCardTitle>
-                    <p className="mx-5 my-3 text--lg">All of your essential C2X POD info is located below. Good Luck!</p>
+                    <MDBCardTitle className="p-0 m-3 font-weight-bold text-uppercase display-4">Course Overview Title</MDBCardTitle>
+                    <p className="mx-5 my-3 text--lg">All of your essential course info is located below. Good Luck!</p>
                     <MDBSmoothScroll to="courseInfo">
                       <MDBBtn color="danger" className='mt-3 pt-4 pb-3 w-100 btn--lg'>
                         <h4 className='h4-responsive font-weight-bold'>Get Going<MDBIcon icon="arrow-circle-down ml-2" size="lg" /> </h4>
@@ -60,7 +60,7 @@ class CourseOverview extends React.Component {
           id="courseInfo"
         >
           <h2 class='text-center text-uppercase font-weight-bold dark-text mt-4 py-4 px-3 display-4'>
-            Orange POD
+            Course Info
           </h2>
 
           <hr class='mb-0' />

@@ -155,6 +155,15 @@ class HomePage extends React.Component {
                   <AnimatedCards />
                 </MDBRow>
 
+                <MDBRow id='categories'>
+                  <MDBCol md='12' className='mx-auto'>
+                    <h3 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
+                      C<span class="text-danger">2X</span><br/> Atomic Offerings
+                    </h3>
+                    <hr className="w-25 border-dark" />
+                  </MDBCol>
+                </MDBRow>
+
                 <MDBRow>
                   <Cards3Col />
                 </MDBRow>
