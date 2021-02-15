@@ -4,7 +4,7 @@
   "private": true,
   "// If You want to install mdbreact from our GitLab repository, please replace '5.0.1' with gitURL provided here ->": "git+https://oauth2:<YOUR-TOKEN-GOES-HERE>@git.mdbootstrap.com/mdb/react/re-pro.git",
   "dependencies": {
-    "@aws-amplify/cli": "^4.41.1",
+    "@aws-amplify/cli": "^4.43.0",
     "@aws-amplify/ui-react": "^0.2.35",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
