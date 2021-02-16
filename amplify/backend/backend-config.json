@@ -8,22 +8,6 @@
     }
   },
   "api": {
-    "c2xMessaging": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": "messaging"
-            }
-          },
-          "additionalAuthenticationProviders": []
-        }
-      }
-    },
     "crossover2x": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
@@ -33,8 +17,8 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": "key"
+              "description": "key",
+              "apiKeyExpirationDays": 7
             }
           }
         }

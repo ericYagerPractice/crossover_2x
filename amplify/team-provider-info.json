@@ -1,4 +1,22 @@
 {
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-crossover2x-prod-224124-authRole",
+      "UnauthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-prod-224124-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-prod-224124-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-crossover2x-prod-224124-deployment",
+      "UnauthRoleName": "amplify-crossover2x-prod-224124-unauthRole",
+      "StackName": "amplify-crossover2x-prod-224124",
+      "StackId": "arn:aws:cloudformation:us-east-1:820626187184:stack/amplify-crossover2x-prod-224124/ef5a7dc0-6fde-11eb-bcae-12217e59f19f",
+      "AmplifyAppId": "d3s7jqy33emiq1"
+    },
+    "categories": {
+      "auth": {
+        "crossover2xecda4dbf": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-crossover2x-dev-170522-authRole",
