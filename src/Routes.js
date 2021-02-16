@@ -11,7 +11,8 @@ import Checkout from './pages/PaymentProcessing';
 import Admin from './pages/Admin';
 import Learning from './pages/Learning';
 import Messaging from './pages/Messaging';
-import FAQInput from './pages/faqInput';
+import FAQs from './components/FAQs';
+
 
 class Routes extends React.Component {
   render() {
@@ -27,7 +28,7 @@ class Routes extends React.Component {
         <Route exact path='/Admin' component={Admin} />
         <Route exact path='/Learning' component={Learning} />
         <Route exact path='/Mail' component={Messaging} />
-        <Route exact path='/FAQInput' component={FAQInput} />
+        <Route exact path='/FAQs' component={FAQs} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

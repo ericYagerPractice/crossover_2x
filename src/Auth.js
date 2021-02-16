@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 
 function signIn(){
-    console.log('made it to auth.js')
     if(authProvider){
         Auth.federatedSignIn({provider: authProvider})
         .then(data=> {

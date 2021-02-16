@@ -6,7 +6,7 @@ import { listFaQs } from '../graphql/queries'
 
 const initialfaqState = { question: '', answer: '' }
 
-const FAQInput = () => {
+const FAQs = () => {
   const [faqFormState, setFAQFormState] = useState(initialfaqState) //hook for faq form data input
   const [faqs, setFAQs] = useState([]) //hook to hold faqs 
 
@@ -77,67 +77,30 @@ const FAQInput = () => {
     //UI render
     return (
         <MDBContainer>
-        
-          <>
-          <MDBContainer className="w-100">
-            <MDBRow>
-              <MDBCol md="6">
-                <form id="FAQ Input Form">
-
-                      <MDBInput
-                        label="Enter FAQ"
-                        type="textarea"
-                        rows="5"
-                        id="input"
-                        onChange={event => setFAQInput('question', event.target.value)}
-                      />
-
-                      <MDBInput 
-                        type="textarea" 
-                        label="Enter Answer" 
-                        rows="5" 
-                        onChange={event => setFAQInput('answer', event.target.value)}
-                      />
-
-
-                    <div className="text-center mt-4">
-                      <MDBBtn color="elegant" outline type="submit" onClick={event => addfaq()}>
-                        Submit FAQ
-                        <MDBIcon far icon="paper-plane" className="ml-2" />
-                      </MDBBtn>
-                    </div>
-                </form>
-              </MDBCol>
-
-            </MDBRow>
-          </MDBContainer>
-        </>
-        <MDBRow className="mt-5">
-            <MDBTable striped bordered hover size="sm">
-                <MDBTableHead>
-                    <tr>
-                        <th>#</th>
-                        <th>FAQ</th>
-                        <th>Answer</th>
-                        <th>Delete</th>
-                    </tr>
-                </MDBTableHead>
-                <MDBTableBody>
-                {
-                    faqs.map((faq, index) => (
+            <MDBRow className="mt-5">
+                <MDBTable striped bordered hover size="sm">
+                    <MDBTableHead>
                         <tr>
-                            <td key={index}>{index}</td>
-                            <td key={faq.id}>{faq.question}</td>
-                            <td key={faq.id}>{faq.answer}</td>
-                            <td><MDBBtn onClick={event=>deleteSpecifiedFAQ(faq.id)}>Delete</MDBBtn></td>
+                            <th>#</th>
+                            <th>FAQ</th>
+                            <th>Answer</th>
                         </tr>
-                    ))
-                    }
-                </MDBTableBody>
-              </MDBTable>
-          </MDBRow>
+                    </MDBTableHead>
+                    <MDBTableBody>
+                    {
+                        faqs.map((faq, index) => (
+                            <tr>
+                                <td key={index}>{index}</td>
+                                <td key={faq.id}>{faq.question}</td>
+                                <td key={faq.id}>{faq.answer}</td>
+                            </tr>
+                        ))
+                        }
+                    </MDBTableBody>
+                </MDBTable>
+            </MDBRow>
       </MDBContainer>
     )
 }
 
-export default FAQInput
+export default FAQs

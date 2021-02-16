@@ -32,7 +32,8 @@ async function checkAdmin(){
   try{
     await Auth.currentAuthenticatedUser()
     .then(userData=>{
-      return(userData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin'));
+      console.log(userData)
+      //return(userData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin'));
     })
     .catch(err=>{
       console.log("error checking for admin: ",err);

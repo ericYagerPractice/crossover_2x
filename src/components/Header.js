@@ -30,8 +30,9 @@ export default function Header() {
   async function onload(){
     const userData = await Auth.currentSession()
     .then(data=>{
-      checkAdminStatus(data.idToken.payload['cognito:groups'].includes('Admin'));
-      createOrUpdateUser(data.idToken.payload.email);
+      console.log(data)
+      //checkAdminStatus(data.idToken.payload['cognito:groups'].includes('Admin'));
+      //createOrUpdateUser(data.idToken.payload.email);
       //API.graphql(graphqlOperation(createUser, {input: {email: data.idToken.payload.email, cognitoID: data.idToken.payload.identities[0].userId}}))
     })
     .catch(err=>console.log('error checking admin status: ',err));
@@ -93,6 +94,14 @@ export default function Header() {
                   onClick={() => setcollapseID(!collapseID)}
                 >
                   <strong>About</strong>
+                </MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink
+                  to='/FAQs'
+                  onClick={() => setcollapseID(!collapseID)}
+                >
+                  <strong>FAQs</strong>
                 </MDBNavLink>
               </MDBNavItem>
             </MDBNavbarNav>
