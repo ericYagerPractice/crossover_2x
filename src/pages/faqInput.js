@@ -41,6 +41,7 @@ const FAQInput = () => {
 
     //set faq form with key and values from rendered form on change
     function setFAQInput(key, value) {
+      console.log(key,value)
         setFAQFormState({ ...faqFormState, [key]: value })
     }
     //Add functions
