@@ -1,6 +1,67 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const syncConversations = /* GraphQL */ `
+  query SyncConversations(
+    $filter: ModelConversationFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncConversations(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        ownerID
+        owner {
+          id
+          cognitoId
+          conversations {
+            nextToken
+            startedAt
+          }
+          messages {
+            nextToken
+            startedAt
+          }
+          username
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+          }
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getConversation = /* GraphQL */ `
   query GetConversation($id: ID!) {
     getConversation(id: $id) {
@@ -13,10 +74,14 @@ export const getConversation = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -25,12 +90,19 @@ export const getConversation = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -41,6 +113,9 @@ export const getConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -49,6 +124,9 @@ export const getConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -57,15 +135,25 @@ export const getConversation = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -86,11 +174,16 @@ export const listConversations = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -101,15 +194,112 @@ export const listConversations = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncMessages = /* GraphQL */ `
+  query SyncMessages(
+    $filter: ModelMessageFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncMessages(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        initiator {
+          id
+          cognitoId
+          conversations {
+            nextToken
+            startedAt
+          }
+          messages {
+            nextToken
+            startedAt
+          }
+          username
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        initiatorID
+        recipient {
+          id
+          cognitoId
+          conversations {
+            nextToken
+            startedAt
+          }
+          messages {
+            nextToken
+            startedAt
+          }
+          username
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        recipientID
+        conversationID
+        conversation {
+          id
+          ownerID
+          owner {
+            id
+            cognitoId
+            username
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+          }
+          messages {
+            nextToken
+            startedAt
+          }
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        messageText
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -124,10 +314,14 @@ export const getMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -136,12 +330,19 @@ export const getMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -153,10 +354,14 @@ export const getMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -165,12 +370,19 @@ export const getMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -184,11 +396,16 @@ export const getMessage = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -199,15 +416,25 @@ export const getMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       messageText
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -227,11 +454,16 @@ export const listMessages = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -241,11 +473,16 @@ export const listMessages = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -258,20 +495,88 @@ export const listMessages = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messages {
             nextToken
+            startedAt
           }
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         messageText
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncUsers = /* GraphQL */ `
+  query SyncUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        cognitoId
+        conversations {
+          items {
+            id
+            ownerID
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+          }
+          nextToken
+          startedAt
+        }
+        messages {
+          items {
+            id
+            initiatorID
+            recipientID
+            conversationID
+            messageText
+            _version
+            _deleted
+            _lastChangedAt
+            createdAt
+            updatedAt
+          }
+          nextToken
+          startedAt
+        }
+        username
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -288,16 +593,24 @@ export const getUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messages {
             nextToken
+            startedAt
           }
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       messages {
         items {
@@ -306,6 +619,9 @@ export const getUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -314,6 +630,9 @@ export const getUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -322,16 +641,26 @@ export const getUser = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       username
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -351,10 +680,14 @@ export const listUsers = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -363,16 +696,52 @@ export const listUsers = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncFaqs = /* GraphQL */ `
+  query SyncFaqs(
+    $filter: ModelFAQFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncFAQS(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        question
+        answer
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -382,6 +751,9 @@ export const getFaq = /* GraphQL */ `
       id
       question
       answer
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -398,10 +770,14 @@ export const listFaQs = /* GraphQL */ `
         id
         question
         answer
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
   }
 `;

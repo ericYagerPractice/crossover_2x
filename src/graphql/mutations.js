@@ -16,10 +16,14 @@ export const createConversation = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -28,12 +32,19 @@ export const createConversation = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -44,6 +55,9 @@ export const createConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -52,6 +66,9 @@ export const createConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -60,15 +77,25 @@ export const createConversation = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -89,10 +116,14 @@ export const updateConversation = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -101,12 +132,19 @@ export const updateConversation = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -117,6 +155,9 @@ export const updateConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -125,6 +166,9 @@ export const updateConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -133,15 +177,25 @@ export const updateConversation = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -162,10 +216,14 @@ export const deleteConversation = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -174,12 +232,19 @@ export const deleteConversation = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -190,6 +255,9 @@ export const deleteConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -198,6 +266,9 @@ export const deleteConversation = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -206,15 +277,25 @@ export const deleteConversation = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -234,10 +315,14 @@ export const createMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -246,12 +331,19 @@ export const createMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -263,10 +355,14 @@ export const createMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -275,12 +371,19 @@ export const createMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -294,11 +397,16 @@ export const createMessage = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -309,15 +417,25 @@ export const createMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       messageText
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -337,10 +455,14 @@ export const updateMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -349,12 +471,19 @@ export const updateMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -366,10 +495,14 @@ export const updateMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -378,12 +511,19 @@ export const updateMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -397,11 +537,16 @@ export const updateMessage = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -412,15 +557,25 @@ export const updateMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       messageText
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -440,10 +595,14 @@ export const deleteMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -452,12 +611,19 @@ export const deleteMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -469,10 +635,14 @@ export const deleteMessage = /* GraphQL */ `
           items {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         messages {
           items {
@@ -481,12 +651,19 @@ export const deleteMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
         username
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -500,11 +677,16 @@ export const deleteMessage = /* GraphQL */ `
           cognitoId
           conversations {
             nextToken
+            startedAt
           }
           messages {
             nextToken
+            startedAt
           }
           username
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
@@ -515,15 +697,25 @@ export const deleteMessage = /* GraphQL */ `
             recipientID
             conversationID
             messageText
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       messageText
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -545,16 +737,24 @@ export const createUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messages {
             nextToken
+            startedAt
           }
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       messages {
         items {
@@ -563,6 +763,9 @@ export const createUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -571,6 +774,9 @@ export const createUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -579,16 +785,26 @@ export const createUser = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       username
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -610,16 +826,24 @@ export const updateUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messages {
             nextToken
+            startedAt
           }
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       messages {
         items {
@@ -628,6 +852,9 @@ export const updateUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -636,6 +863,9 @@ export const updateUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -644,16 +874,26 @@ export const updateUser = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       username
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -675,16 +915,24 @@ export const deleteUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messages {
             nextToken
+            startedAt
           }
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       messages {
         items {
@@ -693,6 +941,9 @@ export const deleteUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -701,6 +952,9 @@ export const deleteUser = /* GraphQL */ `
             id
             cognitoId
             username
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
@@ -709,16 +963,26 @@ export const deleteUser = /* GraphQL */ `
           conversation {
             id
             ownerID
+            _version
+            _deleted
+            _lastChangedAt
             createdAt
             updatedAt
           }
           messageText
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
       username
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -733,6 +997,9 @@ export const createFaq = /* GraphQL */ `
       id
       question
       answer
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -747,6 +1014,9 @@ export const updateFaq = /* GraphQL */ `
       id
       question
       answer
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -761,6 +1031,9 @@ export const deleteFaq = /* GraphQL */ `
       id
       question
       answer
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
