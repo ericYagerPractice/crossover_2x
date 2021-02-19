@@ -405,3 +405,38 @@ export const listFaQs = /* GraphQL */ `
     }
   }
 `;
+export const getOffering = /* GraphQL */ `
+  query GetOffering($id: ID!) {
+    getOffering(id: $id) {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listOfferings = /* GraphQL */ `
+  query ListOfferings(
+    $filter: ModelOfferingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOfferings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        subTitle
+        bulletPoints
+        url
+        image
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

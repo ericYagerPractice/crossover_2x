@@ -766,3 +766,54 @@ export const deleteFaq = /* GraphQL */ `
     }
   }
 `;
+export const createOffering = /* GraphQL */ `
+  mutation CreateOffering(
+    $input: CreateOfferingInput!
+    $condition: ModelOfferingConditionInput
+  ) {
+    createOffering(input: $input, condition: $condition) {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateOffering = /* GraphQL */ `
+  mutation UpdateOffering(
+    $input: UpdateOfferingInput!
+    $condition: ModelOfferingConditionInput
+  ) {
+    updateOffering(input: $input, condition: $condition) {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteOffering = /* GraphQL */ `
+  mutation DeleteOffering(
+    $input: DeleteOfferingInput!
+    $condition: ModelOfferingConditionInput
+  ) {
+    deleteOffering(input: $input, condition: $condition) {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;

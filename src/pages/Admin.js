@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBLink } from 'mdbreact';
-import FAQInput from './faqInput'
+import FAQInput from '../components/faqInput'
+import OfferingInput from '../components/offeringInput'
 
 
 class Admin extends Component {
+
   state = {
     activeItemPills: '1'
   };
@@ -19,6 +21,7 @@ class Admin extends Component {
 
   render() {
     const { activeItemPills } = this.state;
+    
 
     return (
       <MDBContainer>
@@ -33,7 +36,7 @@ class Admin extends Component {
                   </MDBNavItem>
                   <MDBNavItem>
                     <MDBLink to='#' active={activeItemPills === '2'} onClick={this.togglePills('2')} link>
-                      Profile
+                      Edit Offerings
                     </MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
@@ -47,12 +50,7 @@ class Admin extends Component {
                     <FAQInput />
                   </MDBTabPane>
                   <MDBTabPane tabId='2'>
-                    <p>
-                      Ad pariatur nostrud pariatur exercitation ipsum ipsum culpa mollit commodo mollit ex. Aute sunt incididunt amet
-                      commodo est sint nisi deserunt pariatur do. Aliquip ex eiusmod voluptate exercitation cillum id incididunt elit sunt.
-                      Qui minim sit magna Lorem id et dolore velit Lorem amet exercitation duis deserunt. Anim id labore elit adipisicing ut
-                      in id occaecat pariatur ut ullamco ea tempor duis.
-                    </p>
+                    <OfferingInput />
                   </MDBTabPane>
                   <MDBTabPane tabId='3'>
                     <p>

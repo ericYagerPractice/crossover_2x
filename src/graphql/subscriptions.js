@@ -730,3 +730,45 @@ export const onDeleteFaq = /* GraphQL */ `
     }
   }
 `;
+export const onCreateOffering = /* GraphQL */ `
+  subscription OnCreateOffering {
+    onCreateOffering {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateOffering = /* GraphQL */ `
+  subscription OnUpdateOffering {
+    onUpdateOffering {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteOffering = /* GraphQL */ `
+  subscription OnDeleteOffering {
+    onDeleteOffering {
+      id
+      title
+      subTitle
+      bulletPoints
+      url
+      image
+      createdAt
+      updatedAt
+    }
+  }
+`;
