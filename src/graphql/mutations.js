@@ -778,6 +778,7 @@ export const createOffering = /* GraphQL */ `
       bulletPoints
       url
       image
+      buttonText
       createdAt
       updatedAt
     }
@@ -795,6 +796,7 @@ export const updateOffering = /* GraphQL */ `
       bulletPoints
       url
       image
+      buttonText
       createdAt
       updatedAt
     }
@@ -812,6 +814,7 @@ export const deleteOffering = /* GraphQL */ `
       bulletPoints
       url
       image
+      buttonText
       createdAt
       updatedAt
     }
