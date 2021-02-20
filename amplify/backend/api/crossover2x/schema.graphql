@@ -40,3 +40,14 @@ type FAQ
   question: String!
   answer: String!
 }
+
+type Offering
+@model
+{
+  id: ID!
+  title: String!
+  subTitle: String!
+  bulletPoints: [String]!
+  url: String!
+  image: String!
+}

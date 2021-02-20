@@ -25,6 +25,11 @@
       }
     }
   },
-  "storage": {},
+  "storage": {
+    "crossoverStorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  },
   "function": {}
 }
