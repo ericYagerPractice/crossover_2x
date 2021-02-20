@@ -414,6 +414,7 @@ export const getOffering = /* GraphQL */ `
       bulletPoints
       url
       image
+      buttonText
       createdAt
       updatedAt
     }
@@ -433,6 +434,7 @@ export const listOfferings = /* GraphQL */ `
         bulletPoints
         url
         image
+        buttonText
         createdAt
         updatedAt
       }

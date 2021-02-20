@@ -12,8 +12,8 @@ const {
   aws_user_files_s3_bucket: bucket
 } = awsmobile
 
-const initialofferingState = { title: '', subTitle: '', image: '', url: '', bulletPoint1: '', bulletPoint2: '', bulletPoint3:'' }
-const fileData = {file: null, fileExtension:'', fileType: '', fileKey:''}
+const initialofferingState = { title: '', subTitle: '', image: '', url: '', bulletPoint1: '', bulletPoint2: '', bulletPoint3:'', buttonText:'' }
+const fileData = {file: '', fileExtension:'', fileType: '', fileKey:''}
 
 function OfferingInput() {
   const [offeringFormState, setOfferingFormState] = useState(initialofferingState) //hook for offering form data input
@@ -33,11 +33,11 @@ function OfferingInput() {
     // eslint-disable-next-line
     async function fetchData() {
       try{
+        //API calls
         const userID = await Auth.currentUserCredentials();
-        console.log(userID)
         const offeringData = await API.graphql(graphqlOperation(listOfferings))
         const offerings = offeringData.data.listOfferings.items
-        const imageList = await Storage.list('offeringimages2/')
+        //Setters for hooks
         setOfferings(offerings)
         setCurrentUser(userID.identityId)
       }catch(err){
@@ -53,7 +53,6 @@ function OfferingInput() {
       setOfferingFormState({ ...offeringFormState, [key]: value })
     }
 
-
     async function uploadFile() {
       const storageUploadKey = await Storage.put(file.fileKey, file.file[0], {
         progressCallback(progress) {
@@ -63,9 +62,7 @@ function OfferingInput() {
       .catch(err=>storageUploadKey=err)
       return(storageUploadKey)
     }
-    //Add offering by pulling form state and setting it using hook function.  
-    //Reset the form state.  
-    //Call createOffering using the form state data and then re-fetch data
+
     async function addoffering() {
       try {
         var storageUploadKey = await uploadFile()
@@ -77,7 +74,8 @@ function OfferingInput() {
           subTitle: offeringFormState.subTitle, 
           image: storageUploadKey.key, 
           url: offeringFormState.url, 
-          bulletPoints: [offeringFormState.bulletPoint1, offeringFormState.bulletPoint2 , offeringFormState.bulletPoint3] 
+          bulletPoints: [offeringFormState.bulletPoint1, offeringFormState.bulletPoint2 , offeringFormState.bulletPoint3],
+          buttonText: offeringFormState.buttonText
         }
         await API.graphql(graphqlOperation(createOffering, { input: formattedOfferingData }))
         .then(fetchData())
@@ -88,9 +86,7 @@ function OfferingInput() {
 
     const updateFileInput = fileInput => {
       const extension = fileInput[0].name.split(".").pop()
-      const key = `offeringimages2/${uuid()}.${extension}`      
-      const url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`
-      setOfferingInput("image",url)
+      const key = `offeringimages2/${uuid()}.${extension}`
       updateFile({file: fileInput, fileExtension:extension, fileType: fileInput[0].type, fileKey: key})
     }
 
@@ -101,11 +97,6 @@ function OfferingInput() {
         } catch(error){
             console.log("error deleting offering: ",error)
         }
-    }
-
-    async function getPresignedURL(imagekey){
-      const presignedURL = await Storage.get(imagekey)
-      return(presignedURL)
     }
     
     //UI render
@@ -169,6 +160,13 @@ function OfferingInput() {
                     </li>
                   </ul>
 
+                  <MDBInput 
+                    type="textarea" 
+                    label="Button Text" 
+                    rows="1" 
+                    onChange={event => setOfferingInput('buttonText', event.target.value)}
+                  />
+
                   <div className="text-center mt-4">
                     <MDBBtn color="elegant" outline onClick={event => addoffering()}>
                       Submit Offering
@@ -191,6 +189,7 @@ function OfferingInput() {
                         <th>Bullet Points</th>
                         <th>Image</th>
                         <th>URL</th>
+                        <th>Sample Button</th>
                         <th>Delete</th>
                     </tr>
                 </MDBTableHead>
@@ -217,6 +216,7 @@ function OfferingInput() {
                         
                       </td>
                       <td key={uuid()}>{offering.url}</td>
+                      <td key={uuid()}><MDBBtn disabled>{offering.buttonText}</MDBBtn></td>
                       <td key={uuid()}><MDBBtn onClick={event=>deleteSpecifiedOffering(offering.id)}>Delete</MDBBtn></td>
                   </tr>
                     ))

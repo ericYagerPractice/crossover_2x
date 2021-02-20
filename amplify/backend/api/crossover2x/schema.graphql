@@ -50,4 +50,5 @@ type Offering
   bulletPoints: [String]!
   url: String!
   image: String!
+  buttonText: String!
 }

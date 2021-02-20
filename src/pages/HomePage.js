@@ -3,6 +3,7 @@ import TextCarousel from '../components/TextCarousel';
 import ImageCarousel from '../components/ImageCarousel';
 import AnimatedCards from '../components/AnimatedCards';
 import Cards3Col from '../components/Cards3Col';
+import OfferingCards from '../components/offeringCards'
 import {
   MDBContainer,
   MDBCol,
@@ -166,6 +167,10 @@ class HomePage extends React.Component {
 
                 <MDBRow>
                   <Cards3Col />
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <OfferingCards />
                 </MDBRow>
               
               </MDBCol>
