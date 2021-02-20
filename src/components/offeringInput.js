@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
-import { MDBContainer, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBCol, MDBRow, MDBIcon, MDBFileInput} from 'mdbreact';
-import { API, graphqlOperation, Storage } from 'aws-amplify'
+import { MDBProgress, MDBContainer, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBCol, MDBRow, MDBIcon, MDBFileInput} from 'mdbreact';
+import { Auth, API, graphqlOperation, Storage } from 'aws-amplify'
 import { createOffering, deleteOffering } from '../graphql/mutations'
 import { listOfferings } from '../graphql/queries'
 import awsmobile from '../aws-exports'
@@ -19,6 +19,9 @@ function OfferingInput() {
   const [offeringFormState, setOfferingFormState] = useState(initialofferingState) //hook for offering form data input
   const [offerings, setOfferings] = useState([]) //hook to hold offerings 
   const [file, updateFile] = useState(fileData)
+  const [uploadLevel, updateLevel] = useState(0)
+  const [currentUser, setCurrentUser] = useState('')
+
 
     //Fetch all data, save in hooks on load
     useEffect(() => {
@@ -30,13 +33,13 @@ function OfferingInput() {
     // eslint-disable-next-line
     async function fetchData() {
       try{
+        const userID = await Auth.currentUserCredentials();
+        console.log(userID)
         const offeringData = await API.graphql(graphqlOperation(listOfferings))
         const offerings = offeringData.data.listOfferings.items
         const imageList = await Storage.list('offeringimages2/')
-        const testImage = await Storage.get(imageList[0].key)
-        console.log(testImage)
-        
         setOfferings(offerings)
+        setCurrentUser(userID.identityId)
       }catch(err){
           console.log("Error w/ offering retrieval: ", err)
           setOfferings(initialofferingState)
@@ -49,21 +52,26 @@ function OfferingInput() {
     function setOfferingInput(key, value) {
       setOfferingFormState({ ...offeringFormState, [key]: value })
     }
-    //Add functions
-    async function addOfferingBullet(){
-      addBulletPointInput([...bulletPointInputs, bulletInput])
-    }
 
+
+    async function uploadFile() {
+      const storageUploadKey = await Storage.put(file.fileKey, file.file[0], {
+        progressCallback(progress) {
+            updateLevel(Math.round((progress.loaded / progress.total)*100))
+        },
+      })
+      .catch(err=>storageUploadKey=err)
+      return(storageUploadKey)
+    }
     //Add offering by pulling form state and setting it using hook function.  
     //Reset the form state.  
     //Call createOffering using the form state data and then re-fetch data
     async function addoffering() {
-      
       try {
-        var storageUploadKey = await Storage.put(file.fileKey, file.file[0], {
-          contentType: file.fileType
-        })
-        var presignedURL = await Storage.get(storageUploadKey.key)
+        var storageUploadKey = await uploadFile()
+        if(storageUploadKey){
+          updateLevel(0)
+        }
         const formattedOfferingData = {
           title: offeringFormState.title, 
           subTitle: offeringFormState.subTitle, 
@@ -103,7 +111,7 @@ function OfferingInput() {
     //UI render
     return (
         <MDBContainer>
-        
+          <MDBProgress value={uploadLevel} className="my-2" />
           <>
           <MDBContainer className="w-100">
             <MDBRow>
@@ -199,7 +207,15 @@ function OfferingInput() {
                         
                       ))}</ul>
                       </td>
-                      <td key={uuid()}><AmplifyS3Image level='private' imgKey={offering.image} /></td>
+                      <td key={uuid()}>
+                      <div class="h-25 d-inline-block">
+                          <AmplifyS3Image 
+                            imgKey={offering.image}
+                            identityId={currentUser.identityId} 
+                          />
+                        </div>
+                        
+                      </td>
                       <td key={uuid()}>{offering.url}</td>
                       <td key={uuid()}><MDBBtn onClick={event=>deleteSpecifiedOffering(offering.id)}>Delete</MDBBtn></td>
                   </tr>
