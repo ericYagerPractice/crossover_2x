@@ -22,6 +22,7 @@ export const onCreateConversation = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -52,6 +53,7 @@ export const onCreateConversation = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -92,6 +94,7 @@ export const onUpdateConversation = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -122,6 +125,7 @@ export const onUpdateConversation = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -162,6 +166,7 @@ export const onDeleteConversation = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -192,6 +197,7 @@ export const onDeleteConversation = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -231,6 +237,7 @@ export const onCreateMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -260,6 +267,7 @@ export const onCreateMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -272,6 +280,7 @@ export const onCreateMessage = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      messageSeen
       recipientID
       conversationID
       conversation {
@@ -294,6 +303,7 @@ export const onCreateMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -331,6 +341,7 @@ export const onUpdateMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -360,6 +371,7 @@ export const onUpdateMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -372,6 +384,7 @@ export const onUpdateMessage = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      messageSeen
       recipientID
       conversationID
       conversation {
@@ -394,6 +407,7 @@ export const onUpdateMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -431,6 +445,7 @@ export const onDeleteMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -460,6 +475,7 @@ export const onDeleteMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -472,6 +488,7 @@ export const onDeleteMessage = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      messageSeen
       recipientID
       conversationID
       conversation {
@@ -494,6 +511,7 @@ export const onDeleteMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -553,6 +571,7 @@ export const onCreateUser = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -615,6 +634,7 @@ export const onUpdateUser = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -677,6 +697,7 @@ export const onDeleteUser = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {

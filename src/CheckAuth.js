@@ -92,7 +92,7 @@ async function createOrUpdateUser(email, cognitoId) {
   })
 
   if(!userExists){
-    await API.graphql(graphqlOperation(createUser, {input: {email: email, cognitoID: userData.idToken.payload.identities[0].userId, lastLogin: awsDateTime}}))
+    await API.graphql(graphqlOperation(createUser, {input: {email: email, cognitoID: userData.idToken.payload.sub, lastLogin: awsDateTime}}))
     .then(console.log("record created for :",email, "at: ", currentDateTime ));
   } else{
     await API.graphql(graphqlOperation(updateUser, {input: {id: userID, lastLogin: awsDateTime}}))

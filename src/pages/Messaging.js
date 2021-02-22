@@ -20,11 +20,15 @@ class Messaging extends Component {
     };
   }
 
-  componentDidMount() {
-    fetchUserEmails()
+  async componentDidMount() {
+    /*fetchUserEmails()
       .then(emailData => this.setState({email:emailData}));
     returnUser()
-      .then(userData => this.setState({sender:userData.attributes.email}))
+      .then(userData => this.setState({sender:userData.attributes.email})) */
+    await Auth.currentAuthenticatedUser()
+    .then(userData=>{
+      console.log(userData)
+    })
   }
 
   emailValue = value => {

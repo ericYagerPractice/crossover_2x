@@ -12,6 +12,13 @@ const awsmobile = {
     "aws_appsync_region": "us-east-1",
     "aws_appsync_authenticationType": "API_KEY",
     "aws_appsync_apiKey": "da2-5icahs56tzafjkjrdjy7x32k7y",
+    "aws_cloud_logic_custom": [
+        {
+            "name": "AdminQueries",
+            "endpoint": "https://1tgkkswdl1.execute-api.us-east-1.amazonaws.com/dev",
+            "region": "us-east-1"
+        }
+    ],
     "aws_user_files_s3_bucket": "crossovercardsbucket170522-dev",
     "aws_user_files_s3_bucket_region": "us-east-1"
 };
