@@ -38,12 +38,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "AdminQueries95134021",
+            "AdminQueries4890f24b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "AdminQueries95134021",
+                  "AdminQueries4890f24b",
                   "-",
                   {
                     "Ref": "env"
@@ -58,7 +58,7 @@
             "ENV": {
               "Ref": "env"
             },
-            "GROUP": "Administrators",
+            "GROUP": "VerifiedUsers",
             "USERPOOL": {
               "Ref": "authcrossover2xecda4dbfUserPoolId"
             }
@@ -88,12 +88,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "AdminQueries95134021LambdaRole",
+            "AdminQueries4890f24bLambdaRole",
             {
               "Fn::Join": [
                 "",
                 [
-                  "AdminQueries95134021LambdaRole",
+                  "AdminQueries4890f24bLambdaRole",
                   "-",
                   {
                     "Ref": "env"

@@ -34,9 +34,9 @@
         "crossover2xecda4dbf": {}
       },
       "function": {
-        "AdminQueries95134021": {
+        "AdminQueries4890f24b": {
           "deploymentBucketName": "amplify-crossover2x-dev-170522-deployment",
-          "s3Key": "amplify-builds/AdminQueries95134021-6c447a74304f4d4c5a73-build.zip"
+          "s3Key": "amplify-builds/AdminQueries4890f24b-306c544a736e53363249-build.zip"
         }
       }
     }

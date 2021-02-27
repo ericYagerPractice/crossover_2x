@@ -5,6 +5,22 @@
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "crossover2xecda4dbf",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -37,7 +53,7 @@
         },
         {
           "category": "function",
-          "resourceName": "AdminQueries95134021",
+          "resourceName": "AdminQueries4890f24b",
           "attributes": [
             "Arn",
             "Name"
@@ -53,7 +69,7 @@
     }
   },
   "function": {
-    "AdminQueries95134021": {
+    "AdminQueries4890f24b": {
       "service": "Lambda",
       "providerPlugin": "awscloudformation",
       "build": true,
