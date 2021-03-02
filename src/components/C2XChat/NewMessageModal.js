@@ -1,22 +1,27 @@
 
-import { returnUser, fetchUserEmails } from '../CheckAuth';
+import { returnUser, fetchUserEmails } from '../../CheckAuth';
 import React, { Component } from "react";
-import { MDBContainer, MDBSelect, MDBInput, MDBCol, MDBRow, MDBBtn, MDBIcon} from "mdbreact";
-import { createMessage} from '../graphql/mutations'
+import { MDBContainer, MDBSelect, MDBInput, MDBBtn, MDBIcon,MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter} from "mdbreact";
+import { createMessage } from '../../graphql/mutations'
 import { API, graphqlOperation, Auth, Hub } from 'aws-amplify'
-import Lambda from 'aws-sdk/clients/lambda';
-import "./Messaging.css";
 
 const states = fetchUserEmails();
 
-class Messaging extends Component {
+class NewMessageModal extends Component {
   state = { 
-      recipients: [],
+      authorizedRecipients: [],
       initiator:"",
       initiatorID:"",
       recipient: {},
       messageText: "",    
+      modal: false
     };
+
+    toggle = () => {
+      this.setState({
+        modal: !this.state.modal
+      });
+    }
 
   async componentDidMount() {
     let nextToken;
@@ -42,7 +47,7 @@ class Messaging extends Component {
     console.log(userIDs)
     let stageOptions = []
     for(var email in userEmails) stageOptions.push({text:userEmails[email],value:{userName: userEmails[email], userID: userIDs[email]}})
-    this.setState({recipients:stageOptions})
+    this.setState({authorizedRecipients:stageOptions})
     this.setState({initiator:currentUser.accessToken.payload.username})
     this.setState({initiatorID:currentUser.accessToken.payload.sub})
   }
@@ -63,47 +68,52 @@ class Messaging extends Component {
     console.log("As submitted email: ",this.state.recipient[0].userName)
     console.log("As Submitted message:", this.state.message)
     console.log("As submitted initiatorID: ",this.state.initiatorID)
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   render() {
     return (
       <>
-      <MDBContainer className="w-100">
-        <MDBRow>
-          <MDBCol md="6">
-            <form id="messagingService">
-
+      <MDBContainer>
+        <MDBBtn onClick={this.toggle}><MDBIcon far icon="paper-plane" className="ml-2 text-left" /> Create New Message</MDBBtn>
+          <MDBModal isOpen={this.state.modal} toggle={this.toggle}>
+            <MDBModalHeader toggle={this.toggle}>New Message</MDBModalHeader>
+              <form id="messagingService">
+                <MDBModalBody>
                   <MDBSelect
+                    className="text-left"
                     search
-                    options={this.state.recipients}
+                    options={this.state.authorizedRecipients}
                     selected="Choose email or type above"
                     label="Pick recipient"
                     getValue={this.emailValue}
                   />
 
                   <MDBInput 
+                    className="text-left"
                     type="textarea" 
                     label="Message Text" 
                     rows="5" 
                     getValue={this.messageValue}
                   />
-
-
-                <div className="text-center mt-4">
-                  <MDBBtn color="elegant" outline onClick={this.clickEvent}>
-                    Send
-                    <MDBIcon far icon="paper-plane" className="ml-2" />
-                  </MDBBtn>
-                </div>
-
+                </MDBModalBody>
+                <MDBModalFooter>
+                  <div className="text-center mt-4">
+                    <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+                    <MDBBtn color="elegant" outline onClick={this.clickEvent}>
+                      Send
+                      <MDBIcon far icon="paper-plane" className="ml-2" />
+                    </MDBBtn>
+                  </div>
+                </MDBModalFooter>
             </form>
-          </MDBCol>
-
-        </MDBRow>
+          </MDBModal>
       </MDBContainer>
       </>
     );
   }
 }
 
-export default Messaging;
+export default NewMessageModal;

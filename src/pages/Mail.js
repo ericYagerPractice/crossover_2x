@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { MDBCard, MDBCardBody, MDBRow, MDBCol, MDBListGroup, MDBListGroupItem, MDBAvatar, MDBBadge, MDBIcon,
-MDBBtn} from "mdbreact";
+import { MDBCard, MDBCardBody, MDBRow, MDBCol, MDBListGroup, MDBListGroupItem, MDBAvatar, MDBBadge, MDBIcon, MDBBtn, MDBTypography} from "mdbreact";
+import NewMessageModal from '../components/C2XChat/NewMessageModal'
 import "./Messaging.css";
 
 class Mail extends Component {
@@ -88,9 +88,19 @@ render() {
 return (
 <MDBCard className="grey lighten-3 chat-room">
   <MDBCardBody>
+    <MDBRow className="masonry-with-columns px-2 pt-3 pb-3 bg-light">
+      <MDBCol className="text-left pt-2">
+        <MDBTypography tag='h2'>
+          <strong>C<span className="text-danger">2X</span></strong> <small className="text-muted">Message Portal</small>
+        </MDBTypography>
+      </MDBCol>
+      <MDBCol className="text-right">
+        <NewMessageModal />
+      </MDBCol>
+    </MDBRow>
     <MDBRow className="px-lg-2 px-2">
       <MDBCol md="6" xl="4" className="px-0 mb-2 mb-md-0">
-        <h6 className="font-weight-bold mb-3 text-lg-left">Member</h6>
+        <h6 className="font-weight-bold mb-3 text-lg-left">Messages</h6>
         <div className="white z-depth-1 p-3">
           <MDBListGroup className="friend-list">
             {this.state.friends.map(friend => (
