@@ -21,7 +21,7 @@ const FadeInAnimation = keyframes`${fadeIn}`;
 const FadeInDiv = styled.div`
   animation: 5s ${FadeInAnimation};
 `;
-
+//this is home
 class HomePage extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
   state = {
