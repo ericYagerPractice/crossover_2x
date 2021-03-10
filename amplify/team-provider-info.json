@@ -31,7 +31,8 @@
     },
     "categories": {
       "auth": {
-        "crossover2xecda4dbf": {}
+        "crossover2xecda4dbf": {},
+        "userPoolGroups": {}
       },
       "function": {
         "AdminQueries4890f24b": {

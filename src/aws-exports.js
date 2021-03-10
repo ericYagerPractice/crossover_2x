@@ -19,7 +19,7 @@ const awsmobile = {
             "region": "us-east-1"
         }
     ],
-    "aws_user_files_s3_bucket": "crossovercardsbucket170522-dev",
+    "aws_user_files_s3_bucket": "crossoverimagebucket170522-dev",
     "aws_user_files_s3_bucket_region": "us-east-1"
 };
 

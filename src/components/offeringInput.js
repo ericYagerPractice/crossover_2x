@@ -54,18 +54,18 @@ function OfferingInput() {
     }
 
     async function uploadFile() {
-      const storageUploadKey = await Storage.put(file.fileKey, file.file[0], {
-        progressCallback(progress) {
-            updateLevel(Math.round((progress.loaded / progress.total)*100))
-        },
-      })
-      .catch(err=>storageUploadKey=err)
-      return(storageUploadKey)
+      console.log(file)
+      //const storageUploadKey = 
+      await Storage.put(file.fileKey, file.file[0])
+      .then(async function(result) {console.log(`result : ${JSON.stringify(result)}`);})
+      .catch(err=>console.log(err))//storageUploadKey=err)
+      //return(storageUploadKey)
     }
 
     async function addoffering() {
       try {
         var storageUploadKey = await uploadFile()
+        console.log(storageUploadKey)
         if(storageUploadKey){
           updateLevel(0)
         }
