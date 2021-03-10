@@ -1,4 +1,5 @@
 import React from 'react';
+import CardTextCarousel from '../components/CardTextCarousel';
 import {
   MDBCol,
   MDBCardBody,
@@ -27,8 +28,9 @@ export default function AnimatedCards() {
                   alt="C"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Coaching
+                  <MDBCardTitle className="text-uppercase font-weight-bold">
+                    C2<br/>
+                    <CardTextCarousel />
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -56,8 +58,9 @@ export default function AnimatedCards() {
                   alt="P"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Performance
+                  <MDBCardTitle className="text-uppercase font-weight-bold">
+                    C2<br/> 
+                    <CardTextCarousel />
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -85,8 +88,9 @@ export default function AnimatedCards() {
                   alt="T"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Training
+                  <MDBCardTitle className="text-uppercase font-weight-bold">
+                    C2<br/>
+                    <CardTextCarousel />
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -114,8 +118,9 @@ export default function AnimatedCards() {
                   alt="S"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Simulations
+                  <MDBCardTitle className="text-uppercase font-weight-bold">
+                    C2<br/>
+                    <CardTextCarousel />
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
