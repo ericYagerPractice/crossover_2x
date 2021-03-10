@@ -28,9 +28,9 @@ export default function AnimatedCards() {
                   alt="C"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase font-weight-bold">
-                    C2<br/>
+                  <MDBCardTitle>
                     <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -58,9 +58,9 @@ export default function AnimatedCards() {
                   alt="P"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase font-weight-bold">
-                    C2<br/> 
+                  <MDBCardTitle>
                     <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -88,9 +88,9 @@ export default function AnimatedCards() {
                   alt="T"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase font-weight-bold">
-                    C2<br/>
+                  <MDBCardTitle>
                     <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -118,9 +118,9 @@ export default function AnimatedCards() {
                   alt="S"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase font-weight-bold">
-                    C2<br/>
+                  <MDBCardTitle>
                     <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>

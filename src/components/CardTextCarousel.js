@@ -22,23 +22,23 @@ export default function CardTextCarousel() {
             >
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
-                  <MDBView>
-                    Channel
+                  <MDBView className="text-uppercase">
+                    <span className="font-weight-bold">C</span>hannel
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="2">
-                  <MDBView>
-                    Catalyze
+                  <MDBView className="text-uppercase">
+                    <span className="font-weight-bold">C</span>atalyze
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="3">
-                  <MDBView>
-                    Connect
+                  <MDBView className="text-uppercase">
+                    <span className="font-weight-bold">C</span>onnect
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="4">
-                  <MDBView>
-                    Channel
+                  <MDBView className="text-uppercase">
+                    <span className="font-weight-bold">C</span>hannel
                   </MDBView>
                 </MDBCarouselItem>
               </MDBCarouselInner>
