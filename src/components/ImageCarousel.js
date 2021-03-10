@@ -28,10 +28,10 @@ export default function ImageCarousel() {
         <>
           <MDBContainer className="p-0">
             <MDBCarousel
-              className="carousel--primary"
+              className="carousel--home-intro pb-5 bg-dark"
               activeItem={1}
               length={16}
-              showControls={false}
+              showControls={true}
               showIndicators={false}
               fade={true}
               interval={2600}
