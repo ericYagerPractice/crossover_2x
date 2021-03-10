@@ -34,7 +34,7 @@ export default function AnimatedCards() {
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
-                    Known for Vibrant Slack Communities w/ Buy-In Polls, Cash-Out Pods, ...
+                    <i><b>Commit to CXF</b></i>. This is where Change Starts. Choose ur own Content. Connect w/ Cohort. Capture, Create, Compete.
                   </MDBCardText>
                   <MDBNavLink
                     tag='button'
