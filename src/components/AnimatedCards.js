@@ -1,4 +1,5 @@
 import React from 'react';
+import CardTextCarousel from '../components/CardTextCarousel';
 import {
   MDBCol,
   MDBCardBody,
@@ -27,12 +28,13 @@ export default function AnimatedCards() {
                   alt="C"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Coaching
+                  <MDBCardTitle>
+                    <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
-                    Known for Vibrant Slack Communities w/ Buy-In Polls, Cash-Out Pods, ...
+                    <i><b>Commit to CXF</b></i>. This is where Change Starts. Choose ur own Content. Connect w/ Cohort. Capture, Create, Compete.
                   </MDBCardText>
                   <MDBNavLink
                     tag='button'
@@ -56,8 +58,9 @@ export default function AnimatedCards() {
                   alt="P"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Performance
+                  <MDBCardTitle>
+                    <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -85,8 +88,9 @@ export default function AnimatedCards() {
                   alt="T"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Training
+                  <MDBCardTitle>
+                    <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
@@ -114,8 +118,9 @@ export default function AnimatedCards() {
                   alt="S"
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
-                  <MDBCardTitle className="text-uppercase">
-                    Simulations
+                  <MDBCardTitle>
+                    <CardTextCarousel />
+                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
                   <hr className="w-25 border-white"/>
                   <MDBCardText className='text-white'>
