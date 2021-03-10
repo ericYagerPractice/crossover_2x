@@ -2,7 +2,7 @@
 import { returnUser, fetchUserEmails } from '../CheckAuth';
 import React, { Component } from "react";
 import { MDBContainer, MDBAutocomplete, MDBInput, MDBCol, MDBRow, MDBBtn, MDBIcon} from "mdbreact";
-import { createMessage} from '../graphql/mutations'
+import { createMessage } from '../graphql/mutations'
 import { API, graphqlOperation, Auth, Hub } from 'aws-amplify'
 import "./Messaging.css";
 
@@ -35,7 +35,7 @@ class Messaging extends Component {
     this.setState({message:value})
   };
 
-  clickEvent = () => {
+  handleMessageSubmit = () => {
     //await API.graphql(graphqlOperation(createMessage, {input: {email: email, cognitoID: userData.idToken.payload.identities[0].userId, lastLogin: awsDateTime}}))
     //.then(console.log("record created for :",email, "at: ", currentDateTime ));
     console.log("As submitted sender: ", this.state.sender);
@@ -70,7 +70,7 @@ class Messaging extends Component {
 
 
                 <div className="text-center mt-4">
-                  <MDBBtn color="elegant" outline type="submit" onClick={this.clickEvent}>
+                  <MDBBtn color="elegant" outline type="submit" onClick={this.handleMessageSubmit}>
                     Send
                     <MDBIcon far icon="paper-plane" className="ml-2" />
                   </MDBBtn>

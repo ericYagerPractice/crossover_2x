@@ -31,7 +31,14 @@
     },
     "categories": {
       "auth": {
-        "crossover2xecda4dbf": {}
+        "crossover2xecda4dbf": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueries4890f24b": {
+          "deploymentBucketName": "amplify-crossover2x-dev-170522-deployment",
+          "s3Key": "amplify-builds/AdminQueries4890f24b-306c544a736e53363249-build.zip"
+        }
       }
     }
   }

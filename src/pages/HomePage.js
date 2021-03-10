@@ -22,7 +22,7 @@ const FadeInAnimation = keyframes`${fadeIn}`;
 const FadeInDiv = styled.div`
   animation: 5s ${FadeInAnimation};
 `;
-
+//this is home
 class HomePage extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
   state = {
@@ -118,7 +118,7 @@ class HomePage extends React.Component {
                           Ted Talk
                         </h3>
                         <hr className="w-25 border-danger" />
-                        <p className="text-center px-3">Get the Playbook to ‘Talk Like Ted’. Use Ikigai to find Ideas Worth Spreading. Practice 4EX Speech & Do Madman > Architect > Carpenter > Judge Process. Write to Engage. Talk how you talk.</p> 
+                        <p className="text-center px-3">Get the Playbook to ‘Talk Like Ted’. Use Ikigai to find Ideas Worth Spreading. Practice 4EX Speech & Do Madman &gt; Architect &gt; Carpenter &gt; Judge Process. Write to Engage. Talk how you talk.</p> 
                         <p className="text-center px-3 mt-1">Now, Write your damn Talk. <span className="text-danger">C2</span>T</p>
                       </MDBCol>
                       <MDBCol lg='4' className='mx-auto'>

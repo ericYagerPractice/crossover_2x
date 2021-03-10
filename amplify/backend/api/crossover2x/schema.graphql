@@ -17,6 +17,7 @@ type Message
   initiator: User! @connection(fields: ["initiatorID"])
   initiatorID: ID!
   recipient: User! @connection(fields: ["recipientID"])
+  messageSeen: Boolean!
   recipientID: ID!
   conversationID: ID!
   conversation: Conversation! @connection(fields: ["conversationID"])

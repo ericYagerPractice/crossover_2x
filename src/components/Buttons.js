@@ -14,7 +14,7 @@ export default function LoginButtons(props) {
           <MDBIcon icon="user-astronaut" size="lg" />  Login / Signup
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
-          <MDBDropdownItem onClick={() => Auth.federatedSignIn()}><FaEnvelope /> Email/Password</MDBDropdownItem>
+          <MDBDropdownItem href="/login"><FaEnvelope /> Email/Password</MDBDropdownItem>
         </MDBDropdownMenu>
       </MDBDropdown>
     </div>

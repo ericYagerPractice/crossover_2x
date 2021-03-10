@@ -10,7 +10,7 @@ import CourseOverview from './pages/CourseOverview';
 import Checkout from './pages/PaymentProcessing';
 import Admin from './pages/Admin';
 import Learning from './pages/Learning';
-import Messaging from './pages/Messaging';
+import Mail from './pages/Mail';
 import FAQs from './components/FAQs';
 
 
@@ -27,7 +27,7 @@ class Routes extends React.Component {
         <Route exact path='/Checkout' component={Checkout} />
         <Route exact path='/Admin' component={Admin} />
         <Route exact path='/Learning' component={Learning} />
-        <Route exact path='/Mail' component={Messaging} />
+        <Route exact path='/Mail' component={Mail} />
         <Route exact path='/FAQs' component={FAQs} />
         <Route
           render={function() {

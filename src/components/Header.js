@@ -6,7 +6,7 @@ import {
   MDBNavItem,
   MDBNavLink,
   MDBNavbarToggler,
-  Row
+  MDBContainer,
 } from 'mdbreact';
 import React, { useReducer, useEffect, useState } from 'react';
 import './Header.css';
@@ -122,10 +122,10 @@ export default function Header() {
               }
               {
                 userState.user && userState.user.signInUserSession && (
-                    <Row>
+                    <MDBContainer fluid>
                         <AccountButton />
                         <MessageButton />
-                    </Row>
+                    </MDBContainer>
                 )
               }
             </MDBNavbarNav>

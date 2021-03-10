@@ -22,6 +22,7 @@ export const getConversation = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -52,6 +53,7 @@ export const getConversation = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -98,6 +100,7 @@ export const listConversations = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -133,6 +136,7 @@ export const getMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -162,6 +166,7 @@ export const getMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -174,6 +179,7 @@ export const getMessage = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      messageSeen
       recipientID
       conversationID
       conversation {
@@ -196,6 +202,7 @@ export const getMessage = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
@@ -249,6 +256,7 @@ export const listMessages = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        messageSeen
         recipientID
         conversationID
         conversation {
@@ -317,6 +325,7 @@ export const getUser = /* GraphQL */ `
             createdAt
             updatedAt
           }
+          messageSeen
           recipientID
           conversationID
           conversation {
@@ -360,6 +369,7 @@ export const listUsers = /* GraphQL */ `
           items {
             id
             initiatorID
+            messageSeen
             recipientID
             conversationID
             messageText
