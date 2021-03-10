@@ -145,7 +145,7 @@ export default function ImageCarousel() {
                     />
                   </MDBView>
                 </MDBCarouselItem>
-                <MDBCarouselItem itemId="9">
+                <MDBCarouselItem itemId="13">
                   <MDBView>
                     <img
                       className="d-block w-100"
@@ -154,7 +154,7 @@ export default function ImageCarousel() {
                     />
                   </MDBView>
                 </MDBCarouselItem>
-                <MDBCarouselItem itemId="10">
+                <MDBCarouselItem itemId="14">
                   <MDBView>
                     <img
                       className="d-block w-100"
@@ -163,7 +163,7 @@ export default function ImageCarousel() {
                     />
                   </MDBView>
                 </MDBCarouselItem>
-                <MDBCarouselItem itemId="11">
+                <MDBCarouselItem itemId="15">
                   <MDBView>
                     <img
                       className="d-block w-100"
@@ -172,7 +172,7 @@ export default function ImageCarousel() {
                     />
                   </MDBView>
                 </MDBCarouselItem>
-                <MDBCarouselItem itemId="12">
+                <MDBCarouselItem itemId="16">
                   <MDBView>
                     <img
                       className="d-block w-100"

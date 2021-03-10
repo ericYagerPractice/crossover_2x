@@ -162,3 +162,24 @@ body {
 	}
 }
 /* END Carousels */
+
+/* Course Info Page */
+.course-info-intro .col:first-of-type {
+	background-color: #F8F8F8;
+}
+
+.course-info-intro-list {
+	margin: 0;
+	font-size: 18px;
+	padding-left: 20px;
+}
+
+.course-info-intro-list:first-of-type {
+	list-style: none;
+	padding: 0;
+	margin: 20px 0 0;
+}
+
+
+
+
