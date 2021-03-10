@@ -62,12 +62,7 @@
       ]
     }
   },
-  "storage": {
-    "crossoverBucket": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
-    }
-  },
+  "storage": {},
   "function": {
     "AdminQueries4890f24b": {
       "service": "Lambda",
