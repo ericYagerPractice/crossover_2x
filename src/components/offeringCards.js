@@ -61,10 +61,8 @@ function OfferingCards() {
               <MDBCol md='6' xl='4' className='px-2'>
                 <MDBAnimation reveal type='fadeInLeft'>
                   <MDBCard cascade className='my-2 px-2 py-2 border-dark rounded-0 d-flex flex-row align-items-center'>
-                      <AmplifyS3Image 
-                        imgKey={offering.image}
-                        identityId={currentUser.identityId} 
-                        style={{"--height": "85px"}}
+                      <img src={offering.image}
+                        width="85"
                       />
                     <MDBCardBody cascade className='w-75 py-0 pl-3 pr-0 text-left dark-text'>
                       <MDBCardText className='m-0 text-dark font-weight-bold text-uppercase card-category'>

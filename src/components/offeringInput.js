@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react'
-import { MDBProgress, MDBContainer, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBCol, MDBRow, MDBIcon, MDBFileInput} from 'mdbreact';
+import { MDBProgress, MDBContainer, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBCol, MDBRow, MDBIcon, MDBInputGroup} from 'mdbreact';
 import { Auth, API, graphqlOperation, Storage } from 'aws-amplify'
 import { createOffering, deleteOffering } from '../graphql/mutations'
 import { listOfferings } from '../graphql/queries'
@@ -53,26 +53,13 @@ function OfferingInput() {
       setOfferingFormState({ ...offeringFormState, [key]: value })
     }
 
-    async function uploadFile() {
-      console.log(file)
-      //const storageUploadKey = 
-      await Storage.put(file.fileKey, file.file[0])
-      .then(async function(result) {console.log(`result : ${JSON.stringify(result)}`);})
-      .catch(err=>console.log(err))//storageUploadKey=err)
-      //return(storageUploadKey)
-    }
-
     async function addoffering() {
       try {
-        var storageUploadKey = await uploadFile()
-        console.log(storageUploadKey)
-        if(storageUploadKey){
-          updateLevel(0)
-        }
+        
         const formattedOfferingData = {
           title: offeringFormState.title, 
           subTitle: offeringFormState.subTitle, 
-          image: storageUploadKey.key, 
+          image: offeringFormState.image, 
           url: offeringFormState.url, 
           bulletPoints: [offeringFormState.bulletPoint1, offeringFormState.bulletPoint2 , offeringFormState.bulletPoint3],
           buttonText: offeringFormState.buttonText
@@ -109,6 +96,8 @@ function OfferingInput() {
               <MDBCol md="6">
                 <form id="Offering Input Form">
                   <MDBInput
+                    background
+                    size="lg"
                     label="Enter Offering Title"
                     type="textarea"
                     rows="1"
@@ -116,21 +105,28 @@ function OfferingInput() {
                   />
 
                   <MDBInput 
+                    background
                     type="textarea" 
                     label="Enter Sub-Title" 
+                    size="sm"
                     rows="1" 
                     onChange={event => setOfferingInput('subTitle', event.target.value)}
                   />
 
-                  <MDBInput 
+                  <MDBInputGroup
                     type="textarea" 
-                    label="Enter URL pattern (ex: xyz, not https://crossover2x.net/xyz)" 
                     rows="1" 
+                    prepend="https://crossover2x.net/offerings/"
                     onChange={event => setOfferingInput('url', event.target.value)}
                   />
 
-                  <MDBFileInput 
-                    getValue ={event => updateFileInput(event)}
+                  <MDBInput
+                      icon="images"
+                      size="lg"
+                      type="textarea" 
+                      label="Enter Dropbox File URL for image" 
+                      rows="1" 
+                      onChange={event => setOfferingInput('image', event.target.value)}
                   />
 
                   <ul>
@@ -168,7 +164,7 @@ function OfferingInput() {
                   />
 
                   <div className="text-center mt-4">
-                    <MDBBtn color="elegant" outline onClick={event => addoffering()}>
+                    <MDBBtn color="elegant" outline type="submit" onClick={event => addoffering()}>
                       Submit Offering
                       <MDBIcon far icon="paper-plane" className="ml-2" />
                     </MDBBtn>
@@ -208,9 +204,8 @@ function OfferingInput() {
                       </td>
                       <td key={uuid()}>
                       <div class="h-25 d-inline-block">
-                          <AmplifyS3Image 
-                            imgKey={offering.image}
-                            identityId={currentUser.identityId} 
+                          <img src={offering.image}
+                            width="60"
                           />
                         </div>
                         
