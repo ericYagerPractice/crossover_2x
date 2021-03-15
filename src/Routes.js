@@ -12,6 +12,7 @@ import Admin from './pages/Admin';
 import Learning from './pages/Learning';
 import Mail from './pages/Mail';
 import FAQs from './components/FAQs';
+import Editor from './pages/editor';
 
 
 class Routes extends React.Component {
@@ -29,6 +30,7 @@ class Routes extends React.Component {
         <Route exact path='/Learning' component={Learning} />
         <Route exact path='/Mail' component={Mail} />
         <Route exact path='/FAQs' component={FAQs} />
+        <Route exact path='/editor' component={Editor} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

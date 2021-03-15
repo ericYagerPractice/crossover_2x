@@ -73,12 +73,8 @@
         "Runtime": "nodejs10.x",
         "Timeout": "25",
         "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
+          "S3Bucket": "amplify-crossover2x-dev-170522-deployment",
+          "S3Key": "amplify-builds/AdminQueries4890f24b-306c544a736e53363249-build.zip"
         }
       }
     },
