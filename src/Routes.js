@@ -13,6 +13,7 @@ import Learning from './pages/Learning';
 import Mail from './pages/Mail';
 import FAQs from './components/FAQs';
 import Editor from './pages/editor';
+import Messaging from './pages/messagingTesting'
 
 
 class Routes extends React.Component {
@@ -31,6 +32,7 @@ class Routes extends React.Component {
         <Route exact path='/Mail' component={Mail} />
         <Route exact path='/FAQs' component={FAQs} />
         <Route exact path='/editor' component={Editor} />
+        <Route exact path="/messagingFunctionTest" component={Messaging} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;
