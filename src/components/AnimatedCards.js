@@ -30,9 +30,8 @@ export default function AnimatedCards() {
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
                     <CardTextCarousel />
-                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
+                  <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
                     <i><b>Commit to CXF</b></i>. This is where Change Starts. Choose ur own Content. Connect w/ Cohort. Capture, Create, Compete.
                   </MDBCardText>
@@ -60,9 +59,8 @@ export default function AnimatedCards() {
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
                     <CardTextCarousel />
-                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
+                  <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
                     Our 360° Pod Process Lets Users Go Full-Circle in re. to <i>Subject Matter Worth Probing</i>
                   </MDBCardText>
@@ -90,9 +88,8 @@ export default function AnimatedCards() {
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
                     <CardTextCarousel />
-                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
+                  <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
                     T-Shaped Skills 360° RoundTable Discussions, <i>Tool Up, Tack On, T'app Out</i>.
                   </MDBCardText>
@@ -120,9 +117,8 @@ export default function AnimatedCards() {
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
                     <CardTextCarousel />
-                    to <span className="font-weight-bold">X</span>
                   </MDBCardTitle>
-                  <hr className="w-25 border-white"/>
+                  <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
                     S-Level providing users w/ Real World Opportunities to Ship, <i>Get Specs. Show Skills. Track Stats</i>
                   </MDBCardText>

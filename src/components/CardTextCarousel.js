@@ -13,7 +13,7 @@ export default function CardTextCarousel() {
           <MDBContainer className="p-0">
             <MDBCarousel
               activeItem={1}
-              length={4}
+              length={8}
               showControls={false}
               showIndicators={false}
               className="card-text-carousel"
@@ -22,23 +22,43 @@ export default function CardTextCarousel() {
             >
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
-                  <MDBView className="text-uppercase">
-                    <span className="font-weight-bold">C</span>hannel
+                  <MDBView>
+                    <h3><b>C</b>hannel<br /> <b>I</b>nsights</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="2">
-                  <MDBView className="text-uppercase">
-                    <span className="font-weight-bold">C</span>atalyze
+                  <MDBView>
+                    <h3><b>C</b>ompete<br /> to <b>C</b>reate</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="3">
-                  <MDBView className="text-uppercase">
-                    <span className="font-weight-bold">C</span>onnect
+                  <MDBView>
+                    <h3><b>C</b>anvas<br /> <b>I</b>deas</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="4">
-                  <MDBView className="text-uppercase">
-                    <span className="font-weight-bold">C</span>hannel
+                  <MDBView>
+                    <h3><b>C</b>onnect<br /> 2 <b>C</b>ohort</h3>
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="5">
+                  <MDBView>
+                    <h3><b>C</b>ompete<br /> 4 <b>P</b>oints</h3>
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="6">
+                  <MDBView>
+                    <h3><b>C</b>hoose ur<br /> <b>C</b>ontent</h3>
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="7">
+                  <MDBView>
+                    <h3><b>C</b>hampion<br /> of <b>X</b></h3>
+                  </MDBView>
+                </MDBCarouselItem>
+                <MDBCarouselItem itemId="8">
+                  <MDBView>
+                    <h3><b>C</b>apture<br /> on <b>Q</b>uiz</h3>
                   </MDBView>
                 </MDBCarouselItem>
               </MDBCarouselInner>
