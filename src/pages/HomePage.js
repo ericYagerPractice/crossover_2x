@@ -1,5 +1,6 @@
 import React from 'react';
 import CardTextCarousel from '../components/CardTextCarousel';
+import pCardTextCarousel from '../components/pCardTextCarousel';
 import TextCarousel from '../components/TextCarousel';
 import ImageCarousel from '../components/ImageCarousel';
 import AnimatedCards from '../components/AnimatedCards';
@@ -146,9 +147,9 @@ class HomePage extends React.Component {
                 
                 <MDBRow id='categories'>
                   <MDBCol md='12' className='mx-auto'>
-                    <h3 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
+                    <h2 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
                       C<span className="text-danger">2X</span><br/> Content Experience<br/> Framework (CXF)
-                    </h3>
+                    </h2>
                     <hr className="w-25 border-dark" />
                   </MDBCol>
                 </MDBRow>
