@@ -1,5 +1,8 @@
 import React from 'react';
 import CardTextCarousel from '../components/CardTextCarousel';
+import CardTextCarouselP from '../components/CardTextCarouselP';
+import CardTextCarouselT from '../components/CardTextCarouselT';
+import CardTextCarouselS from '../components/CardTextCarouselS';
 import {
   MDBCol,
   MDBCardBody,
@@ -58,7 +61,7 @@ export default function AnimatedCards() {
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
-                    <CardTextCarousel />
+                    <CardTextCarouselP />
                   </MDBCardTitle>
                   <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
@@ -87,7 +90,7 @@ export default function AnimatedCards() {
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
-                    <CardTextCarousel />
+                    <CardTextCarouselT />
                   </MDBCardTitle>
                   <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
@@ -116,7 +119,7 @@ export default function AnimatedCards() {
                 />
                 <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                   <MDBCardTitle>
-                    <CardTextCarousel />
+                    <CardTextCarouselS />
                   </MDBCardTitle>
                   <hr className="w-25 mt-1 border-white"/>
                   <MDBCardText className='text-white'>
