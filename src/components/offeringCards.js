@@ -53,7 +53,7 @@ function OfferingCards() {
     }
 
     //UI render
-    return (
+    return (<></>)/*
       
         <MDBContainer>
           {console.log(offerings)}
@@ -92,7 +92,7 @@ function OfferingCards() {
             ))
           }
         </MDBContainer>
-    )
+    ) */
 }
 
 export default OfferingCards
