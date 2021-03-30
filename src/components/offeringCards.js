@@ -43,10 +43,9 @@ function OfferingCards() {
         //API calls
         const userID = await Auth.currentUserCredentials();
         const offeringData = await API.graphql(graphqlOperation(listOfferings))
-        const offerings = offeringData.data.listOfferings.items
-        console.log(offeringData)
+        const offeringArray = offeringData.data.listOfferings.items
         //Setters for hooks
-        setOfferings(offerings)
+        setOfferings(offeringArray)
         setCurrentUser(userID.identityId)
       }catch(err){
           console.log("Error w/ offering retrieval: ", err)
@@ -75,7 +74,9 @@ function OfferingCards() {
                       </MDBCardTitle>
                       <hr className="w-25 my-0 ml-0 mr-auto text-left border-danger"/>
                       <ul className='text-dark mt-2 card-list'>
-                        <li><a href="#" className="color-dark">{offering.bulletPoint1}</a></li>
+                        {offering.bulletPoints.map((bullet)=> (
+                          <li>{bullet}</li>
+                        ))}
                       </ul>
                       <MDBNavLink
                         tag='button'
