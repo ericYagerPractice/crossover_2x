@@ -7,7 +7,7 @@ import {
     MDBView
 } from 'mdbreact';
 
-export default function CardTextCarousel() { 
+export default function CardTextCarouselT() { 
     return(
         <>
           <MDBContainer className="p-0">
@@ -23,57 +23,57 @@ export default function CardTextCarousel() {
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
                   <MDBView>
-                    <h3>C2X<br /> Menu</h3>
+                    <h3>Zoom<br /> Training</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="2">
                   <MDBView>
-                    <h3>Check<br /> Points</h3>
+                    <h3>Touch<br /> Points</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="3">
                   <MDBView>
-                    <h3>Course<br /> Module</h3>
+                    <h3>Technical<br /> Application</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="4">
                   <MDBView>
-                    <h3>Champion<br /> Of X</h3>
+                    <h3>Train &<br /> Track</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="5">
                   <MDBView>
-                    <h3>Curated<br /> Bundles</h3>
+                    <h3>Trending<br />Topics</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="6">
                   <MDBView>
-                    <h3>Channel<br/> On Slack</h3>
+                    <h3>Tool<br /> Lens</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="7">
                   <MDBView>
-                    <h3>Context<br /> Cards</h3>
+                    <h3>Toolsets<br /> In Focus</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="8">
                   <MDBView>
-                    <h3>Choose<br />Content</h3>
+                    <h3>Tap Ur<br /> Talent</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="9">
                   <MDBView>
-                    <h3>Crossover<br /> X, 2X, 4X</h3>
+                    <h3>Topics<br /> In Focus</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="10">
                   <MDBView>
-                    <h3>Content<br /> Funnel</h3>
+                    <h3>Hot<br /> Topics</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="11">
                   <MDBView>
-                    <h3>Cohort<br /> Selection</h3>
+                    <h3>Upskill<br /> Testing</h3>
                   </MDBView>
                 </MDBCarouselItem>
               </MDBCarouselInner>
