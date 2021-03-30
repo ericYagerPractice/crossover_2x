@@ -1,6 +1,5 @@
 import React from 'react';
 import CardTextCarousel from '../components/CardTextCarousel';
-import pCardTextCarousel from '../components/pCardTextCarousel';
 import TextCarousel from '../components/TextCarousel';
 import ImageCarousel from '../components/ImageCarousel';
 import AnimatedCards from '../components/AnimatedCards';
