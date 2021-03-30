@@ -10,17 +10,15 @@ class Mail extends Component {
             friends: [
                 {
                     name: "John Doe",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-8",
                     message: "Hello, Are you there?",
                     when: "Just now",
-                    toRespond: 1,
+                    toRespond: 8,
                     seen: false,
                     active: true
                 },
                 {
                     name: "Danny Smith",
                     message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-1",
                     when: "5 min ago",
                     toRespond: 0,
                     seen: false,
@@ -29,7 +27,6 @@ class Mail extends Component {
                 {
                     name: "Alex Steward",
                     message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-2",
                     when: "Yesterday",
                     toRespond: 0,
                     seen: false,
@@ -38,7 +35,6 @@ class Mail extends Component {
                 {
                     name: "Ashley Olsen",
                     message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-3",
                     when: "Yesterday",
                     toRespond: 0,
                     seen: false,
@@ -47,7 +43,6 @@ class Mail extends Component {
                 {
                     name: "Kate Moss",
                     message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-4",
                     when: "Yesterday",
                     toRespond: 0,
                     seen: false,
@@ -56,7 +51,6 @@ class Mail extends Component {
                 {
                     name: "Lara Croft",
                     message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-5",
                     when: "Yesterday",
                     toRespond: 0,
                     seen: false,
@@ -65,7 +59,6 @@ class Mail extends Component {
                 {
                     name: "Brad Pitt",
                     message: "Lorem ipsum dolor sit",
-                    avatar: "https://mdbootstrap.com/img/Photos/Avatars/avatar-6",
                     when: "5 min ago",
                     toRespond: 0,
                     seen: true,
@@ -120,21 +113,21 @@ return (
                 <textarea className="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3"
                   placeholder="Type your message here..." />
                 <MDBBtn
-                        color="info"
-                        rounded
-                        size="sm"
-                        className="float-right mt-4"
-                      >
-                        Send
-                      </MDBBtn>
-                    </div>
-                  </li>
-                </MDBListGroup>
-              </MDBRow>
-            </MDBCol>
-          </MDBRow>
-        </MDBCardBody>
-      </MDBCard>
+                  color="info"
+                  rounded
+                  size="sm"
+                  className="float-right mt-4"
+                >
+                  Send
+                </MDBBtn>
+              </div>
+            </li>
+          </MDBListGroup>
+        </MDBRow>
+      </MDBCol>
+    </MDBRow>
+  </MDBCardBody>
+</MDBCard>
     );
   }
 }
@@ -147,13 +140,7 @@ const Friend = ({
     className="d-flex justify-content-between p-2 border-light"
     style={{ backgroundColor: active ? "#eeeeee" : "" }}
   >
-    <MDBAvatar
-      tag="img"
-      src={avatar}
-      alt="avatar"
-      circle
-      className="mr-2 z-depth-1"
-    />
+    
     <div style={{ fontSize: "0.95rem" }}>
       <strong>{name}</strong>
       <p className="text-muted">{message}</p>
@@ -181,13 +168,6 @@ const Friend = ({
 
 const ChatMessage = ({ message: { author, avatar, when, message } }) => (
   <li className="chat-message d-flex justify-content-between mb-4">
-    <MDBAvatar
-      tag="img"
-      src={avatar}
-      alt="avatar"
-      circle
-      className="mx-2 z-depth-1"
-    />
     <MDBCard>
       <MDBCardBody>
         <div>

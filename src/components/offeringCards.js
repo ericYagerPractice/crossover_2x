@@ -22,11 +22,11 @@ const {
   aws_user_files_s3_bucket: bucket
 } = awsmobile
 
-const initialofferingState = { title: '', subTitle: '', image: '', url: '', bulletPoint1: '', bulletPoint2: '', bulletPoint3:'' }
+const initialofferingState = [{ title: '', subTitle: '', image: '', url: '', bulletPoint1: '', bulletPoint2: '', bulletPoint3:'' }]
 const fileData = {file: null, fileExtension:'', fileType: '', fileKey:''}
 
 function OfferingCards() {
-  const [offerings, setOfferings] = useState([]) //hook to hold offerings 
+  const [offerings, setOfferings] = useState(initialofferingState) //hook to hold offerings 
   const [currentUser, setCurrentUser] = useState('')
 
 
@@ -43,19 +43,20 @@ function OfferingCards() {
         //API calls
         const userID = await Auth.currentUserCredentials();
         const offeringData = await API.graphql(graphqlOperation(listOfferings))
-        const offerings = offeringData.data.listOfferings.items
+        const offeringArray = offeringData.data.listOfferings.items
         //Setters for hooks
-        setOfferings(offerings)
+        setOfferings(offeringArray)
         setCurrentUser(userID.identityId)
       }catch(err){
           console.log("Error w/ offering retrieval: ", err)
-          setOfferings(initialofferingState)
       }
     }
 
     //UI render
     return (
+      
         <MDBContainer>
+          {console.log(offerings)}
           {
             offerings.map((offering, index) => (
               <MDBCol md='6' xl='4' className='px-2'>
@@ -73,13 +74,9 @@ function OfferingCards() {
                       </MDBCardTitle>
                       <hr className="w-25 my-0 ml-0 mr-auto text-left border-danger"/>
                       <ul className='text-dark mt-2 card-list'>
-                        {
-                          offering.bulletPoints.map((bulletPoint,index)=>(
-                            
-                            <li><a href="#" className="color-dark">{bulletPoint}</a></li>
-                          
-                          ))
-                        }
+                        {offering.bulletPoints.map((bullet)=> (
+                          <li>{bullet}</li>
+                        ))}
                       </ul>
                       <MDBNavLink
                         tag='button'
