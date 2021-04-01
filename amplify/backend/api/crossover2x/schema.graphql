@@ -53,3 +53,10 @@ type Offering
   image: String!
   buttonText: String!
 }
+
+type urlPatterns
+@model
+{
+  id: ID!
+  urlPattern: String!
+}

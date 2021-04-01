@@ -452,3 +452,30 @@ export const listOfferings = /* GraphQL */ `
     }
   }
 `;
+export const getUrlPatterns = /* GraphQL */ `
+  query GetUrlPatterns($id: ID!) {
+    getUrlPatterns(id: $id) {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUrlPatternss = /* GraphQL */ `
+  query ListUrlPatternss(
+    $filter: ModelurlPatternsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUrlPatternss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        urlPattern
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
