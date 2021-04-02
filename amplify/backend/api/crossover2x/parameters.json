@@ -1,5 +1,5 @@
 {
-    "AppSyncApiName": "crossover2x",
-    "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": "false"
+  "AppSyncApiName": "crossover2x",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": "false"
 }

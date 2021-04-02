@@ -841,3 +841,42 @@ export const deleteOffering = /* GraphQL */ `
     }
   }
 `;
+export const createUrlPatterns = /* GraphQL */ `
+  mutation CreateUrlPatterns(
+    $input: CreateUrlPatternsInput!
+    $condition: ModelurlPatternsConditionInput
+  ) {
+    createUrlPatterns(input: $input, condition: $condition) {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUrlPatterns = /* GraphQL */ `
+  mutation UpdateUrlPatterns(
+    $input: UpdateUrlPatternsInput!
+    $condition: ModelurlPatternsConditionInput
+  ) {
+    updateUrlPatterns(input: $input, condition: $condition) {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUrlPatterns = /* GraphQL */ `
+  mutation DeleteUrlPatterns(
+    $input: DeleteUrlPatternsInput!
+    $condition: ModelurlPatternsConditionInput
+  ) {
+    deleteUrlPatterns(input: $input, condition: $condition) {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;

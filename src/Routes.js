@@ -14,6 +14,7 @@ import Mail from './pages/Mail';
 import FAQs from './components/FAQs';
 import Editor from './pages/editor';
 import Messaging from './pages/messagingTesting'
+import Offering from './pages/offering'
 
 
 class Routes extends React.Component {
@@ -33,6 +34,7 @@ class Routes extends React.Component {
         <Route exact path='/FAQs' component={FAQs} />
         <Route exact path='/editor' component={Editor} />
         <Route exact path="/messagingFunctionTest" component={Messaging} />
+        <Route exact path="/offerings/:offeringID" component={Offering} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

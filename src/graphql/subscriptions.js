@@ -796,3 +796,33 @@ export const onDeleteOffering = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUrlPatterns = /* GraphQL */ `
+  subscription OnCreateUrlPatterns {
+    onCreateUrlPatterns {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUrlPatterns = /* GraphQL */ `
+  subscription OnUpdateUrlPatterns {
+    onUpdateUrlPatterns {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUrlPatterns = /* GraphQL */ `
+  subscription OnDeleteUrlPatterns {
+    onDeleteUrlPatterns {
+      id
+      urlPattern
+      createdAt
+      updatedAt
+    }
+  }
+`;

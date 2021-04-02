@@ -1,8 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import { MDBProgress, MDBContainer, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBCol, MDBRow, MDBIcon, MDBInputGroup} from 'mdbreact';
 import { Auth, API, graphqlOperation, Storage } from 'aws-amplify'
-import { createOffering, deleteOffering } from '../graphql/mutations'
-import { listOfferings } from '../graphql/queries'
+import { createOffering, deleteOffering, createUrlPatterns, deleteUrlPatterns } from '../graphql/mutations'
+import { listOfferings, listUrlPatternss } from '../graphql/queries'
 import awsmobile from '../aws-exports'
 import { v4 as uuid } from 'uuid';
 import {AmplifyS3Image} from "@aws-amplify/ui-react";
@@ -36,6 +36,7 @@ function OfferingInput() {
         //API calls
         const userID = await Auth.currentUserCredentials();
         const offeringData = await API.graphql(graphqlOperation(listOfferings))
+        const urlData = await API.graphql(graphqlOperation(listUrlPatternss))
         const offerings = offeringData.data.listOfferings.items
         //Setters for hooks
         setOfferings(offerings)
@@ -55,19 +56,18 @@ function OfferingInput() {
 
     async function addoffering() {
       try {
-        
         const formattedOfferingData = {
           title: offeringFormState.title, 
           subTitle: offeringFormState.subTitle, 
           image: offeringFormState.image, 
-          url: offeringFormState.url, 
           bulletPoints: [offeringFormState.bulletPoint1, offeringFormState.bulletPoint2 , offeringFormState.bulletPoint3],
           buttonText: offeringFormState.buttonText
         }
         await API.graphql(graphqlOperation(createOffering, { input: formattedOfferingData }))
+        .then(await API.graphql(graphqlOperation(createUrlPatterns, {input: {urlPattern: offeringFormState.url}})))
         .then(fetchData())
       } catch (err) {
-        console.log('error uploading image: ', err)
+        console.log('error creating offering: ', err)
       } 
     } 
 
