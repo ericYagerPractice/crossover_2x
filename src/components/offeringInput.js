@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import { MDBProgress, MDBContainer, MDBBtn, MDBTable, MDBTableBody, MDBTableHead, MDBInput, MDBCol, MDBRow, MDBIcon, MDBInputGroup} from 'mdbreact';
 import { Auth, API, graphqlOperation, Storage } from 'aws-amplify'
-import { createOffering, deleteOffering } from '../graphql/mutations'
+import { createOffering, deleteOffering, createUrlPatterns, deleteUrlPatterns } from '../graphql/mutations'
 import { listOfferings } from '../graphql/queries'
 import awsmobile from '../aws-exports'
 import { v4 as uuid } from 'uuid';
@@ -18,6 +18,7 @@ const fileData = {file: '', fileExtension:'', fileType: '', fileKey:''}
 function OfferingInput() {
   const [offeringFormState, setOfferingFormState] = useState(initialofferingState) //hook for offering form data input
   const [offerings, setOfferings] = useState([]) //hook to hold offerings 
+  const [urls, setUrl] = useState("")
   const [file, updateFile] = useState(fileData)
   const [uploadLevel, updateLevel] = useState(0)
   const [currentUser, setCurrentUser] = useState('')
@@ -65,6 +66,7 @@ function OfferingInput() {
           buttonText: offeringFormState.buttonText
         }
         await API.graphql(graphqlOperation(createOffering, { input: formattedOfferingData }))
+        .then(await API.graphql(graphqlOperation(createUrlPatterns)))
         .then(fetchData())
       } catch (err) {
         console.log('error uploading image: ', err)
@@ -117,7 +119,7 @@ function OfferingInput() {
                     type="textarea" 
                     rows="1" 
                     prepend="https://crossover2x.net/offerings/"
-                    onChange={event => setOfferingInput('url', event.target.value)}
+                    onChange={event => setUrl('url', event.target.value)}
                   />
 
                   <MDBInput
