@@ -1,0 +1,11 @@
+.toolbar {
+    padding: 5px;
+    border-radius:3px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .hidden {
+    display: none;
+  }
