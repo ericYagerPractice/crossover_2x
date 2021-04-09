@@ -199,6 +199,16 @@ body {
 /* END Carousels */
 
 /* Course Info Page */
+.course-info-intro {
+	max-width: 100%;
+}
+
+@media (min-width: 1200px) {
+	.course-info-intro {
+		max-width: 75%;
+	}
+}
+
 .course-info-intro .col:first-of-type {
 	background-color: #F8F8F8;
 }
