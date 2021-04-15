@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import './pageInputToolbar.css'
-import { MDBBtn, MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTypography } from "mdbreact";
+import { MDBIcon, MDBBtn, MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTypography, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 export default function Toolbar() {
     const [showLinkModal, modalSwitch] = useState(false);
+    const [currentJustify, switchJustify] = useState("align-left")
 
     function showTheModal(){
         modalSwitch(!showLinkModal);
@@ -93,27 +94,43 @@ export default function Toolbar() {
 
     <div className='toolbar'>
         <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <MDBBtn color="elegant" onClick={textElement=> format('bold')}><b>Bold</b></MDBBtn>
-            <MDBBtn color="elegant" onClick={textElement=> format('italic')}><i>Italic</i></MDBBtn>
-            <MDBBtn color="elegant" onClick={textElement=> format('insertUnorderedList')}><li>List</li></MDBBtn>
-            <MDBBtn color="elegant" onClick={textElement=> addLink(textElement)}>Link <i class="fas fa-link"></i></MDBBtn>
+            <MDBDropdown>
+                <MDBDropdownToggle caret color="danger">
+                    <MDBIcon icon={currentJustify} />
+                </MDBDropdownToggle>
+                <MDBDropdownMenu basic>
+                    <MDBDropdownItem onClick={()=>switchJustify("align-left")}><MDBIcon icon="align-left" /></MDBDropdownItem>
+                    <MDBDropdownItem onClick={()=>switchJustify("align-center")}><MDBIcon icon="align-center"/></MDBDropdownItem>
+                    <MDBDropdownItem onClick={()=>switchJustify("align-right")}><MDBIcon icon="align-right" /></MDBDropdownItem>
+                    <MDBDropdownItem onClick={()=>switchJustify("align-justify")}><MDBIcon icon="align-justify" /></MDBDropdownItem>
+                </MDBDropdownMenu>
+            </MDBDropdown>
+
+            <MDBBtn rounded outline color="danger" onClick={textElement=> format('bold')}><b>Bold</b></MDBBtn>
+            <MDBBtn rounded outline color="danger" onClick={textElement=> format('italic')}><i>Italic</i></MDBBtn>
+            <MDBBtn rounded outline color="danger" onClick={textElement=> format('insertUnorderedList')}><li>List</li></MDBBtn>
+            <MDBBtn rounded outline color="danger" onClick={textElement=> addLink(textElement)}>Link <i class="fas fa-link"></i></MDBBtn>
 
             <MDBModal isOpen={showLinkModal} toggle={showTheModal}   size="lg" >
               <MDBModalHeader toggle={showTheModal}>Upload new file</MDBModalHeader>
               <MDBModalBody>
-                <MDBTypography tag='h4' variant="h4-responsive">Hyperlink</MDBTypography>
-                <input id='txtFormatUrl' placeholder='url'/>
-                <button onClick={textElement=> setUrl(textElement)}>Create Link</button>
+                
               </MDBModalBody>
               <MDBModalFooter>
               <MDBBtn color="secondary" onClick={showTheModal}>Close</MDBBtn>
               </MDBModalFooter>
           </MDBModal>
-            <MDBBtn color="elegant" onClick={textElement=> setHeader()}><i class="fas fa-heading">eading</i></MDBBtn>
-            <MDBBtn color="elegant" onClick={textElement=> addCodeBlock()}>Code <i class="fas fa-code"></i></MDBBtn>
-            <MDBBtn color="elegant" onClick={textElement=> handleSubmit()}>Send <i class="fas fa-paper-plane"></i></MDBBtn>
+            <MDBBtn rounded outline color="danger" onClick={textElement=> setHeader()}><i class="fas fa-heading">eading</i></MDBBtn>
+            <MDBBtn rounded outline color="danger" onClick={textElement=> addCodeBlock()}>Code <i class="fas fa-code"></i></MDBBtn>
+            <MDBBtn rounded outline color="danger" onClick={textElement=> handleSubmit()}>Send <i class="fas fa-paper-plane"></i></MDBBtn>
         </div>
 
     </div>
   )
 }
+
+/*
+<MDBTypography tag='h4' variant="h4-responsive">Hyperlink</MDBTypography>
+                <input id='txtFormatUrl' placeholder='url'/>
+                <button onClick={textElement=> setUrl(textElement)}>Create Link</button>
+                */

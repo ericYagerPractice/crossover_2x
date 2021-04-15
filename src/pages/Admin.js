@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBLink } from 'mdbreact';
 import FAQInput from '../components/faqInput'
 import OfferingInput from '../components/offeringInput'
-import Editor from '../components/pageInput'
+import PageEditor from '../components/pageInput'
 
 
 class Admin extends Component {
@@ -54,7 +54,7 @@ class Admin extends Component {
                     <OfferingInput />
                   </MDBTabPane>
                   <MDBTabPane tabId='3'>
-                    <Editor/>
+                    <PageEditor/>
                   </MDBTabPane>
                 </MDBTabContent>
             </MDBCol>
