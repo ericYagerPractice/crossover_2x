@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './pageInputToolbar.css'
 import { MDBIcon, MDBBtn, MDBContainer, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBTypography, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
+import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 export default function Toolbar() {
     const [showLinkModal, modalSwitch] = useState(false);
     const [currentJustify, switchJustify] = useState("align-left")
@@ -17,11 +18,13 @@ export default function Toolbar() {
     function addLink(codeElement){
         console.log(codeElement)
         showTheModal();
-        const show = document.getElementById('url-input');
-        if (show.classList.contains('hidden')) {
-          show.classList.remove('hidden');
-        } else {
-          show.classList.add('hidden');
+        if(document.getElementById('url-input')){
+          const show = document.getElementById('url-input');
+          if (show.classList.contains('hidden')) {
+            show.classList.remove('hidden');
+          } else {
+            show.classList.add('hidden');
+          }
         }
     }
   
@@ -114,7 +117,9 @@ export default function Toolbar() {
             <MDBModal isOpen={showLinkModal} toggle={showTheModal}   size="lg" >
               <MDBModalHeader toggle={showTheModal}>Upload new file</MDBModalHeader>
               <MDBModalBody>
-                
+                <MDBTypography tag='h4' variant="h4-responsive">Hyperlink</MDBTypography>
+                  <input id='txtFormatUrl' placeholder='url'/>
+                  <button onClick={textElement=> setUrl(textElement)}>Create Link</button>
               </MDBModalBody>
               <MDBModalFooter>
               <MDBBtn color="secondary" onClick={showTheModal}>Close</MDBBtn>
@@ -129,8 +134,6 @@ export default function Toolbar() {
   )
 }
 
-/*
-<MDBTypography tag='h4' variant="h4-responsive">Hyperlink</MDBTypography>
-                <input id='txtFormatUrl' placeholder='url'/>
-                <button onClick={textElement=> setUrl(textElement)}>Create Link</button>
-                */
+
+
+                
