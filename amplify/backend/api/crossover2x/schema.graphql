@@ -60,3 +60,23 @@ type urlPatterns
   id: ID!
   urlPattern: String!
 }
+
+type UserStory
+@model
+{
+  id: ID!
+  user: String!
+  goal: String!
+  task: [TechTask] @connection(keyName: "techTasksPerUserStory", fields: ["id"]) 
+}
+
+type TechTask
+@key(name: "techTasksPerUserStory", fields: ["userStoryId"])
+@model
+{
+  id: ID!
+  createdBy: String!
+  type: String!
+  description: String!
+  userStoryId: ID!
+}

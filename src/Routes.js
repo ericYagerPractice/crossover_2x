@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import UserStories from './pages/UserStories';
 import HomePage from './pages/HomePage';
 import About from './pages/About';
 import Login from './pages/Login';
@@ -33,6 +33,7 @@ class Routes extends React.Component {
         <Route exact path='/editor' component={Editor} />
         <Route exact path="/messagingFunctionTest" component={Messaging} />
         <Route exact path="/offerings/:offeringID" component={Offering} />
+        <Route exact path="/UserStories" component={UserStories} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

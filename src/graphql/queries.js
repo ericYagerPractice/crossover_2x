@@ -479,3 +479,89 @@ export const listUrlPatternss = /* GraphQL */ `
     }
   }
 `;
+export const getUserStory = /* GraphQL */ `
+  query GetUserStory($id: ID!) {
+    getUserStory(id: $id) {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUserStorys = /* GraphQL */ `
+  query ListUserStorys(
+    $filter: ModelUserStoryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserStorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        user
+        goal
+        task {
+          items {
+            id
+            createdBy
+            type
+            description
+            userStoryId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTechTask = /* GraphQL */ `
+  query GetTechTask($id: ID!) {
+    getTechTask(id: $id) {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTechTasks = /* GraphQL */ `
+  query ListTechTasks(
+    $filter: ModelTechTaskFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTechTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdBy
+        type
+        description
+        userStoryId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

@@ -15,7 +15,7 @@ import checkUser, {createOrUpdateUser} from '../CheckAuth';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
 import { Auth, Hub } from 'aws-amplify';
-import {AccountButton, MessageButton } from './Buttons';
+import {AccountButton, MyToolsButton } from './Buttons';
 import { checkHost } from '../Helper';
 
 
@@ -123,8 +123,8 @@ export default function Header() {
               {
                 userState.user && userState.user.signInUserSession && (
                     <MDBContainer fluid>
+                        <MyToolsButton />
                         <AccountButton />
-                        <MessageButton />
                     </MDBContainer>
                 )
               }

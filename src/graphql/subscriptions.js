@@ -826,3 +826,111 @@ export const onDeleteUrlPatterns = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUserStory = /* GraphQL */ `
+  subscription OnCreateUserStory {
+    onCreateUserStory {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUserStory = /* GraphQL */ `
+  subscription OnUpdateUserStory {
+    onUpdateUserStory {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUserStory = /* GraphQL */ `
+  subscription OnDeleteUserStory {
+    onDeleteUserStory {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateTechTask = /* GraphQL */ `
+  subscription OnCreateTechTask {
+    onCreateTechTask {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTechTask = /* GraphQL */ `
+  subscription OnUpdateTechTask {
+    onUpdateTechTask {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTechTask = /* GraphQL */ `
+  subscription OnDeleteTechTask {
+    onDeleteTechTask {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      createdAt
+      updatedAt
+    }
+  }
+`;
