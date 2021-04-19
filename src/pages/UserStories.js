@@ -1,30 +1,47 @@
 import React, { useEffect, useState} from 'react'
-import { MDBContainer, MDBInputGroup, MDBInput, MDBBtn, MDBTypography, MDBRow} from 'mdbreact';
+import { MDBContainer, MDBInputGroup, MDBInput, MDBBtn, MDBTypography, MDBRow, MDBTable, MDBTableHead, MDBTableBody} from 'mdbreact';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createUserStory, deleteUserStory } from '../graphql/mutations'
 import { listUserStoriesWithTasks } from '../customGraphQL/queries'
 import { Auth, Hub } from 'aws-amplify';
 
-const userStories = { user: '', goal: '', tasks: [''] }
-const userStoryInput = {user: '', activity: '', action: ''}
-const userStoryTechTasks = {createdBy: '', type: '', description: '', userStoryId: ''}
+const userStoryInitialState = [{ user: '', goal: '', task: [''] }]
+const userStoryInputInitialState = {user: '', activity: '', action: ''}
+const userStoryTechTaskInputInitialState = {createdBy: '', type: '', description: '', userStoryId: ''}
 
 const UserStories = () => {
-  const [userStoryFormState, setUserStoryFormState] = useState(userStoryInput)
-  const [userStories, setUserStories] = useState(userStories)
-  const [techTasks, setTechTasks] = useState(userStoryTechTasks)
+  const [userStoryFormState, setUserStoryFormState] = useState(userStoryInputInitialState)
+  const [userStories, setUserStories] = useState(userStoryInitialState)
+  const [techTasks, setTechTasks] = useState(userStoryTechTaskInputInitialState)
   const [userName, setUserName] = useState(null)
+
+  const dataTableColumns = {columns: [
+    {
+      'label': 'User Name',
+      'field': 'username',
+      'sort': 'asc'
+    },
+    {
+      'label': 'Story',
+      'field': 'story',
+      'sort': 'asc'
+    },
+    {
+      'label': 'Delete',
+      'field': 'delete',
+    }
+  ]}
 
     //Fetch all data, save in hooks on load
     useEffect(() => {
         fetchData()
+        .then(console.log(userStories))
     }, [])
 
     //Get listFaQs, set items to setFAQs
     async function setInitialData(){
         try{
-            const userStoryData = await API.graphql(graphqlOperation(listUserStoriesWithTasks))
-            const userStories = userStoryData.data.listUserStorys.items
+            let userStoryData = await API.graphql(graphqlOperation(listUserStoriesWithTasks))
             let hubUserName = " "
             try{
               await Auth.currentSession()
@@ -35,7 +52,7 @@ const UserStories = () => {
               console.log(error)
             }
             
-            setUserStories(userStories)
+            setUserStories(userStoryData.data.listUserStorys.items)
             setUserName(hubUserName)
             return(true)
         }catch(err){
@@ -50,7 +67,6 @@ const UserStories = () => {
     async function fetchData() {
         try {
           await setInitialData()
-          .then(setUserStories(userStories))
         } catch (err) { console.log('error fetching userStories: ', err) }
     }
 
@@ -84,7 +100,7 @@ const UserStories = () => {
     async function deleteSpecifiedUserStory(deleteID){
         try{
             await API.graphql(graphqlOperation(deleteUserStory, {input: {id:deleteID}}))
-            await fetchData()
+            .then(await fetchData())
         } catch(error){
             console.log("error deleting user story: ",error)
         }
@@ -94,26 +110,58 @@ const UserStories = () => {
     
     //UI render
     return (
-          <MDBRow className="ml-5" start>
-            <MDBInputGroup
-              material
-              containerClassName="m-0"
-              className="align-text-bottom form-inline"
-              inputs={
-                <>
-                  <table>
-                    <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">I am a </MDBTypography></td>
-                    <td className="align-middle"><MDBInput background onChange={event => setUserStoryInput('user', event.target.value)} /></td>
-                    <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, and I want to</MDBTypography></td>
-                    <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('activity', event.target.value)}/></td>
-                    <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, so that </MDBTypography></td>
-                    <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('action', event.target.value)}/></td>
-                    <td className="align-middle"><MDBBtn color="danger" onClick={()=>addUserStory()}>Send it</MDBBtn></td>
-                  </table>
-                </>
-              }
-            />
-          </MDBRow>
+          <>
+            <MDBRow className="ml-5" start>
+              <MDBInputGroup
+                material
+                containerClassName="m-0"
+                className="align-text-bottom form-inline"
+                inputs={
+                  <>
+                    <table>
+                      <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">I am a </MDBTypography></td>
+                      <td className="align-middle"><MDBInput background onChange={event => setUserStoryInput('user', event.target.value)} /></td>
+                      <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, and I want to</MDBTypography></td>
+                      <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('activity', event.target.value)}/></td>
+                      <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, so that </MDBTypography></td>
+                      <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('action', event.target.value)}/></td>
+                      <td className="align-middle"><MDBBtn color="danger" onClick={()=>addUserStory()}>Send it</MDBBtn></td>
+                    </table>
+                  </>
+                }
+              />
+            </MDBRow>
+            <hr />
+            <MDBContainer>
+              <MDBRow className="ml-5">
+                <MDBTable>
+                  <MDBTableHead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Submitted By</th>
+                      <th>User Story</th>
+                      <th>Delete</th>
+                    </tr>
+                  </MDBTableHead>
+                  <MDBTableBody>
+                    {
+                      userStories.map((userStory)=>(
+
+                          <tr>
+                            <td>{userStory.id}</td>
+                            <td>{userStory.user}</td>
+                            <td>{userStory.goal}</td>
+                            <td><MDBBtn onClick={event=>deleteSpecifiedUserStory(userStory.id)}>Delete</MDBBtn></td>
+                          </tr>  
+                      
+                      ))
+                    }
+                  </MDBTableBody>
+                </MDBTable>
+              </MDBRow>
+            </MDBContainer>
+          </>
+
     )
 }
 

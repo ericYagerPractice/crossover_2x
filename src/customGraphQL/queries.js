@@ -6,14 +6,16 @@
     ) {
         listUserStorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
             items {
-            goal
-            user
-            task {
-            items {
-                createdBy
-                type
-                description
-            }
+                id
+                goal
+                user
+                task {
+                items {
+                    id
+                    createdBy
+                    type
+                    description
+                }
             }
         }
         }
