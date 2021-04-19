@@ -57,7 +57,7 @@ function App() {
       <div style={styles.appContainer}>
         <Header updateFormState={updateFormState} />
         <main className="mainContent" style={styles.postHeader}>
-          <Routes />
+        <Routes />
         </main>
         <Footer />
         <MessageButton /> 

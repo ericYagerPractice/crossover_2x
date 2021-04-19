@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import '../App.css'
 import { Auth } from 'aws-amplify'
 import { FaEnvelope } from 'react-icons/fa'
-import { MDBBtnFixed, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
 import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
 
@@ -37,7 +37,7 @@ export class AccountButton extends Component{
   render(){
     return (
       <MDBDropdown>
-        <MDBDropdownToggle caret color="danger" className="btn btn-rounded">
+        <MDBDropdownToggle caret color="elegant" className="btn btn-rounded z-depth-0">
           <MDBIcon icon="user-circle" size="2x" />
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
@@ -70,7 +70,7 @@ export class MyToolsButton extends Component{
   render(){
     return (
       <MDBDropdown>
-        <MDBDropdownToggle caret color="danger" className="btn btn-rounded">
+        <MDBDropdownToggle caret color="elegant" className="btn btn-rounded z-depth-0">
           <MDBIcon icon="tools" size="2x"/> 
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
@@ -94,7 +94,7 @@ export class SignOutButton extends Component{
       <MDBBtn className="btn btn-rounded" color="danger"
       onClick={signOut}
       >
-      <MDBIcon icon="sign-out-alt" size="lg" />
+      <MDBIcon icon="sign-out-alt" size="3x" />
     </MDBBtn>
     );
   }
@@ -138,7 +138,7 @@ export class MessageButton extends Component{
             size="lg"
             color="warning"
             style={{ bottom: "110px", left: "50px" }}>
-            <MDBIcon icon="comment" size="3x"/>
+            <MDBIcon icon="comment" size="5x"/>
           </MDBBtn>
         </div>
 
