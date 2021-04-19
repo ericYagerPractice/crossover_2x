@@ -1,4 +1,22 @@
 {
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-crossover2x-prod-224124-authRole",
+      "UnauthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-prod-224124-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::820626187184:role/amplify-crossover2x-prod-224124-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-crossover2x-prod-224124-deployment",
+      "UnauthRoleName": "amplify-crossover2x-prod-224124-unauthRole",
+      "StackName": "amplify-crossover2x-prod-224124",
+      "StackId": "arn:aws:cloudformation:us-east-1:820626187184:stack/amplify-crossover2x-prod-224124/ef5a7dc0-6fde-11eb-bcae-12217e59f19f",
+      "AmplifyAppId": "d3s7jqy33emiq1"
+    },
+    "categories": {
+      "auth": {
+        "crossover2xecda4dbf": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-crossover2x-dev-170522-authRole",
@@ -13,8 +31,13 @@
     },
     "categories": {
       "auth": {
-        "crossover2xb12c8f74": {
-          "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"190406161110309\",\"client_secret\":\"fa4fea334cccbd1b59768a5d66134873\"},{\"ProviderName\":\"Google\",\"client_id\":\"200530848085-uu367bii5uh105438ld0hufnqfj7nh93.apps.googleusercontent.com\",\"client_secret\":\"pwqVzcE_kgSHsL2aw2J-hGsR\"}]"
+        "crossover2xecda4dbf": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueries4890f24b": {
+          "deploymentBucketName": "amplify-crossover2x-dev-170522-deployment",
+          "s3Key": "amplify-builds/AdminQueries4890f24b-306c544a736e53363249-build.zip"
         }
       }
     }

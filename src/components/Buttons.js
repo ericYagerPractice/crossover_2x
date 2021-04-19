@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import '../App.css'
 import { Auth } from 'aws-amplify'
-import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa'
+import { FaEnvelope } from 'react-icons/fa'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBtn,MDBIcon,MDBCol } from "mdbreact";
 import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
+
 export default function LoginButtons(props) {
   return (
     <div>
@@ -13,36 +14,78 @@ export default function LoginButtons(props) {
           <MDBIcon icon="user-astronaut" size="lg" />  Login / Signup
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
-          <MDBDropdownItem header>Social Authentication</MDBDropdownItem>
-          <MDBDropdownItem onClick={() => Auth.federatedSignIn({provider: 'Facebook'})}><FaFacebook color='blue' /> Facebook </MDBDropdownItem>
-          <MDBDropdownItem onClick={() => Auth.federatedSignIn({provider: 'Google'})}><FaGoogle color='red' /> Google</MDBDropdownItem>
-          <MDBDropdownItem divider />
-          <MDBDropdownItem onClick={() => Auth.federatedSignIn()}><FaEnvelope /> Email/Password</MDBDropdownItem>
+          <MDBDropdownItem href="/login"><FaEnvelope /> Email/Password</MDBDropdownItem>
         </MDBDropdownMenu>
       </MDBDropdown>
     </div>
   );
 }
 
-export class AccountButton extends Component {
+export class AccountButton extends Component{ 
+  state={admin:false};
 
-  render() {
+  async componentDidMount(){
+    const returnData = await Auth.currentAuthenticatedUser()
+    try{
+      this.setState({admin:returnData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin')});
+    } catch(err){
+      console.log("error checking admin status in buttons.js: ",err);
+    }
+    
+  }
+
+  render(){
     return (
-          <MDBDropdown>
-            <MDBDropdownToggle caret color="danger">
-              <MDBIcon icon="user-astronaut" size="lg" /> Account
-            </MDBDropdownToggle>
-            <MDBDropdownMenu basic>
-              <MDBDropdownItem header>Account Tools</MDBDropdownItem>
-              <MDBDropdownItem ><GoShield color='red' /> Go to my account</MDBDropdownItem>
-              <MDBDropdownItem ><GoBook color='red' /> Go to my learning</MDBDropdownItem>
-              <MDBDropdownItem divider />
-              <div className="text-center"><SignOutButton /></div>
-            </MDBDropdownMenu>
-          </MDBDropdown>    
+      <MDBDropdown>
+        <MDBDropdownToggle caret color="elegant" className="btn btn-rounded z-depth-0">
+          <MDBIcon icon="user-circle" size="3x" />
+        </MDBDropdownToggle>
+        <MDBDropdownMenu basic>
+          <MDBDropdownItem header>  Account Options</MDBDropdownItem>
+          <MDBDropdownItem href="/Account"><GoShield color='red' /> Go to my account</MDBDropdownItem>
+          <MDBDropdownItem href="/Learning"><GoBook color='red' /> Go to my learning</MDBDropdownItem>
+          {this.state.admin &&(<MDBDropdownItem href="/Admin"  ><MDBIcon icon="tools" className='red-text' /> Go to my Admin Functions</MDBDropdownItem>)}
+          <MDBDropdownItem divider />
+          <div className="text-center"><SignOutButton /></div>
+        </MDBDropdownMenu>
+      </MDBDropdown>  
     );
   }
 }
+
+
+export class MyToolsButton extends Component{ 
+  state={admin:false};
+
+  async componentDidMount(){
+    const returnData = await Auth.currentAuthenticatedUser()
+    try{
+      this.setState({admin:returnData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin')});
+    } catch(err){
+      console.log("error checking admin status in buttons.js: ",err);
+    }
+    
+  }
+
+  render(){
+    return (
+      <MDBDropdown>
+        <MDBDropdownToggle caret color="elegant" className="btn btn-rounded z-depth-0">
+          <MDBIcon icon="tools" size="3x"/> 
+        </MDBDropdownToggle>
+        <MDBDropdownMenu basic>
+          <MDBDropdownItem header>
+              Account Tools
+          </MDBDropdownItem>
+          {this.state.admin &&(<MDBDropdownItem href="/UserStories"><MDBIcon icon="question-circle" className="cyan-text"/> Go to User Stories</MDBDropdownItem>)}
+          <MDBDropdownItem divider />
+          <div className="text-center"><SignOutButton /></div>
+        </MDBDropdownMenu>
+      </MDBDropdown>  
+    );
+  }
+}
+
 
 export class SignOutButton extends Component{
   
@@ -51,7 +94,7 @@ export class SignOutButton extends Component{
       <MDBBtn className="btn btn-rounded" color="danger"
       onClick={signOut}
       >
-      <MDBIcon icon="sign-out-alt" size="lg" />
+      <MDBIcon icon="sign-out-alt" size="3x" />
     </MDBBtn>
     );
   }
@@ -79,6 +122,27 @@ export class SocialButtons extends Component{
               </li> 
           </ul> 
       </MDBCol>
+    )
+  }
+}
+
+export class MessageButton extends Component{
+  
+  render(){
+    return(
+      <>
+        <div className="fixed-bottom">
+          <MDBBtn
+            floating
+            href="/Mail"
+            size="lg"
+            color="warning"
+            style={{ bottom: "110px", left: "50px" }}>
+            <MDBIcon icon="comment" size="3x"/>
+          </MDBBtn>
+        </div>
+
+      </>
     )
   }
 }

@@ -1,6 +1,6 @@
-import React, { useState, useReducer } from 'react'
-
 import { Auth } from 'aws-amplify'
+import { withAuthenticator } from '@aws-amplify/ui-react'
+import { useHistory, Redirect } from "react-router-dom";
 
 const initialFormState = {
   username: '', password: '', email: '', confirmationCode: ''
@@ -48,66 +48,11 @@ async function signIn({ username, password }) {
   }
 }
 
-export default function Login() {
-  const [formType, updateFormType] = useState('signUp')
-  const [formState, updateFormState] = useReducer(reducer, initialFormState)
-  function renderForm() {
-    switch(formType) {
-      case 'signUp':
-        return (
-          <SignUp
-            signUp={() => signUp(formState, updateFormType)}
-            updateFormState={e => updateFormState({ type: 'updateFormState', e })}
-          />
-        )
-      case 'confirmSignUp':
-        return (
-          <ConfirmSignUp
-            confirmSignUp={() => confirmSignUp(formState, updateFormType)}
-            updateFormState={e => updateFormState({ type: 'updateFormState', e })}
-          />
-        )
-      case 'signIn':
-        return (
-          <SignIn
-            signIn={() => signIn(formState)}
-            updateFormState={e => updateFormState({ type: 'updateFormState', e })}
-          />
-        )
-      default:
-        return null
-    }
-  }
-  
-
-  return (
-    <div>
-      <div>
-        {renderForm(formState)}
-      </div>
-      {
-        formType === 'signUp' && (
-          <p style={styles.footer}>
-            Already have an account? <span
-              style={styles.anchor}
-              onClick={() => updateFormType('signIn')}
-            >Sign In</span>
-          </p>
-        )
-      }
-      {
-        formType === 'signIn' && (
-          <p style={styles.footer}>
-            Need an account? <span
-              style={styles.anchor}
-              onClick={() => updateFormType('signUp')}
-            >Sign Up</span>
-          </p>
-        )
-      }
-    </div>
-  )
+function Login() {
+  return(<Redirect to="/" />)
 }
+
+export default withAuthenticator(Login)
 
 function SignUp(props) {
   return (

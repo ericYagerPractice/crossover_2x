@@ -17,34 +17,34 @@ export default function TextCarousel() {
               showControls={false}
               showIndicators={false}
               className="text-carousel"
-              fade={true}
+              fade="true"
               interval={1600}
             >
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
                   <MDBView>
-                    <p className='text-uppercase font-weight-bold display-4'>
+                    <p className='text-uppercase font-weight-bold display-4 title-primary'>
                       Media
                     </p>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="2">
                   <MDBView>
-                    <p className='text-uppercase font-weight-bold display-4'>
+                    <p className='text-uppercase font-weight-bold display-4 title-primary'>
                       Strategy
                     </p>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="3">
                   <MDBView>
-                    <p className='text-uppercase font-weight-bold display-4'>
+                    <p className='text-uppercase font-weight-bold display-4 title-primary'>
                       Podcasting
                     </p>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="4">
                   <MDBView>
-                    <p className='text-uppercase font-weight-bold display-4'>
+                    <p className='text-uppercase font-weight-bold display-4 title-primary'>
                       Ted Talks
                     </p>
                   </MDBView>
