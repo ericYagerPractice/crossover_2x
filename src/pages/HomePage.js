@@ -1,5 +1,4 @@
 import React from 'react';
-import CardTextCarousel from '../components/CardTextCarousel';
 import TextCarousel from '../components/TextCarousel';
 import ImageCarousel from '../components/ImageCarousel';
 import AnimatedCards from '../components/AnimatedCards';
