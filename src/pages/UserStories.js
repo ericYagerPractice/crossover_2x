@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react'
-import { MDBContainer, MDBInputGroup, MDBInput, MDBBtn, MDBTypography, MDBRow, MDBTable, MDBTableHead, MDBTableBody} from 'mdbreact';
+import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableHead, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter} from 'mdbreact';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createUserStory, deleteUserStory } from '../graphql/mutations'
 import { listUserStoriesWithTasks } from '../customGraphQL/queries'
@@ -14,29 +14,23 @@ const UserStories = () => {
   const [userStories, setUserStories] = useState(userStoryInitialState)
   const [techTasks, setTechTasks] = useState(userStoryTechTaskInputInitialState)
   const [userName, setUserName] = useState(null)
+  const [isEditing, setEditing] = useState({uuid:"", userStory:""})
+  const [isEditModalOpen, setEditModalOpen] = useState(false)
+  const [isNewModalOpen, setNewModalOpen] = useState(false)
 
-  const dataTableColumns = {columns: [
-    {
-      'label': 'User Name',
-      'field': 'username',
-      'sort': 'asc'
-    },
-    {
-      'label': 'Story',
-      'field': 'story',
-      'sort': 'asc'
-    },
-    {
-      'label': 'Delete',
-      'field': 'delete',
-    }
-  ]}
+  
 
+  
     //Fetch all data, save in hooks on load
     useEffect(() => {
         fetchData()
         .then(console.log(userStories))
     }, [])
+
+    function openModal(storyUUID){
+      setEditModalOpen(true)
+      console.log(storyUUID)
+    }
 
     //Get listFaQs, set items to setFAQs
     async function setInitialData(){
@@ -89,8 +83,8 @@ const UserStories = () => {
           }
           let userStoryInputString = "I am a "+userStoryFormState.user+" and I need to "+userStoryFormState.activity+" so I can "+userStoryFormState.action
           await API.graphql(graphqlOperation(createUserStory, {input: {user: userName, goal: userStoryInputString}}))
-          .then(data=>console.log(data))
           .then(fetchData())
+          .then(setNewModalOpen(false))
         } catch (err) {
           console.log('error creating user story:', err)
         }
@@ -111,47 +105,71 @@ const UserStories = () => {
     //UI render
     return (
           <>
-            <MDBRow className="ml-5" start>
-              <MDBInputGroup
-                material
-                containerClassName="m-0"
-                className="align-text-bottom form-inline"
-                inputs={
-                  <>
-                    <table>
-                      <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">I am a </MDBTypography></td>
-                      <td className="align-middle"><MDBInput background onChange={event => setUserStoryInput('user', event.target.value)} /></td>
-                      <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, and I want to</MDBTypography></td>
-                      <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('activity', event.target.value)}/></td>
-                      <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, so that </MDBTypography></td>
-                      <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('action', event.target.value)}/></td>
-                      <td className="align-middle"><MDBBtn color="danger" onClick={()=>addUserStory()}>Send it</MDBBtn></td>
-                    </table>
-                  </>
-                }
-              />
-            </MDBRow>
+          <MDBBtn onClick={()=>setNewModalOpen(true)}>New</MDBBtn>
+            <MDBModal isOpen={isEditModalOpen} toggle={()=>setEditModalOpen(false)} size="fluid"  >
+              <MDBModalHeader toggle={()=>setEditModalOpen(false)}>MDBModal title</MDBModalHeader>
+              <MDBModalBody>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </MDBModalBody>
+              <MDBModalFooter>
+                <MDBBtn color="secondary" onClick={()=>setEditModalOpen(false)}>Close</MDBBtn>
+                <MDBBtn color="primary">Save changes</MDBBtn>
+              </MDBModalFooter>
+            </MDBModal>
+            <MDBModal isOpen={isNewModalOpen} toggle={()=>setNewModalOpen(false)} size="fluid"  >
+              <MDBModalHeader toggle={()=>setNewModalOpen(false)}>MDBModal title</MDBModalHeader>
+                <MDBModalBody>
+                  <MDBInputGroup
+                    material
+                    containerClassName="m-0"
+                    className="align-text-bottom form-inline"
+                    inputs={
+                      <>
+                        <MDBTable>
+                          <MDBTableBody>
+                          <tr>
+                            <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">I am a </MDBTypography></td>
+                            <td className="align-middle"><MDBInput background onChange={event => setUserStoryInput('user', event.target.value)} /></td>
+                            <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, and I want to</MDBTypography></td>
+                            <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('activity', event.target.value)}/></td>
+                            <td className="align-middle"><MDBTypography tag="h3" variant="h3-responsive">, so that </MDBTypography></td>
+                            <td className="align-middle"><MDBInput background onChange = {event => setUserStoryInput('action', event.target.value)}/></td>
+                            <td className="align-middle"><MDBBtn color="danger" onClick={()=>addUserStory()}>Send it</MDBBtn></td>
+                          </tr>
+                          </MDBTableBody>
+                        </MDBTable>
+                      </>
+                    }
+                  />
+                </MDBModalBody>
+              </MDBModal>
             <hr />
             <MDBContainer>
               <MDBRow className="ml-5">
                 <MDBTable>
-                  <MDBTableHead>
+                  <MDBTableHead className="text-center">
                     <tr>
-                      <th>ID</th>
+                      <th></th>
                       <th>Submitted By</th>
                       <th>User Story</th>
-                      <th>Delete</th>
+                      <th>Actions</th>
                     </tr>
                   </MDBTableHead>
                   <MDBTableBody>
                     {
-                      userStories.map((userStory)=>(
+                      userStories.map((userStory, index)=>(
 
                           <tr>
-                            <td>{userStory.id}</td>
-                            <td>{userStory.user}</td>
-                            <td>{userStory.goal}</td>
-                            <td><MDBBtn onClick={event=>deleteSpecifiedUserStory(userStory.id)}>Delete</MDBBtn></td>
+                            <td className="align-middle"><h5>{index+1}.</h5></td>
+                            <td className="align-middle"><h5>{userStory.user}</h5></td>
+                            <td className="align-middle"><h5>{userStory.goal}</h5></td>
+                            <td className="align-middle">
+                              <MDBCol>
+                                <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
+                                <MDBBtn className="btn-floating btn-sm warning-color" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="pencil-alt" /></MDBBtn>
+                                <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openModal(userStory.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
+                              </MDBCol>
+                            </td>
                           </tr>  
                       
                       ))
