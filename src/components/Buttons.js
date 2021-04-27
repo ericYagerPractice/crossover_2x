@@ -6,7 +6,7 @@ import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBBt
 import { signOut } from '../CheckAuth';
 import { GoBook,GoShield } from "react-icons/go";
 
-export default function LoginButtons(props) {
+export default function LoginButtons() {
   return (
     <div>
       <MDBDropdown>
@@ -22,7 +22,9 @@ export default function LoginButtons(props) {
 }
 
 export class AccountButton extends Component{ 
-  state={admin:false};
+  state={
+    admin:false
+  };
 
   async componentDidMount(){
     const returnData = await Auth.currentAuthenticatedUser()
@@ -71,7 +73,7 @@ export class MyToolsButton extends Component{
     return (
       <MDBDropdown>
         <MDBDropdownToggle caret color="elegant" className="btn btn-rounded z-depth-0">
-          <MDBIcon icon="tools" size="3x"/> 
+          <MDBIcon icon="tools" size="2x"/> 
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem header>
@@ -94,7 +96,7 @@ export class SignOutButton extends Component{
       <MDBBtn className="btn btn-rounded" color="danger"
       onClick={signOut}
       >
-      <MDBIcon icon="sign-out-alt" size="3x" />
+      <MDBIcon icon="sign-out-alt" size="2x" />
     </MDBBtn>
     );
   }
