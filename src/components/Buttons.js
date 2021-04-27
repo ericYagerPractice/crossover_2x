@@ -40,7 +40,7 @@ export class AccountButton extends Component{
     return (
       <MDBDropdown>
         <MDBDropdownToggle caret color="elegant" className="btn btn-rounded z-depth-0">
-          <MDBIcon icon="user-circle" size="3x" />
+          <MDBIcon icon="user-circle" size="2x" />
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem header>  Account Options</MDBDropdownItem>
@@ -96,7 +96,7 @@ export class SignOutButton extends Component{
       <MDBBtn className="btn btn-rounded" color="danger"
       onClick={signOut}
       >
-      <MDBIcon icon="sign-out-alt" size="2x" />
+      <MDBIcon icon="sign-out-alt" size="1x" />
     </MDBBtn>
     );
   }
@@ -140,7 +140,7 @@ export class MessageButton extends Component{
             size="lg"
             color="warning"
             style={{ bottom: "110px", left: "50px" }}>
-            <MDBIcon icon="comment" size="3x"/>
+            <MDBIcon icon="comment" size="2x"/>
           </MDBBtn>
         </div>
 
