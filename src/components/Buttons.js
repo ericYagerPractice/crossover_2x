@@ -57,7 +57,9 @@ export class AccountButton extends Component{
 
 
 export class MyToolsButton extends Component{ 
-  state={admin:false};
+  state={
+    admin:false
+  };
 
   async componentDidMount(){
     const returnData = await Auth.currentAuthenticatedUser()
@@ -96,7 +98,8 @@ export class SignOutButton extends Component{
       <MDBBtn className="btn btn-rounded" color="danger"
       onClick={signOut}
       >
-      <MDBIcon icon="sign-out-alt" size="1x" />
+
+      <MDBIcon icon="sign-out-alt" size="2x" />
     </MDBBtn>
     );
   }
