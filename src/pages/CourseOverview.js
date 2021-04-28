@@ -33,17 +33,17 @@ class CourseOverview extends React.Component {
     return (
       <>
         <MDBContainer className="w-100 mw-100 pt-5">
-          <MDBRow className="py-5">
+          <MDBRow className="py-0 px-0">
             <MDBCol>
-              <MDBJumbotron fluid className="w-100 mw-100 p-0 m-0 shadow-none course-info-intro">
-                <MDBRow className="py-0 px-lg-4 w-75 mx-auto d-flex justify-content-center align-items-center">
-                  <MDBCol className="col-lg-6 border-dark text-dark text-left px-5 py-lg-5 mx-0">
+              <MDBJumbotron fluid className="w-100 p-0 mx-auto my-0 shadow-none course-info-intro">
+                <MDBRow className="py-0 px-lg-4 mx-auto d-flex justify-content-center align-items-center flex-column flex-md-row">
+                  <MDBCol className="col-lg-6 text-dark text-left px-4 px-md-5 py-4 py-md-5 mx-0">
                     <h1 className="p-0 m-0 font-weight-bold text-uppercase">Overview Title</h1>
                     <p className="mt-3">Join Professor Clay Crocker for lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor.</p>
                     <p className="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, sed do eiusmod tempor.</p>
                   </MDBCol>
-                  <MDBCol className="col-lg-6 text-dark text-left px-5 mx-0">
+                  <MDBCol className="col-lg-6 text-dark text-left px-4 px-md-5 py-4 py-md-5 mx-0">
                     <h3 className="font-weight-bold">POD Details</h3>
                     <hr className="w-25 border-dark my-2 ml-0" />
                     <ul className="course-info-intro-list">
