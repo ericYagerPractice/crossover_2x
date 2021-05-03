@@ -105,7 +105,6 @@ async function fetchUsers(){
       const listUserData = await API.graphql(graphqlOperation(listUsers))
       return(listUserData);
   } catch (error){
-      console.log("error getting users: ", error);
       return(null);
   }
 } 

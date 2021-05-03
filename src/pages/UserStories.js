@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react'
-import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableHead, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter} from 'mdbreact';
+import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem} from 'mdbreact';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createUserStory, deleteUserStory, createTechTask } from '../graphql/mutations'
 import { listTechTasks } from '../graphql/queries'
@@ -7,6 +7,7 @@ import { listUserStoriesWithTasks } from '../customGraphQL/queries'
 import { Auth, Hub } from 'aws-amplify';
 
 const userStoryInitialState = [{ user: '', goal: '', task: [''] }]
+const userStoryJSXInitialState = []
 const userStoryInputInitialState = {user: '', activity: '', action: ''}
 const techTaskInitialState = [{createdBy: '', type: '', description: '', userStoryId: ''}]
 const techTaskInputInitialState = {type: '', description: ''}
@@ -23,7 +24,7 @@ const UserStories = () => {
   const [isNewModalOpen, setNewModalOpen] = useState(false)
   const [isTechTaskModalOpen, setTechTaskModalOpen] = useState(false)
   const [storyUUID, setStoryUUID] = useState(null)
-
+  const [userStoryJSX, setUserStoryJSX] = useState(userStoryJSXInitialState)
     //Fetch all data, save in hooks on load
     useEffect(() => {
         fetchData()
@@ -39,7 +40,68 @@ const UserStories = () => {
 
     async function setUserStoryInitialData(){
       let userStoryData = await API.graphql(graphqlOperation(listUserStoriesWithTasks))
-      console.log(userStoryData)
+      let returnData = userStoryData.data.listUserStorys.items.map(story=>{
+        try{
+          return(
+            <>
+              <MDBRow className="ml-5">
+                <MDBCol size="3">
+                  <h5>{story.user}</h5>
+                </MDBCol>
+                <MDBCol size="6">
+                  <h5>{story.goal}</h5>
+                </MDBCol>
+                <MDBCol size="3">
+                  <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(story.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
+                  <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(story.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
+                </MDBCol>
+              </MDBRow>
+              <MDBRow className="justify-content-center">
+                <MDBListGroup>
+                  {story.task.items.map((task)=>(
+                      <MDBListGroupItem hover style={{ width: "40rem" }}>
+                        <div className="d-flex w-100 justify-content-between">
+                          <h5 className="mb-1">{task.type} Task</h5>
+                          <small>{task.createdBy}</small>
+                        </div>
+                        <p className="mb-1">{task.description}</p>
+                      </MDBListGroupItem>
+                  ))}
+                </MDBListGroup>
+              </MDBRow>
+            </>
+          )
+        }catch{
+          return(
+            <>
+              <MDBRow className="ml-5">
+                <MDBCol size="3">
+                  <h5>Not Found</h5>
+                </MDBCol>
+                <MDBCol size="6">
+                  <h5>Not Found</h5>
+                </MDBCol>
+                <MDBCol size="3">
+                  <MDBBtn className="btn-floating btn-sm btn-fb" disabled><MDBIcon icon="trash-alt" /></MDBBtn>
+                  <MDBBtn className="btn-floating btn-sm success-color" disabled><MDBIcon icon="plus-circle" /></MDBBtn>
+                </MDBCol>
+              </MDBRow>
+              <MDBRow className="justify-content-center">
+                <MDBListGroup>
+                      <MDBListGroupItem hover style={{ width: "40rem" }}>
+                        <div className="d-flex w-100 justify-content-between">
+                          <h5 className="mb-1">{task.type} Task</h5>
+                          <small>Not Found</small>
+                        </div>
+                        <p className="mb-1">Not Found</p>
+                      </MDBListGroupItem>
+                </MDBListGroup>
+              </MDBRow>
+            </>
+          )
+        }
+      })
+      setUserStoryJSX(returnData)
       setUserStories(userStoryData.data.listUserStorys.items)
     }
 
@@ -94,8 +156,8 @@ const UserStories = () => {
           }
           let userStoryInputString = "I am a "+userStoryFormState.user+" and I need to "+userStoryFormState.activity+" so I can "+userStoryFormState.action
           await API.graphql(graphqlOperation(createUserStory, {input: {user: userName, goal: userStoryInputString}}))
-          .then(fetchData())
-          .then(setNewModalOpen(false))
+          .then(setUserStoryInitialData())
+          setNewModalOpen(false)
         } catch (err) {
           console.log('error creating user story:', err)
         }
@@ -115,7 +177,7 @@ const UserStories = () => {
             userStoryId: storyUUID
           }}))
         .then(fetchData())
-        .then(setTechTaskModalOpen(false))
+        setTechTaskModalOpen(false)
       } catch (err) {
         console.log('error creating tech task:', err)
       }
@@ -134,13 +196,10 @@ const UserStories = () => {
             console.log("error deleting user story: ",error)
         }
     }
-
-    
     
     //UI render
     return (
           <>
-            
             <MDBModal isOpen={isTechTaskModalOpen} toggle={()=>setTechTaskModalOpen(false)} size="fluid"  >
               <MDBModalHeader toggle={()=>setTechTaskModalOpen(false)}>Create new tech task</MDBModalHeader>
               <MDBModalBody>
@@ -196,42 +255,10 @@ const UserStories = () => {
 
             <hr />
             <MDBContainer>
-              <MDBRow className="ml-5">
-                <MDBTable>
-                  <MDBTableHead className="text-center">
-                    <tr>
-                      <th></th>
-                      <th>Submitted By</th>
-                      <th>User Story</th>
-                      <th>Actions</th>
-                    </tr>
-                  </MDBTableHead>
-                  <MDBTableBody>
-                    {
-                      userStories.map((userStory, index)=>(
-                          <>
-                          <tr>
-                            <td className="align-middle"><h5>{index+1}.</h5></td>
-                            <td className="align-middle"><h5>{userStory.user}</h5></td>
-                            <td className="align-middle"><h5>{userStory.goal}</h5></td>
-                            <td className="align-middle">
-                              <MDBCol>
-                                <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
-                                <MDBBtn className="btn-floating btn-sm warning-color" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="pencil-alt" /></MDBBtn>
-                                <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(userStory.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
-                              </MDBCol>
-                            </td>
-                          </tr>  
-                          {
-                            console.log(userStory.task.items)
-                          }
-                          
-                          </>
-                      ))
-                    }
-                  </MDBTableBody>
-                </MDBTable>
-              </MDBRow>
+              
+                  
+                {userStoryJSX}
+              
             </MDBContainer>
           </>
 
@@ -241,22 +268,26 @@ const UserStories = () => {
 export default UserStories
 
 /*
-type UserStory
-@model
-{
-  id: ID!
-  user: String!
-  goal: String!
-  task: [TechTask] @connection(keyName: "techTasksPerUserStory", fields: ["id"]) 
-}
-
-type TechTask
-@key(name: "techTasksPerUserStory", fields: ["userStoryId"])
-@model
-{
-  id: ID!
-  createdBy: String!
-  type: String!
-  description: String!
-  userStoryId: ID!
+ <>
+                          <MDBTable>
+                            <MDBTableBody>
+                              <tr>
+                                <td className="align-middle"><h5>{index+1}.</h5></td>
+                                <td className="align-middle"><h5>{userStory.user}</h5></td>
+                                <td className="align-middle"><h5>{userStory.goal}</h5></td>
+                                <td className="align-middle">
+                                  <MDBCol>
+                                    <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
+                                    <MDBBtn className="btn-floating btn-sm warning-color" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="pencil-alt" /></MDBBtn>
+                                    <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(userStory.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
+                                  </MDBCol>
+                                </td>
+                              </tr>  
+                              </MDBTableBody>
+                          </MDBTable>
+                          {
+                            userStory.task.items.map((task)=>(console.log(task)))
+                          }
+                          
+                          </>
 } */
