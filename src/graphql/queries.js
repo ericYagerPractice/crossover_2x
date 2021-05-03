@@ -492,6 +492,7 @@ export const getUserStory = /* GraphQL */ `
           type
           description
           userStoryId
+          currentStatus
           createdAt
           updatedAt
         }
@@ -520,6 +521,7 @@ export const listUserStorys = /* GraphQL */ `
             type
             description
             userStoryId
+            currentStatus
             createdAt
             updatedAt
           }
@@ -540,6 +542,7 @@ export const getTechTask = /* GraphQL */ `
       type
       description
       userStoryId
+      currentStatus
       createdAt
       updatedAt
     }
@@ -558,6 +561,7 @@ export const listTechTasks = /* GraphQL */ `
         type
         description
         userStoryId
+        currentStatus
         createdAt
         updatedAt
       }

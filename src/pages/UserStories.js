@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react'
-import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem} from 'mdbreact';
+import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBFormInline} from 'mdbreact';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createUserStory, deleteUserStory, createTechTask } from '../graphql/mutations'
 import { listTechTasks } from '../graphql/queries'
@@ -11,6 +11,24 @@ const userStoryJSXInitialState = []
 const userStoryInputInitialState = {user: '', activity: '', action: ''}
 const techTaskInitialState = [{createdBy: '', type: '', description: '', userStoryId: ''}]
 const techTaskInputInitialState = {type: '', description: ''}
+
+class AdminStatus { 
+  async componentDidMount(){
+    const returnData = await Auth.currentAuthenticatedUser()
+    try{
+      return(returnData.signInUserSession.idToken.payload['cognito:groups'].includes('Admin'));
+    } catch{
+      return(false);
+    }
+    
+  }
+}
+
+
+
+
+
+
 
 
 const UserStories = () => {
@@ -27,6 +45,7 @@ const UserStories = () => {
   const [userStoryJSX, setUserStoryJSX] = useState(userStoryJSXInitialState)
     //Fetch all data, save in hooks on load
     useEffect(() => {
+        console.log(AdminStatus)
         fetchData()
     }, [])
 
@@ -61,10 +80,31 @@ const UserStories = () => {
                   {story.task.items.map((task)=>(
                       <MDBListGroupItem hover style={{ width: "40rem" }}>
                         <div className="d-flex w-100 justify-content-between">
-                          <h5 className="mb-1">{task.type} Task</h5>
+                          <h4 className="mb-1">{task.type} Task</h4>
                           <small>{task.createdBy}</small>
                         </div>
                         <p className="mb-1">{task.description}</p>
+                        <MDBFormInline className="justify-content-center">
+                          <MDBInput
+                            checked
+                            label='Requirements'
+                            type='checkbox'
+                            id='checkbox1'
+                            containerClass='mr-5'
+                          />
+                          <MDBInput
+                            label='Implementation'
+                            type='checkbox'
+                            id='checkbox2'
+                            containerClass='mr-5'
+                          />
+                          <MDBInput
+                            label='Complete'
+                            type='checkbox'
+                            id='checkbox3'
+                            containerClass='mr-5'
+                          />
+                        </MDBFormInline>
                       </MDBListGroupItem>
                   ))}
                 </MDBListGroup>
@@ -255,10 +295,7 @@ const UserStories = () => {
 
             <hr />
             <MDBContainer>
-              
-                  
-                {userStoryJSX}
-              
+              {userStoryJSX}
             </MDBContainer>
           </>
 

@@ -839,6 +839,7 @@ export const onCreateUserStory = /* GraphQL */ `
           type
           description
           userStoryId
+          currentStatus
           createdAt
           updatedAt
         }
@@ -862,6 +863,7 @@ export const onUpdateUserStory = /* GraphQL */ `
           type
           description
           userStoryId
+          currentStatus
           createdAt
           updatedAt
         }
@@ -885,6 +887,7 @@ export const onDeleteUserStory = /* GraphQL */ `
           type
           description
           userStoryId
+          currentStatus
           createdAt
           updatedAt
         }
@@ -903,6 +906,7 @@ export const onCreateTechTask = /* GraphQL */ `
       type
       description
       userStoryId
+      currentStatus
       createdAt
       updatedAt
     }
@@ -916,6 +920,7 @@ export const onUpdateTechTask = /* GraphQL */ `
       type
       description
       userStoryId
+      currentStatus
       createdAt
       updatedAt
     }
@@ -929,6 +934,7 @@ export const onDeleteTechTask = /* GraphQL */ `
       type
       description
       userStoryId
+      currentStatus
       createdAt
       updatedAt
     }
