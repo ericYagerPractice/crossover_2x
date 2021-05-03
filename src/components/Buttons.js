@@ -44,9 +44,9 @@ export class AccountButton extends Component{
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem header>  Account Options</MDBDropdownItem>
-          <MDBDropdownItem href="/Account"><GoShield color='red' /> Go to my account</MDBDropdownItem>
-          <MDBDropdownItem href="/Learning"><GoBook color='red' /> Go to my learning</MDBDropdownItem>
-          {this.state.admin &&(<MDBDropdownItem href="/Admin"  ><MDBIcon icon="tools" className='red-text' /> Go to my Admin Functions</MDBDropdownItem>)}
+          <MDBDropdownItem href="/Account"><h5><GoShield color='red' /> Go to my account</h5></MDBDropdownItem>
+          <MDBDropdownItem href="/Learning"><h5><GoBook color='red' /> Go to my learning</h5></MDBDropdownItem>
+          {this.state.admin &&(<MDBDropdownItem href="/Admin"  ><h5><MDBIcon icon="tools" className='red-text' /> Go to my Admin Functions</h5></MDBDropdownItem>)}
           <MDBDropdownItem divider />
           <div className="text-center"><SignOutButton /></div>
         </MDBDropdownMenu>
@@ -79,9 +79,9 @@ export class MyToolsButton extends Component{
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem header>
-              Account Tools
+              <h5>Account Tools</h5>
           </MDBDropdownItem>
-          {this.state.admin &&(<MDBDropdownItem href="/UserStories"><MDBIcon icon="question-circle" className="cyan-text"/> Go to User Stories</MDBDropdownItem>)}
+          {this.state.admin &&(<MDBDropdownItem href="/UserStories"><h5><MDBIcon icon="question-circle" className="cyan-text"/> Go to User Stories</h5></MDBDropdownItem>)}
           <MDBDropdownItem divider />
           <div className="text-center"><SignOutButton /></div>
         </MDBDropdownMenu>
