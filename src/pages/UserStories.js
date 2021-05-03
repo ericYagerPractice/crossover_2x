@@ -7,6 +7,7 @@ import { listUserStoriesWithTasks } from '../customGraphQL/queries'
 import { Auth, Hub } from 'aws-amplify';
 
 const userStoryInitialState = [{ user: '', goal: '', task: [''] }]
+const userStoryJSXInitialState = []
 const userStoryInputInitialState = {user: '', activity: '', action: ''}
 const techTaskInitialState = [{createdBy: '', type: '', description: '', userStoryId: ''}]
 const techTaskInputInitialState = {type: '', description: ''}
@@ -23,7 +24,7 @@ const UserStories = () => {
   const [isNewModalOpen, setNewModalOpen] = useState(false)
   const [isTechTaskModalOpen, setTechTaskModalOpen] = useState(false)
   const [storyUUID, setStoryUUID] = useState(null)
-
+  const [userStoryJSX, setUserStoryJSX] = useState(userStoryJSXInitialState)
     //Fetch all data, save in hooks on load
     useEffect(() => {
         fetchData()
@@ -39,7 +40,68 @@ const UserStories = () => {
 
     async function setUserStoryInitialData(){
       let userStoryData = await API.graphql(graphqlOperation(listUserStoriesWithTasks))
-      console.log(userStoryData)
+      let returnData = userStoryData.data.listUserStorys.items.map(story=>{
+        try{
+          return(
+            <>
+              <MDBRow className="ml-5">
+                <MDBCol size="3">
+                  <h5>{story.user}</h5>
+                </MDBCol>
+                <MDBCol size="6">
+                  <h5>{story.goal}</h5>
+                </MDBCol>
+                <MDBCol size="3">
+                  <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(story.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
+                  <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(story.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
+                </MDBCol>
+              </MDBRow>
+              <MDBRow className="justify-content-center">
+                <MDBListGroup>
+                  {story.task.items.map((task)=>(
+                      <MDBListGroupItem hover style={{ width: "40rem" }}>
+                        <div className="d-flex w-100 justify-content-between">
+                          <h5 className="mb-1">{task.type} Task</h5>
+                          <small>{task.createdBy}</small>
+                        </div>
+                        <p className="mb-1">{task.description}</p>
+                      </MDBListGroupItem>
+                  ))}
+                </MDBListGroup>
+              </MDBRow>
+            </>
+          )
+        }catch{
+          return(
+            <>
+              <MDBRow className="ml-5">
+                <MDBCol size="3">
+                  <h5>Not Found</h5>
+                </MDBCol>
+                <MDBCol size="6">
+                  <h5>Not Found</h5>
+                </MDBCol>
+                <MDBCol size="3">
+                  <MDBBtn className="btn-floating btn-sm btn-fb" disabled><MDBIcon icon="trash-alt" /></MDBBtn>
+                  <MDBBtn className="btn-floating btn-sm success-color" disabled><MDBIcon icon="plus-circle" /></MDBBtn>
+                </MDBCol>
+              </MDBRow>
+              <MDBRow className="justify-content-center">
+                <MDBListGroup>
+                      <MDBListGroupItem hover style={{ width: "40rem" }}>
+                        <div className="d-flex w-100 justify-content-between">
+                          <h5 className="mb-1">{task.type} Task</h5>
+                          <small>Not Found</small>
+                        </div>
+                        <p className="mb-1">Not Found</p>
+                      </MDBListGroupItem>
+                </MDBListGroup>
+              </MDBRow>
+            </>
+          )
+        }
+      })
+      setUserStoryJSX(returnData)
       setUserStories(userStoryData.data.listUserStorys.items)
     }
 
@@ -193,39 +255,9 @@ const UserStories = () => {
 
             <hr />
             <MDBContainer>
-              { 
-                  userStories.map((userStory, index)=>(
-                    <>
-                    <MDBRow className="ml-5">
-                      <MDBCol size="3">
-                        <h5>{userStory.user}</h5>
-                      </MDBCol>
-                      <MDBCol size="6">
-                        <h5>{userStory.goal}</h5>
-                      </MDBCol>
-                      <MDBCol size="3">
-                        <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
-                        <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(userStory.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="justify-content-center">
-                      <MDBListGroup>
-                        {userStory.task.items.map((task)=>(
-                            <MDBListGroupItem hover style={{ width: "40rem" }}>
-                              <div className="d-flex w-100 justify-content-between">
-                                <h5 className="mb-1">{task.type} Task</h5>
-                                <small>{task.createdBy}</small>
-                              </div>
-                              <p className="mb-1">{task.description}</p>
-                            </MDBListGroupItem>
-                        ))}
-                      </MDBListGroup>
-                    </MDBRow>
-                    </>
-                  ))
-              }
+              
                   
-                
+                {userStoryJSX}
               
             </MDBContainer>
           </>
