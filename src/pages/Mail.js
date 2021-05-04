@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { MDBCard, MDBCardBody, MDBRow, MDBCol, MDBListGroup, MDBListGroupItem, MDBAvatar, MDBBadge, MDBIcon, MDBBtn, MDBTypography} from "mdbreact";
-import NewMessageModal from '../components/C2XChat/NewMessageModal'
 import "./Messaging.css";
 
 class Mail extends Component {
@@ -88,7 +87,12 @@ return (
         </MDBTypography>
       </MDBCol>
       <MDBCol className="text-right">
-        <NewMessageModal />
+        
+
+
+
+
+        
       </MDBCol>
     </MDBRow>
     <MDBRow className="px-lg-2 px-2">

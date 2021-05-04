@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Login from './pages/Login'
 import Footer from './components/Footer';
 import { BrowserRouter as Router } from 'react-router-dom';
-import checkUser from './CheckAuth';
+import checkUser from './CheckUserStatus';
 import Routes from './Routes';
 import { MessageButton  } from './components/Buttons';
 import { reducer } from './Helper';

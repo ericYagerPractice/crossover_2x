@@ -11,7 +11,7 @@ import {
 import React, { useReducer, useEffect, useState } from 'react';
 import './Header.css';
 import c2xlogonav from '../staticfiles/c2xlogonav.png';
-import checkUser, {createOrUpdateUser} from '../CheckAuth';
+import checkUser, {createOrUpdateUser} from '../CheckUserStatus';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
 import { Auth, Hub } from 'aws-amplify';
