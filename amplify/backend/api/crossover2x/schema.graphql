@@ -79,5 +79,5 @@ type TechTask
   type: String!
   description: String!
   userStoryId: ID!
-  currentStatus: String!
+  currentStatus: String
 }

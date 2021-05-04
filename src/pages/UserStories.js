@@ -1,16 +1,15 @@
 import React, { useEffect, useState} from 'react'
 import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBFormInline} from 'mdbreact';
 import { API, graphqlOperation } from 'aws-amplify'
-import { createUserStory, deleteUserStory, createTechTask } from '../graphql/mutations'
+import { createUserStory, deleteUserStory, createTechTask, updateTechTask } from '../graphql/mutations'
 import { listTechTasks } from '../graphql/queries'
 import { listUserStoriesWithTasks } from '../customGraphQL/queries'
 import { Auth, Hub } from 'aws-amplify';
 
-const userStoryInitialState = [{ user: '', goal: '', task: [''] }]
 const userStoryJSXInitialState = []
 const userStoryInputInitialState = {user: '', activity: '', action: ''}
-const techTaskInitialState = [{createdBy: '', type: '', description: '', userStoryId: ''}]
 const techTaskInputInitialState = {type: '', description: ''}
+const userStoryInitialState = [{ user: '', goal: '', task: [''] }]
 
 class AdminStatus { 
   async componentDidMount(){
@@ -24,21 +23,10 @@ class AdminStatus {
   }
 }
 
-
-
-
-
-
-
-
 const UserStories = () => {
   const [userStoryFormState, setUserStoryFormState] = useState(userStoryInputInitialState)
-  const [userStories, setUserStories] = useState(userStoryInitialState)
-  const [techTasks, setTechTasks] = useState(techTaskInitialState)
   const [techTaskFormState, setTechTaskFormState] = useState(techTaskInputInitialState)
   const [userName, setUserName] = useState(null)
-  const [isEditing, setEditing] = useState({uuid:"", userStory:""})
-  const [isEditModalOpen, setEditModalOpen] = useState(false)
   const [isNewModalOpen, setNewModalOpen] = useState(false)
   const [isTechTaskModalOpen, setTechTaskModalOpen] = useState(false)
   const [storyUUID, setStoryUUID] = useState(null)
@@ -52,7 +40,6 @@ const UserStories = () => {
     async function fetchData() {
       try {
         await setUserStoryInitialData();
-        await setTechTaskInitialData();
         await setUserInitialData()
       } catch (err) { console.log('error fetching userStories: ', err) }
     }
@@ -76,8 +63,10 @@ const UserStories = () => {
                 </MDBCol>
               </MDBRow>
               <MDBRow className="justify-content-center">
-                <MDBListGroup>
-                  {story.task.items.map((task)=>(
+                
+                  {story.task.items.map((task, index)=>(
+                     
+                    <MDBListGroup>
                       <MDBListGroupItem hover style={{ width: "40rem" }}>
                         <div className="d-flex w-100 justify-content-between">
                           <h4 className="mb-1">{task.type} Task</h4>
@@ -85,29 +74,64 @@ const UserStories = () => {
                         </div>
                         <p className="mb-1">{task.description}</p>
                         <MDBFormInline className="justify-content-center">
-                          <MDBInput
-                            checked
-                            label='Requirements'
-                            type='checkbox'
-                            id='checkbox1'
-                            containerClass='mr-5'
-                          />
-                          <MDBInput
-                            label='Implementation'
-                            type='checkbox'
-                            id='checkbox2'
-                            containerClass='mr-5'
-                          />
-                          <MDBInput
-                            label='Complete'
-                            type='checkbox'
-                            id='checkbox3'
-                            containerClass='mr-5'
-                          />
+                        {task.currentStatus=='Requirements' ?
+                            <MDBInput
+                              checked
+                              label='Requirements'
+                              type='checkbox'
+                              containerClass='mr-5'
+                              id={'requirementsCheckbox'+index}
+                              onChange={()=>updateTechTaskStatus(task.id, '')}
+                            />
+                        :
+                            <MDBInput
+                              label='Requirements'
+                              type='checkbox'
+                              id={'requirementsCheckbox'+index}
+                              containerClass='mr-5'
+                              onChange={()=>updateTechTaskStatus(task.id, 'Requirements')}
+                            />
+                          }
+                          {task.currentStatus=='Implementation' ?
+                            <MDBInput
+                              checked
+                              label='Implementation'
+                              type='checkbox'
+                              id={'implementationCheckbox'+index}
+                              containerClass='mr-5'
+                              onChange={()=>updateTechTaskStatus(task.id, '')}
+                            />
+                          :
+                            <MDBInput
+                              label='Implementation'
+                              type='checkbox'
+                              id={'implementationCheckbox'+index}
+                              containerClass='mr-5'
+                              onChange={()=>updateTechTaskStatus(task.id, 'Implementation')}
+                            />
+                          }
+                          {task.currentStatus=='Complete' ?
+                            <MDBInput
+                              checked
+                              label='Complete'
+                              type='checkbox'
+                              id={'completeCheckbox'+index}
+                              containerClass='mr-5'
+                              onChange={()=>updateTechTaskStatus(task.id, '')}
+                            />
+                          :
+                            <MDBInput
+                              label='Complete'
+                              type='checkbox'
+                              id={'completeCheckbox'+index}
+                              containerClass='mr-5'
+                              onChange={()=>updateTechTaskStatus(task.id, 'Complete')}
+                            />
+                        }
                         </MDBFormInline>
                       </MDBListGroupItem>
+                    </MDBListGroup>
                   ))}
-                </MDBListGroup>
               </MDBRow>
             </>
           )
@@ -142,12 +166,6 @@ const UserStories = () => {
         }
       })
       setUserStoryJSX(returnData)
-      setUserStories(userStoryData.data.listUserStorys.items)
-    }
-
-    async function setTechTaskInitialData(){
-      let techTaskData = await API.graphql(graphqlOperation(listTechTasks))
-      setTechTasks(techTaskData.data.listTechTasks.items)
     }
 
     //Get listFaQs, set items to setFAQs
@@ -181,6 +199,7 @@ const UserStories = () => {
     }
 
 
+
     function setTechTaskInput(key, value) {
       setTechTaskFormState({...techTaskFormState,[key]: value })
     }
@@ -206,7 +225,6 @@ const UserStories = () => {
     async function addTechTask(){
       try {
         if (!techTaskFormState.type || !techTaskFormState.description){
-          console.log("this")
           return
         }
         await API.graphql(graphqlOperation(createTechTask, {
@@ -220,6 +238,20 @@ const UserStories = () => {
         setTechTaskModalOpen(false)
       } catch (err) {
         console.log('error creating tech task:', err)
+      }
+    }
+
+    async function updateTechTaskStatus(techId, updateValue){
+      try{
+        let task = await API.graphql(graphqlOperation(updateTechTask,{
+          input:{
+            id: techId,
+            currentStatus: updateValue
+          }
+        }))
+        task.then(location.reload())
+      } catch(err){
+        console.log('error updating tech task: ',err)
       }
     }
 

@@ -15,6 +15,7 @@
                     createdBy
                     type
                     description
+                    currentStatus
                 }
             }
         }
