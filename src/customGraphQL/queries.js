@@ -16,6 +16,8 @@
                     type
                     description
                     currentStatus
+                    createdAt
+                    updatedAt
                 }
             }
         }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react'
-import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBFormInline} from 'mdbreact';
+import { MDBContainer, MDBInputGroup, MDBInput, MDBIcon, MDBBtn, MDBTypography, MDBCol, MDBRow, MDBTable, MDBTableBody, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBListGroup, MDBListGroupItem, MDBFormInline, MDBBox } from 'mdbreact';
 import { API, graphqlOperation } from 'aws-amplify'
-import { createUserStory, deleteUserStory, createTechTask, updateTechTask } from '../graphql/mutations'
+import { createUserStory, deleteUserStory, createTechTask, updateTechTask, deleteTechTask } from '../graphql/mutations'
 import { listTechTasks } from '../graphql/queries'
 import { listUserStoriesWithTasks } from '../customGraphQL/queries'
 import { Auth, Hub } from 'aws-amplify';
@@ -9,7 +9,6 @@ import { Auth, Hub } from 'aws-amplify';
 const userStoryJSXInitialState = []
 const userStoryInputInitialState = {user: '', activity: '', action: ''}
 const techTaskInputInitialState = {type: '', description: ''}
-const userStoryInitialState = [{ user: '', goal: '', task: [''] }]
 
 class AdminStatus { 
   async componentDidMount(){
@@ -33,7 +32,6 @@ const UserStories = () => {
   const [userStoryJSX, setUserStoryJSX] = useState(userStoryJSXInitialState)
     //Fetch all data, save in hooks on load
     useEffect(() => {
-        console.log(AdminStatus)
         fetchData()
     }, [])
 
@@ -50,89 +48,123 @@ const UserStories = () => {
         try{
           return(
             <>
-              <MDBRow className="ml-5">
-                <MDBCol size="3">
-                  <h5>{story.user}</h5>
+            <MDBContainer className="border border-light">
+              <MDBRow className="justify-content-center mt-2">
+                <MDBCol>
+                  <MDBTypography blockquote>
+                    <MDBBox tag="p" mb={0}>
+                      <h5>{story.goal}</h5>
+                    </MDBBox>
+                    <MDBBox tag="footer" mb={3} className="blockquote-footer">{story.user}</MDBBox>
+                  </MDBTypography>
                 </MDBCol>
-                <MDBCol size="6">
-                  <h5>{story.goal}</h5>
-                </MDBCol>
+                
+              </MDBRow>
+              <MDBRow className="justify-content-center mb-2">
+                {story.task.items.map((task, index)=>(
+                  <MDBListGroup>
+                    <MDBListGroupItem hover style={{ width: "40rem" }}>
+                      <div className="d-flex w-100 justify-content-between">
+                        <h4 className="mb-1">{task.type} Task</h4>
+                        <small>{task.createdBy}</small>
+                      </div>
+                      <p className="mb-1">{task.description}</p>
+                      <MDBFormInline className="justify-content-center bg-light">
+                      {task.currentStatus=='Requirements' ?
+                          <MDBInput
+                            checked
+                            label='Requirements'
+                            type='checkbox'
+                            containerClass='mr-5'
+                            id={'requirementsCheckbox'+index}
+                            onChange={()=>updateTechTaskStatus(task.id, '')}
+                          />
+                      :
+                          <MDBInput
+                            label='Requirements'
+                            type='checkbox'
+                            id={'requirementsCheckbox'+index}
+                            containerClass='mr-5'
+                            onChange={()=>updateTechTaskStatus(task.id, 'Requirements')}
+                          />
+                        }
+                        {task.currentStatus=='Implementation' ?
+                          <MDBInput
+                            checked
+                            label='Implementation'
+                            type='checkbox'
+                            id={'implementationCheckbox'+index}
+                            containerClass='mr-5'
+                            onChange={()=>updateTechTaskStatus(task.id, '')}
+                          />
+                        :
+                          <MDBInput
+                            label='Implementation'
+                            type='checkbox'
+                            id={'implementationCheckbox'+index}
+                            containerClass='mr-5'
+                            onChange={()=>updateTechTaskStatus(task.id, 'Implementation')}
+                          />
+                        }
+                        {task.currentStatus=='Complete' ?
+                          <MDBInput
+                            checked
+                            label='Complete'
+                            type='checkbox'
+                            id={'completeCheckbox'+index}
+                            containerClass='mr-5'
+                            onChange={()=>updateTechTaskStatus(task.id, '')}
+                          />
+                        :
+                          <MDBInput
+                            label='Complete'
+                            type='checkbox'
+                            id={'completeCheckbox'+index}
+                            containerClass='mr-5'
+                            onChange={()=>updateTechTaskStatus(task.id, 'Complete')}
+                          />
+                      }
+                      </MDBFormInline>
+                      <div className="d-flex justify-content-center">
+                          <MDBBtn
+                            floating
+                            tag="a"
+                            onClick={()=>deleteSpecifiedTechTask(task.id)}
+                            size="sm"
+                            color="danger">
+                            <MDBIcon icon="trash" />
+                          </MDBBtn>
+                          <MDBBtn
+                            floating
+                            tag="a"
+                            href={'/UserStories/'+task.id}
+                            size="sm"
+                            color="success">
+                            <MDBIcon icon="info-circle" />
+                          </MDBBtn>
+                        </div>
+                        <hr />
+                        <div className="d-flex justify-content-between">
+                            <MDBCol>
+                              <MDBRow><MDBTypography tag='h6'><small><strong>Created: &nbsp;&nbsp;</strong> {calculateDays(task.createdAt)} day(s) ago </small></MDBTypography></MDBRow>
+                            </MDBCol>
+                            <MDBCol>
+                              <MDBRow><MDBTypography tag='h6'><small><strong>Last updated:&nbsp;&nbsp; </strong> {calculateDays(task.updatedAt)} day(s) ago</small></MDBTypography></MDBRow>
+                            </MDBCol>
+                        </div>
+                      </MDBListGroupItem>
+                    </MDBListGroup>
+                  ))}
+              </MDBRow>
+              <MDBRow fluid className="justify-content-end">
                 <MDBCol size="3">
                   <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(story.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
                   <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(story.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
                 </MDBCol>
               </MDBRow>
-              <MDBRow className="justify-content-center">
-                
-                  {story.task.items.map((task, index)=>(
-                     
-                    <MDBListGroup>
-                      <MDBListGroupItem hover style={{ width: "40rem" }}>
-                        <div className="d-flex w-100 justify-content-between">
-                          <h4 className="mb-1">{task.type} Task</h4>
-                          <small>{task.createdBy}</small>
-                        </div>
-                        <p className="mb-1">{task.description}</p>
-                        <MDBFormInline className="justify-content-center">
-                        {task.currentStatus=='Requirements' ?
-                            <MDBInput
-                              checked
-                              label='Requirements'
-                              type='checkbox'
-                              containerClass='mr-5'
-                              id={'requirementsCheckbox'+index}
-                              onChange={()=>updateTechTaskStatus(task.id, '')}
-                            />
-                        :
-                            <MDBInput
-                              label='Requirements'
-                              type='checkbox'
-                              id={'requirementsCheckbox'+index}
-                              containerClass='mr-5'
-                              onChange={()=>updateTechTaskStatus(task.id, 'Requirements')}
-                            />
-                          }
-                          {task.currentStatus=='Implementation' ?
-                            <MDBInput
-                              checked
-                              label='Implementation'
-                              type='checkbox'
-                              id={'implementationCheckbox'+index}
-                              containerClass='mr-5'
-                              onChange={()=>updateTechTaskStatus(task.id, '')}
-                            />
-                          :
-                            <MDBInput
-                              label='Implementation'
-                              type='checkbox'
-                              id={'implementationCheckbox'+index}
-                              containerClass='mr-5'
-                              onChange={()=>updateTechTaskStatus(task.id, 'Implementation')}
-                            />
-                          }
-                          {task.currentStatus=='Complete' ?
-                            <MDBInput
-                              checked
-                              label='Complete'
-                              type='checkbox'
-                              id={'completeCheckbox'+index}
-                              containerClass='mr-5'
-                              onChange={()=>updateTechTaskStatus(task.id, '')}
-                            />
-                          :
-                            <MDBInput
-                              label='Complete'
-                              type='checkbox'
-                              id={'completeCheckbox'+index}
-                              containerClass='mr-5'
-                              onChange={()=>updateTechTaskStatus(task.id, 'Complete')}
-                            />
-                        }
-                        </MDBFormInline>
-                      </MDBListGroupItem>
-                    </MDBListGroup>
-                  ))}
-              </MDBRow>
+
+              </MDBContainer>
+              <hr />
             </>
           )
         }catch{
@@ -168,7 +200,6 @@ const UserStories = () => {
       setUserStoryJSX(returnData)
     }
 
-    //Get listFaQs, set items to setFAQs
     async function setUserInitialData(){
         try{
             let hubUserName = " "
@@ -181,33 +212,20 @@ const UserStories = () => {
               console.log(error)
             }
             setUserName(hubUserName)
-            console.log(hubUserName)
         }catch(err){
             console.log("Error w/ username retrieval: ", err)
             setUserName(" ")
         }
     }
     
-    //Fetch data from each list function and save it to respective hooks
-    // eslint-disable-next-line
-
-    //Setters
-
-    //set faq form with key and values from rendered form on change
-    function setUserStoryInput(key, value) {
+     function setUserStoryInput(key, value) {
       setUserStoryFormState({...userStoryFormState,[key]: value })
     }
-
-
 
     function setTechTaskInput(key, value) {
       setTechTaskFormState({...techTaskFormState,[key]: value })
     }
-    //Add functions
-
-    //Add faq by pulling form state and setting it using hook function.  
-    //Reset the form state.  
-    //Call createFaq using the form state data and then re-fetch data
+    
     async function addUserStory() {
         try {
           if (!userStoryFormState.user || !userStoryFormState.activity || !userStoryFormState.action){
@@ -220,6 +238,24 @@ const UserStories = () => {
         } catch (err) {
           console.log('error creating user story:', err)
         }
+    }
+
+    async function deleteSpecifiedUserStory(deleteID){
+      try{
+          await API.graphql(graphqlOperation(deleteUserStory, {input: {id:deleteID}}))
+          .then(await fetchData())
+      } catch(error){
+          console.log("error deleting user story: ",error)
+      }
+    }
+
+    async function deleteSpecifiedTechTask(deleteID){
+      try{
+          await API.graphql(graphqlOperation(deleteTechTask, {input: {id:deleteID}}))
+          .then(await fetchData())
+      } catch(error){
+          console.log("error deleting tech task: ",error)
+      }
     }
 
     async function addTechTask(){
@@ -260,18 +296,16 @@ const UserStories = () => {
       setStoryUUID(storyUUID)
     }
 
-    async function deleteSpecifiedUserStory(deleteID){
-        try{
-            await API.graphql(graphqlOperation(deleteUserStory, {input: {id:deleteID}}))
-            .then(await fetchData())
-        } catch(error){
-            console.log("error deleting user story: ",error)
-        }
+    function calculateDays(inputDate){
+      let today = new Date()
+      let start = new Date(inputDate)
+      return(Math.round((today - start)/ (60*60*24*1000)))
     }
     
     //UI render
     return (
           <>
+            <MDBBtn style={{ bottom: "-20px", left: "50px" }} onClick={()=>setNewModalOpen(true)}>Add New Story</MDBBtn>
             <MDBModal isOpen={isTechTaskModalOpen} toggle={()=>setTechTaskModalOpen(false)} size="fluid"  >
               <MDBModalHeader toggle={()=>setTechTaskModalOpen(false)}>Create new tech task</MDBModalHeader>
               <MDBModalBody>
@@ -295,7 +329,6 @@ const UserStories = () => {
               </MDBModalFooter>
             </MDBModal>
 
-            <MDBBtn className="mt-3" onClick={()=>setNewModalOpen(true)}>Add New Story</MDBBtn>
             <MDBModal isOpen={isNewModalOpen} toggle={()=>setNewModalOpen(false)} size="fluid"  >
               <MDBModalHeader toggle={()=>setNewModalOpen(false)}>New User Story</MDBModalHeader>
               <MDBModalBody>
@@ -335,28 +368,3 @@ const UserStories = () => {
 }
 
 export default UserStories
-
-/*
- <>
-                          <MDBTable>
-                            <MDBTableBody>
-                              <tr>
-                                <td className="align-middle"><h5>{index+1}.</h5></td>
-                                <td className="align-middle"><h5>{userStory.user}</h5></td>
-                                <td className="align-middle"><h5>{userStory.goal}</h5></td>
-                                <td className="align-middle">
-                                  <MDBCol>
-                                    <MDBBtn className="btn-floating btn-sm btn-fb" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="trash-alt" /></MDBBtn>
-                                    <MDBBtn className="btn-floating btn-sm warning-color" onClick={()=>deleteSpecifiedUserStory(userStory.id)}><MDBIcon icon="pencil-alt" /></MDBBtn>
-                                    <MDBBtn className="btn-floating btn-sm success-color" onClick={()=>openTechTaskModal(userStory.id)}><MDBIcon icon="plus-circle" /></MDBBtn>
-                                  </MDBCol>
-                                </td>
-                              </tr>  
-                              </MDBTableBody>
-                          </MDBTable>
-                          {
-                            userStory.task.items.map((task)=>(console.log(task)))
-                          }
-                          
-                          </>
-} */

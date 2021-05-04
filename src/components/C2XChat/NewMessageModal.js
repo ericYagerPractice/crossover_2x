@@ -1,4 +1,4 @@
-
+/*
 import { returnUser, fetchUserEmails } from '../../CheckAuth';
 import React, { Component } from "react";
 import { MDBContainer, MDBSelect, MDBInput, MDBBtn, MDBIcon,MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter} from "mdbreact";
@@ -117,3 +117,4 @@ class NewMessageModal extends Component {
 }
 
 export default NewMessageModal;
+*/
