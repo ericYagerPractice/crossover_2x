@@ -20,6 +20,5 @@ const awsmobile = {
         }
     ]
 };
-
-
+/*comment*/
 export default awsmobile;

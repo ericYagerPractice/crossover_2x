@@ -15,7 +15,6 @@ import { withAuthenticator } from '@aws-amplify/ui-react'
 Amplify.configure(awsmobile);
 API.configure();
 
-
 const initialUserState = { user: null, loading: true }
 
 function App() {
