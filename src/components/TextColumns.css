@@ -1,0 +1,26 @@
+.text-columns {}
+
+.text-columns h2,
+.text-columns h3 {
+  font-weight: 600;
+  line-height: 1;
+  margin: 0 auto;
+}
+
+.text-columns h2 {
+  font-size: 46px;
+}
+
+.text-columns br {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .text-columns br {
+    display: block;
+  }
+}
+
+.text-columns p {
+	font-weight: 400;
+}
