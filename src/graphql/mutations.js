@@ -880,3 +880,135 @@ export const deleteUrlPatterns = /* GraphQL */ `
     }
   }
 `;
+export const createUserStory = /* GraphQL */ `
+  mutation CreateUserStory(
+    $input: CreateUserStoryInput!
+    $condition: ModelUserStoryConditionInput
+  ) {
+    createUserStory(input: $input, condition: $condition) {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          currentStatus
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUserStory = /* GraphQL */ `
+  mutation UpdateUserStory(
+    $input: UpdateUserStoryInput!
+    $condition: ModelUserStoryConditionInput
+  ) {
+    updateUserStory(input: $input, condition: $condition) {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          currentStatus
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUserStory = /* GraphQL */ `
+  mutation DeleteUserStory(
+    $input: DeleteUserStoryInput!
+    $condition: ModelUserStoryConditionInput
+  ) {
+    deleteUserStory(input: $input, condition: $condition) {
+      id
+      user
+      goal
+      task {
+        items {
+          id
+          createdBy
+          type
+          description
+          userStoryId
+          currentStatus
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTechTask = /* GraphQL */ `
+  mutation CreateTechTask(
+    $input: CreateTechTaskInput!
+    $condition: ModelTechTaskConditionInput
+  ) {
+    createTechTask(input: $input, condition: $condition) {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      currentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTechTask = /* GraphQL */ `
+  mutation UpdateTechTask(
+    $input: UpdateTechTaskInput!
+    $condition: ModelTechTaskConditionInput
+  ) {
+    updateTechTask(input: $input, condition: $condition) {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      currentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTechTask = /* GraphQL */ `
+  mutation DeleteTechTask(
+    $input: DeleteTechTaskInput!
+    $condition: ModelTechTaskConditionInput
+  ) {
+    deleteTechTask(input: $input, condition: $condition) {
+      id
+      createdBy
+      type
+      description
+      userStoryId
+      currentStatus
+      createdAt
+      updatedAt
+    }
+  }
+`;

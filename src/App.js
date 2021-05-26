@@ -4,40 +4,14 @@ import Header from './components/Header'
 import Login from './pages/Login'
 import Footer from './components/Footer';
 import { BrowserRouter as Router } from 'react-router-dom';
-import checkUser from './CheckAuth';
+import checkUser from './CheckUserStatus';
 import Routes from './Routes';
+import { MessageButton  } from './components/Buttons';
 import { reducer } from './Helper';
 import Amplify, { API,Hub } from 'aws-amplify'
 import awsmobile from './aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react'
 
-/*
-var urlsIn = awsmobile.oauth.redirectSignIn.split(",");
-var urlsOut = awsmobile.oauth.redirectSignOut.split(",");
-const oauth = awsmobile.oauth;
-var hasLocalhost  = (hostname) => Boolean(hostname.match(/localhost/) || hostname.match(/127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}/));
-var hasHostname   = (hostname) => Boolean(hostname.includes(window.location.hostname));
-var isLocalhost   = hasLocalhost(window.location.hostname);
-
-
-
-if (isLocalhost) {
-  urlsIn.forEach((url) =>   { if (hasLocalhost(url)) { 
-    oauth.redirectSignIn = url; }});
-  urlsOut.forEach((url) =>  { if (hasLocalhost(url)) { 
-    oauth.redirectSignOut = url; }});
-}
-else {
-  urlsIn.forEach((url) =>   { if (hasHostname(url)) { 
-    oauth.redirectSignIn = url; }});
-  urlsOut.forEach((url) =>  { if (hasHostname(url)) { 
-    oauth.redirectSignOut = url; }});
-}
-console.log("app.js: ", oauth);
-
-var configUpdate = awsmobile;
-configUpdate.oauth = oauth;
-*/
 Amplify.configure(awsmobile);
 API.configure();
 
@@ -83,9 +57,10 @@ function App() {
       <div style={styles.appContainer}>
         <Header updateFormState={updateFormState} />
         <main className="mainContent" style={styles.postHeader}>
-          <Routes />
+        <Routes />
         </main>
         <Footer />
+        <MessageButton /> 
       </div>
     </Router>
   )
@@ -100,5 +75,5 @@ const styles = {
   },
 }
 
-export default App
+export default withAuthenticator(App)
 

@@ -11,11 +11,11 @@ import {
 import React, { useReducer, useEffect, useState } from 'react';
 import './Header.css';
 import c2xlogonav from '../staticfiles/c2xlogonav.png';
-import checkUser, {createOrUpdateUser} from '../CheckAuth';
+import checkUser, {createOrUpdateUser} from '../CheckUserStatus';
 import LoginButtons from './Buttons';
 import { reducer } from '../Helper';
 import { Auth, Hub } from 'aws-amplify';
-import {AccountButton, MessageButton } from './Buttons';
+import {AccountButton, MyToolsButton } from './Buttons';
 import { checkHost } from '../Helper';
 
 
@@ -30,7 +30,6 @@ export default function Header() {
   async function onload(){
     const userData = await Auth.currentSession()
     .then(data=>{
-      console.log(data)
       //checkAdminStatus(data.idToken.payload['cognito:groups'].includes('Admin'));
       //createOrUpdateUser(data.idToken.payload.email);
       //API.graphql(graphqlOperation(createUser, {input: {email: data.idToken.payload.email, cognitoID: data.idToken.payload.identities[0].userId}}))
@@ -66,7 +65,7 @@ export default function Header() {
 
   return (
       <>
-        <MDBNavbar color='elegant-color' className='py-3 px-4 border-danger border-bottom border-top-0 border-left-0 border-right-0' dark expand='md' fixed='top' scrolling>
+        <MDBNavbar color='elegant-color' className='border-danger border-bottom border-top-0 border-left-0 border-right-0' dark expand='md' fixed='top' scrolling>
           <MDBNavbarBrand href='/' className='py-0 font-weight-bold mr-4'>
               <img
                   src={c2xlogonav}
@@ -123,8 +122,8 @@ export default function Header() {
               {
                 userState.user && userState.user.signInUserSession && (
                     <MDBContainer fluid>
+                        <MyToolsButton />
                         <AccountButton />
-                        <MessageButton />
                     </MDBContainer>
                 )
               }
