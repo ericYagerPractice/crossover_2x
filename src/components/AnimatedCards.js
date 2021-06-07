@@ -24,7 +24,7 @@ export default function AnimatedCards() {
               
           <MDBCol md='6' xl='3'>
             <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
+              <MDBCard cascade className='my-3 rounded-3'>
                 <img
                   className="d-block mx-auto my-4 card-icon"
                   src={cardIconC}
@@ -53,7 +53,7 @@ export default function AnimatedCards() {
 
           <MDBCol md='6' xl='3'>
             <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
+              <MDBCard cascade className='my-3'>
                 <img
                   className="d-block mx-auto my-4 card-icon"
                   src={cardIconP}
@@ -82,7 +82,7 @@ export default function AnimatedCards() {
 
           <MDBCol md='6' xl='3'>
             <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
+              <MDBCard cascade className='my-3 rounded-3'>
                  <img
                   className="d-block mx-auto my-4 card-icon"
                   src={cardIconT}
@@ -111,7 +111,7 @@ export default function AnimatedCards() {
 
           <MDBCol md='6' xl='3'>
             <MDBAnimation reveal type='fadeInLeft'>
-              <MDBCard cascade className='my-3 rounded-0'>
+              <MDBCard cascade className='my-3 rounded-3'>
                 <img
                   className="d-block mx-auto my-4 card-icon"
                   src={cardIconS}

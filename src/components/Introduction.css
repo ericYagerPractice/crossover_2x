@@ -1,0 +1,25 @@
+/* Introduction */
+.introduction h2 {
+	font-size: 46px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.introduction p {
+	font-weight: 400;
+	width: 90%;
+}
+
+@media (min-width: 992px) {
+	.introduction p {
+		font-size: 20px;
+		max-width: 850px;
+	}
+}
+
+.introduction button {
+	max-width: 400px;
+	width: 100%;
+}
+
+/* END Introduction */

@@ -1,0 +1,29 @@
+.customer-quote {
+  
+}
+
+.customer-quote--dark {
+  background: #000;
+}
+
+.customer-quote h2 {
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+@media (min-width: 992px) {
+  .customer-quote h2 {
+    font-size: 36px
+  }
+}
+
+.customer-quote p {
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+@media (min-width: 992px) {
+  .customer-quote p {
+    font-size: 20px;
+  }
+}

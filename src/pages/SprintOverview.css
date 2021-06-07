@@ -1,0 +1,47 @@
+.sprint-masthead h1, 
+.sprint-masthead h2, 
+.sprint-masthead h3,
+.sprint-quote h2 {
+  font-family: 'Domine', serif;
+  font-weight: 600;
+}
+
+.sprint-masthead h1 {
+  font-size: 70px;
+  line-height: 1.2;
+}
+
+.sprint-masthead h3 {
+  font-size: 34px;
+}
+
+.sprint-masthead button h4 {
+  line-height: 1;
+  margin: 0;
+}
+
+.sprint-masthead ul {
+  list-style: none;
+}
+
+.sprint-masthead ul li span {
+  font-weight: 600;
+}
+
+.sprint-masthead__col:first-of-type {
+  background: #e0f7fa;
+}
+
+.sprint-quote--dark {
+  background: #000;
+}
+
+.sprint-quote h2 {
+  font-size: 36px;
+  line-height: 1.4;
+}
+
+.sprint-quote p {
+  font-size: 20px;
+  line-height: 1.2;
+}

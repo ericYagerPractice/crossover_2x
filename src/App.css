@@ -2,59 +2,23 @@
 
 /* Type + Text */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;600&display=swap');
+
+/* Base/Global Styles */
+body {
+	background: #FFFFFF;
+}
 
 h1, h2, h3, h4, h5 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-p, li {
-	font-family: 'Open Sans', sans-serif;
+.title-font--primary {
+	font-family: 'Montserrat', sans-serif;
 }
 
-@media (min-width: 768px) {
-	.text--lg {
-		font-size: 20px;
-	}
-}
-
-.display-4.title-primary {
-	font-size: 3em;
-	line-height: 1.1;
-}
-
-@media (max-width: 576px) {
-	.display-4.title-primary {
-		font-size: 2.5em;
-	}
-
-	.carousel-item .display-4.title-primary {
-		font-size: 2.25em;
-	}
-}
-
-@media (max-width: 321px) {
-	.display-4.title-primary {
-		font-size: 2em;
-	}
-	
-	.carousel-item .display-4.title-primary {
-		font-size: 1.75em;
-	}
-}
-/* END Type + Text */
-
-/* Buttons */
-@media (min-width: 768px) {
-	.btn--lg {
-		max-width: 360px;
-	}
-}
-/* END Buttons & Colors */
-
-/* Base/Global Styles */
-body {
-	background: #FFFFFF;
+.title-font--secondary {
+	font-family: 'Domine', serif;
 }
 
 .navbar-brand img {
@@ -95,22 +59,6 @@ body {
 	background-image: url('./staticfiles/mastheads/lataviusJumbotron.jpg');
 }
 
-.jumbotron .col--interior {
-	min-height: 600px;
-	background-size: cover;
-	background-attachment: fixed; 
-	background-position: top center;
-	background-image: url('./staticfiles/mastheads/lataviusJumbotron.jpg');
-}
-
-@media (max-width: 992px) {
-	.jumbotron .col--interior {
-		min-height: 800px;
-		background-size: auto 100%;
-		background-position: 60% center;
-	}
-}
-
 .mainContent {
 	padding-bottom: 250px;
 }
@@ -140,6 +88,20 @@ body {
 .card-list a:hover {
 	color: #ff3547;
 }
+
+.context-card__title-interior span:first-of-type {
+	font-size: 14px;
+}
+
+.context-card__title-interior span:nth-of-type(2) {
+	font-size: 20px;
+}
+
+.context-card .card-list {
+	font-size: 16px;
+	font-weight: 600;
+}
+
 /* END Cards */
 
 /* Carousels */
@@ -196,6 +158,12 @@ body {
 	font-style: italic;
 	text-transform: uppercase;
 }
+
+.text-carousel__title {
+	font-size: 60px;
+	line-height: 1;
+}
+
 /* END Carousels */
 
 /* Course Info Page */
