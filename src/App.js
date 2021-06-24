@@ -21,6 +21,7 @@ const initialUserState = { user: null, loading: true }
 function App() {
   const [userState, dispatch] = useReducer(reducer, initialUserState)
   const [formState, updateFormState] = useState('base')
+  const [pageId] = useState(pageId)
 
   useEffect(() => {
     // set listener for auth events
@@ -53,6 +54,7 @@ function App() {
   }
 
   return (
+    
     <Router>
       <div style={styles.appContainer}>
         <Header updateFormState={updateFormState} />

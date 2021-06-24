@@ -3,7 +3,7 @@
     "awscloudformation"
   ],
   "projectName": "crossover2x",
-  "version": "3.1",
+  "version": "3.0",
   "frontend": "javascript",
   "javascript": {
     "framework": "react",

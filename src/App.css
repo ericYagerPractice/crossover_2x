@@ -68,42 +68,6 @@ h1, h2, h3, h4, h5 {
 }
 /* END Base/Global Styles */
 
-/* Cards */
-.card-title {
-	font-size: 1.25em;
-}
-.card-category {
-	letter-spacing: 1px;
-}
-.card-icon {
-	max-width: 80px;
-}
-.card-list {
-	font-size: 14px;
-	padding: 0 0 0 20px;
-}
-.card-list a {
-	color: #000;
-}
-.card-list a:hover {
-	color: #ff3547;
-}
-
-.context-card__title-interior span:first-of-type {
-	font-size: 14px;
-}
-
-.context-card__title-interior span:nth-of-type(2) {
-	font-size: 20px;
-}
-
-.context-card .card-list {
-	font-size: 16px;
-	font-weight: 600;
-}
-
-/* END Cards */
-
 /* Carousels */
 .carousel.carousel--home-intro .carousel-indicators {
 	margin: 0;

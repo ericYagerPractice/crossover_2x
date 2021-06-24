@@ -1,7 +1,7 @@
 /* Masthead */
 .masthead h1 {
 	font-size: 46px;
-	line-height: 1.2;
+	line-height: 1;
 	font-weight: 600;
 }
 
@@ -19,7 +19,6 @@
 	background-position: 60% center;
 	background-size: auto 100%;
 	min-height: 800px;
-	background-image: url('../staticfiles/mastheads/lataviusJumbotron.jpg');
 }
 
 @media (min-width: 992px) {
@@ -28,6 +27,10 @@
 		background-size: cover;
 		background-position: top center;
 	}
+}
+
+.masthead--home-page .jumbotron {
+	background-image: url('../staticfiles/mastheads/lataviusJumbotron.jpg');
 }
 
 /* END Masthead */

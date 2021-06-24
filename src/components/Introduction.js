@@ -41,8 +41,10 @@ class Introduction extends React.Component {
               </MDBCol>
             </MDBRow>
             <MDBSmoothScroll className='mt-4 mx-auto text-center' to="moreC2x">
-              <MDBBtn color="danger" className='mt-4 mx-auto'>
-                <h4 className='font-weight-bold'>More <MDBIcon icon="arrow-circle-down" /> </h4>
+              <MDBBtn color="danger" className='mt-1 pt-4 pb-3 w-100 btn--lg'>
+                <h4 className='h4-responsive font-weight-bold'>
+                  More <MDBIcon icon="arrow-circle-down" /> 
+                </h4>
               </MDBBtn>
             </MDBSmoothScroll>
           </MDBCol>
