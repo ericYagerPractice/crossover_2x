@@ -9,7 +9,6 @@ import Account from './pages/Account';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CourseOverview from './pages/CourseOverview';
 import SprintOverview from './pages/SprintOverview';
-//import Checkout from './pages/Checkout';
 import Admin from './pages/Admin';
 import Learning from './pages/Learning';
 import Mail from './pages/Mail';
@@ -30,7 +29,6 @@ class Routes extends React.Component {
         <Route exact path='/Privacy' component={PrivacyPolicy}/>
         <Route exact path='/CourseOverview' component={CourseOverview} />
         <Route exact path='/SprintOverview' component={SprintOverview} />
-        {/*<Route exact path='/Checkout' component={Checkout} />*/}
         <Route exact path='/Admin' component={Admin} />
         <Route exact path='/Learning' component={Learning} />
         <Route exact path='/Mail' component={Mail} />
