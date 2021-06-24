@@ -1,26 +1,14 @@
 /* Custom Theming */
 
-/* Type + Text */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;600&display=swap');
+h1, h2, h3, h4 {
+	font-weight: 600;
+}
+
+p {
+	font-weight: 400;
+}
 
 /* Base/Global Styles */
-body {
-	background: #FFFFFF;
-}
-
-h1, h2, h3, h4, h5 {
-	font-family: 'Montserrat', sans-serif;
-}
-
-.title-font--primary {
-	font-family: 'Montserrat', sans-serif;
-}
-
-.title-font--secondary {
-	font-family: 'Domine', serif;
-}
-
 .navbar-brand img {
 	max-width: 240px;
 	width: 100%;
@@ -66,19 +54,21 @@ h1, h2, h3, h4, h5 {
 #separator {
 	height: 150px;
 }
+
+.section-title {
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+@media (min-width: 768px) {
+	.section-title {font-size: 46px;}
+}
+
 /* END Base/Global Styles */
 
 /* Carousels */
-.carousel.carousel--home-intro .carousel-indicators {
-	margin: 0;
-	bottom: 5px;
-}
-
-.carousel.carousel--home-intro .carousel-indicators li {
-	width: 12px;
-	height: 12px;
-	margin: 0 4px;
-}
+.text-carousel h3 {line-height: 1;}
 
 .carousel.carousel--home-intro .carousel-control-prev,
 .carousel.carousel--home-intro .carousel-control-next {
@@ -105,7 +95,7 @@ h1, h2, h3, h4, h5 {
  	height: 50px;
  	position: absolute;
  	top: 50%;
-    transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .carousel.carousel--home-intro .carousel-control-prev-icon {
@@ -115,19 +105,6 @@ h1, h2, h3, h4, h5 {
 .carousel.carousel--home-intro .carousel-control-next-icon {
 	right: 0;
 }
-
-.card-text-carousel h3 {
-	font-size: 20px;
-	line-height: 1.2;
-	font-style: italic;
-	text-transform: uppercase;
-}
-
-.text-carousel__title {
-	font-size: 60px;
-	line-height: 1;
-}
-
 /* END Carousels */
 
 /* Course Info Page */

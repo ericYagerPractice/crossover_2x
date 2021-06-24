@@ -2,7 +2,6 @@ import React from 'react';
 import Masthead from '../components/Masthead';
 import Introduction from '../components/Introduction';
 import TextColumns from '../components/TextColumns';
-import CustomerQuote from '../components/CustomerQuote';
 import TextCarousel from '../components/TextCarousel';
 import ImageCarousel from '../components/ImageCarousel';
 import AnimatedCards from '../components/AnimatedCards';
@@ -46,9 +45,7 @@ class HomePage extends React.Component {
           <MDBRow>
             <MDBCol md='12' className='mt-4 px-4 mx-auto' id="introduction">
               <Introduction />
-              <div id='separator'></div>
               <TextColumns />
-              <CustomerQuote />
               <AnimatedCards />
               <MenuCards />
               <hr className="mt-5" />

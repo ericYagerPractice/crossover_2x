@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react'
 import { 
     MDBContainer,
     MDBCarousel,
@@ -7,55 +7,33 @@ import {
     MDBView
 } from 'mdbreact';
 
-class TextCarousel extends React.Component {
-  render() {
-    
-    return(
-        <>
-          <MDBContainer className='p-0 text-carousel'>
-            <MDBCarousel
-              activeItem={1}
-              length={4}
-              showControls={false}
-              showIndicators={false}
-              fade='true'
-              interval={1600}
-            >
-              <MDBCarouselInner>
-                <MDBCarouselItem itemId='1'>
-                  <MDBView>
-                    <p className='text-carousel__title text-uppercase font-weight-bold m-0'>
-                      Media
-                    </p>
-                  </MDBView>
-                </MDBCarouselItem>
-                <MDBCarouselItem itemId="2">
-                  <MDBView>
-                    <p className='text-carousel__title text-uppercase font-weight-bold m-0'>
-                      Strategy
-                    </p>
-                  </MDBView>
-                </MDBCarouselItem>
-                <MDBCarouselItem itemId="3">
-                  <MDBView>
-                    <p className='text-carousel__title text-uppercase font-weight-bold m-0'>
-                      Podcasting
-                    </p>
-                  </MDBView>
-                </MDBCarouselItem>
-                <MDBCarouselItem itemId="4">
-                  <MDBView>
-                    <p className='text-carousel__title text-uppercase font-weight-bold m-0'>
-                      Ted Talks
-                    </p>
-                  </MDBView>
-                </MDBCarouselItem>
-              </MDBCarouselInner>
-            </MDBCarousel>
-          </MDBContainer>
-        </>
-    )
-  }
+function TextCarousel(props) {
+  
+  return(
+    <MDBContainer className="p-0">
+      <MDBCarousel
+        activeItem={1}
+        length={props.items}
+        showControls={false}
+        showIndicators={false}
+        className="text-carousel"
+        fade="true"
+        interval={1600}
+      >
+        <MDBCarouselInner>
+          {props.titles.map((title, i) => (
+            <MDBCarouselItem itemId={i + 1} key={i}>
+              <MDBView>
+                <h3 className="animated-title m-0 d-flex justify-content-center align-items-center font-weight-bold px-5">
+                  {title}
+                </h3>
+              </MDBView>
+            </MDBCarouselItem>
+          ))}
+        </MDBCarouselInner>
+      </MDBCarousel>
+    </MDBContainer>
+  );
 }
 
 export default TextCarousel;

@@ -22,14 +22,14 @@ class Introduction extends React.Component {
     
     return(
       <>
-      <MDBContainer className='introduction w-100 mw-100' style={styles.appContainer}>
+      <MDBContainer className='introduction pt-5 w-100 mw-100' style={styles.appContainer}>
         <MDBRow>
           <MDBCol md='12' className='mx-auto'>
-            <h2 className='pt-5 text-center text-uppercase'>
+            <h2 className='section-title m-0 font-weight-bold text-center text-uppercase'>
               What is<br/> Crossover <span className="text-danger">2X</span>?
             </h2>
             <hr className="w-25 border-dark" />
-            <p className='text-center text--lg mt-3 mb-0 mx-auto'>
+            <p className='text-center mt-3 mb-0 mx-auto'>
               Crossover Project (CP) is an online & onsite educational platform created by serial entrepreneur & Professor Clay Crocker & Pro Bowl RB Latavius Murray to help high performing athletes repurpose their talents into the modern marketplace. We offer a range of services from 1:1 Coaching to hands-on Workshops & everything in between.
             </p>
             <p className='text-center mt-3 mb-0 mx-auto'>

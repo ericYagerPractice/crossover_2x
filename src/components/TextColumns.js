@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomerQuote from '../components/CustomerQuote';
 import { 
     MDBContainer,
     MDBRow,
@@ -20,17 +21,19 @@ class TextColumns extends React.Component {
     
     return(
       <>
-      <MDBContainer id='moreC2x' className='text-columns w-100 mw-100' style={styles.container}>
+      <MDBContainer id='moreC2x' className='text-columns pt-5 w-100 mw-100' style={styles.container}>
         <MDBRow>
           <MDBCol md='12' className='mx-auto'>
             <MDBRow>
-              <MDBCol md='8' className='mx-auto pt-5 px-4'>
-                <h2 className='text-center text-uppercase'>A Masterclass<br/> for Your Next Move</h2>
+              <MDBCol md='8' className='mx-auto px-4'>
+                <h2 className='section-title m-0 text-center text-uppercase display-5'>
+                  A Masterclass<br/> for Your Next Move
+                </h2>
               </MDBCol>
             </MDBRow>
             <MDBRow className='mt-4 mt-lg-5'>
               <MDBCol lg='4' className='text-center mx-auto'>
-                <i class="fas fa-podcast fa-4x"></i>
+                <i className="fas fa-podcast fa-4x"></i>
                 <h3 className='mt-3 text-center text-uppercase'>
                   Podcasting
                 </h3>
@@ -39,7 +42,7 @@ class TextColumns extends React.Component {
                 <p className="text-center px-3 mt-1">Now, Ship your Pilot Episode. <span className="text-danger">C2</span>P</p>
               </MDBCol>
               <MDBCol lg='4' className='text-center mx-auto'>
-                <i class="fas fa-microphone-alt fa-4x"></i>
+                <i className="fas fa-microphone-alt fa-4x"></i>
                 <h3 className='mt-3 text-center text-uppercase'>
                   Ted Talk
                 </h3>
@@ -48,7 +51,7 @@ class TextColumns extends React.Component {
                 <p className="text-center px-3 mt-1">Now, Write your damn Talk. <span className="text-danger">C2</span>T</p>
               </MDBCol>
               <MDBCol lg='4' className='text-center mx-auto'>
-                <i class="far fa-lightbulb fa-4x"></i>
+                <i className="far fa-lightbulb fa-4x"></i>
                 <h3 className='mt-3 text-center text-uppercase'>
                   Shark Tank
                 </h3>
@@ -56,6 +59,9 @@ class TextColumns extends React.Component {
                 <p className="text-center px-3">The Ultimate Idea to Action Sprint. Grab & Go from our Idea Menu or BYOI. Do an Anger Cleanse, Design your MVP. Vet 4Ps: Pain, Passion, Profit, Purpose. Elevate your Pitch w/ Shark Bracket 64.</p>
                 <p className="text-center px-3 mt-1">Now, Apply & Get to the Tank. <span className="text-danger">C2</span>ST</p>
               </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <CustomerQuote />  
             </MDBRow>
             <MDBRow>
               <MDBCol md='4' className='mx-auto'>

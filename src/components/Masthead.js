@@ -19,46 +19,48 @@ const FadeInDiv = styled.div`
 `;
 import './Masthead.css';
 
-class Masthead extends React.Component {
-  render() {
-    
-    const styles = {
-      container: {
-      },
-    }
-    
-    return(
-      <>
-      <MDBContainer className={'masthead masthead--' + (this.props.pageClass) + ' w-100 mw-100'}>
-        <MDBRow>
-          <MDBCol className='px-0'>
-            <MDBJumbotron fluid className='w-100 mw-100 p-0 m-0 d-flex align-items-end align-items-lg-center justify-content-start'>
-              <MDBCardBody className='py-4 text-center bg-white text-dark ml-lg-5'>
-                <FadeInDiv>
-                <h1 className='my-2 text-uppercase'>
+const animatedTitles = [
+  'Media',
+  'Strategy',
+  'Podcasting',
+  'Ted Talks',
+];
+
+function Masthead(props) {
+  return(
+    <>
+    <MDBContainer className={'masthead masthead--' + (props.pageClass) + ' w-100 mw-100'}>
+      <MDBRow>
+        <MDBCol className='px-0'>
+          <MDBJumbotron fluid className='w-100 mw-100 p-0 m-0 d-flex align-items-end align-items-lg-center justify-content-start'>
+            <MDBCardBody className='py-5 text-center bg-white text-dark ml-lg-5'>
+              <FadeInDiv>
+                <h1 className='h1-responsive m-0 text-uppercase display-5 font-weight-bold'>
                   Are You Ready To Level&nbsp;Up?
                 </h1>
-                </FadeInDiv>
-                <hr className="w-25 border-dark" />
-                <h2 className='h2-responsive text-uppercase mt-4 mb-0 font-weight-bold text-dark'>
-                  Crossover To
-                </h2>
-                <TextCarousel />
-                <MDBSmoothScroll to="introduction">
-                  <MDBBtn color="danger" className='mt-1 pt-4 pb-3 w-100 btn--lg'>
-                    <h4 className='h4-responsive font-weight-bold'>
-                      Learn More <MDBIcon icon="arrow-circle-down" /> 
-                    </h4>
-                  </MDBBtn>
-                </MDBSmoothScroll>
-              </MDBCardBody>
-            </MDBJumbotron>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-      </>
-    )
-  }
+              </FadeInDiv>
+              <hr className="w-25 border-dark" />
+              <h2 className='h2-responsive text-uppercase mt-4 mb-0 font-weight-bold text-dark'>
+                Crossover To
+              </h2>
+              <TextCarousel 
+                titles={animatedTitles}
+                items={animatedTitles.length} 
+              />
+              <MDBSmoothScroll to="introduction">
+                <MDBBtn color="danger" className='mt-1 py-4 w-100 btn--lg'>
+                  <h4 className='h4-responsive display-3 m-0 font-weight-bold'>
+                    Learn More <MDBIcon icon="arrow-circle-down" /> 
+                  </h4>
+                </MDBBtn>
+              </MDBSmoothScroll>
+            </MDBCardBody>
+          </MDBJumbotron>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+    </>
+  )
 }
 
 export default Masthead;

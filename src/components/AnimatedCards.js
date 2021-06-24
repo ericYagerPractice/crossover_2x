@@ -1,8 +1,5 @@
 import React from 'react';
-import CardTextCarousel from '../components/CardTextCarousel';
-import CardTextCarouselP from '../components/CardTextCarouselP';
-import CardTextCarouselT from '../components/CardTextCarouselT';
-import CardTextCarouselS from '../components/CardTextCarouselS';
+import TextCarousel from '../components/TextCarousel';
 import {
   MDBContainer,
   MDBRow,
@@ -20,15 +17,75 @@ import cardIconP from '../staticfiles/icons/card-icon--p.png';
 import cardIconT from '../staticfiles/icons/card-icon--t.png';
 import cardIconS from '../staticfiles/icons/card-icon--s.png';
 
-export default function AnimatedCards() { 
+import './AnimatedCards.css';
+
+const cCardTitles = [
+  'C2X Menu',
+  'Check Points',
+  'Course Module',
+  'Champion Of X',
+  'Curated Bundles',
+  'Channel On Slack',
+  'Context Cards',
+  'Choose Content',
+  'Crossover X, 2X, 4X',
+  'Content Funnel',
+  'Cohort Selection',
+];
+
+const pCardTitles = [
+  'Pod Portal',
+  'Pivot Points',
+  'Program Activation',
+  'Plan of Attack',
+  'Priming The Pump',
+  'Process in Workflowy',
+  'Points of Emphasis',
+  'Perform On Demand',
+  'Passion Filtering',
+  'Program Ramp Up',
+];
+
+const tCardTitles = [
+  'Zoom Training',
+  'Touch Points',
+  'Technical Application',
+  'Train & Track',
+  'Trending Topics',
+  'Tool Lens',
+  'Toolsets In Focus',
+  'Tap Ur Talent',
+  'Topics In Focus',
+  'Hot Topics',
+  'Upskill Testing',
+];
+
+const sCardTitles = [
+  'Skill Deliverable',
+  'Style Points',
+  'Simulated Activity',
+  'Ship or Simulate',
+  'Storyboard Exercises',
+  'Skill RAMP',
+  'Skillsets In Focus',
+  'Showcase Ur Skills',
+  'Scenario In Focus',
+  'Situation Room',
+  'Level Up Scenario',
+];
+
+function AnimatedCards(props) {
   return(
     <>
-    <MDBContainer id='categories' className='text-columns w-100 mw-100 mt-5'>
+    <MDBContainer id='categories' className='animated-cards w-100 mw-100 pt-5'>
       <MDBRow>
         <MDBCol md='12' className='mx-auto'>
+          
           <MDBRow>
-            <MDBCol md='8' className='mx-auto pt-5 px-4'>
-              <h2 className='text-center text-uppercase'>C<span className="text-danger">2X</span><br/> Content Experience<br/> Framework (CXF)</h2>
+            <MDBCol md='8' className='mx-auto px-4'>
+              <h2 className='section-title m-0 text-center text-uppercase'>
+                C<span className="text-danger">2X</span><br/> Content Experience<br/> Framework (CXF)
+              </h2>
             </MDBCol>
           </MDBRow>
           
@@ -43,7 +100,10 @@ export default function AnimatedCards() {
                   />
                   <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                     <MDBCardTitle>
-                      <CardTextCarousel />
+                      <TextCarousel 
+                        titles={cCardTitles} 
+                        items={cCardTitles.length} 
+                      />
                     </MDBCardTitle>
                     <hr className="w-25 mt-1 border-white"/>
                     <MDBCardText className='text-white'>
@@ -71,7 +131,10 @@ export default function AnimatedCards() {
                   />
                   <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                     <MDBCardTitle>
-                      <CardTextCarouselP />
+                      <TextCarousel 
+                        titles={pCardTitles} 
+                        items={pCardTitles.length} 
+                      />
                     </MDBCardTitle>
                     <hr className="w-25 mt-1 border-white"/>
                     <MDBCardText className='text-white'>
@@ -100,7 +163,10 @@ export default function AnimatedCards() {
                   />
                   <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                     <MDBCardTitle>
-                      <CardTextCarouselT />
+                      <TextCarousel 
+                        titles={tCardTitles} 
+                        items={tCardTitles.length} 
+                      />
                     </MDBCardTitle>
                     <hr className="w-25 mt-1 border-white"/>
                     <MDBCardText className='text-white'>
@@ -129,7 +195,10 @@ export default function AnimatedCards() {
                   />
                   <MDBCardBody cascade className='elegant-color px-2 text-center white-text'>
                     <MDBCardTitle>
-                      <CardTextCarouselS />
+                      <TextCarousel 
+                        titles={sCardTitles} 
+                        items={sCardTitles.length} 
+                      />
                     </MDBCardTitle>
                     <hr className="w-25 mt-1 border-white"/>
                     <MDBCardText className='text-white'>
@@ -153,3 +222,4 @@ export default function AnimatedCards() {
     </>
   )
 }
+export default AnimatedCards;
