@@ -38,54 +38,24 @@ class HomePage extends React.Component {
   }
 
   render() {
+    
     return (
       <>
-        <Masthead />
-        
-          <MDBContainer className='main-container'>
-            <MDBRow>
-              <MDBCol md='12' className='mt-4 px-4 mx-auto' id="introduction">
-                
-                <Introduction />
-                <div id="separator"></div>
-                <TextColumns />
-                <CustomerQuote />
-                
-                <MDBRow id='categories'>
-                  <MDBCol md='12' className='mx-auto'>
-                    <h2 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
-                      C<span className="text-danger">2X</span><br/> Content Experience<br/> Framework (CXF)
-                    </h2>
-                    <hr className="w-25 border-dark" />
-                  </MDBCol>
-                </MDBRow>
-
-                <MDBRow>
-                  <AnimatedCards />
-                </MDBRow>
-
-                <MDBRow>
-                  <MDBCol md='12' className='mx-auto'>
-                    <h3 className='pt-5 text-center text-uppercase font-weight-bold display-4 title-primary'>
-                      C<span className="text-danger">2X</span><br/> Atomic Offerings
-                    </h3>
-                    <hr className="w-25 border-dark" />
-                  </MDBCol>
-                </MDBRow>
-
-                <MDBRow>
-                  <MenuCards />
-                </MDBRow>
-                
-                <hr />
-                
-                <MDBRow>
-                  <OfferingCards />
-                </MDBRow>
-              
-              </MDBCol>
-            </MDBRow>
-          </MDBContainer>
+        <Masthead pageClass='home-page' />
+        <MDBContainer className='main-container main-container--home'>
+          <MDBRow>
+            <MDBCol md='12' className='mt-4 px-4 mx-auto' id="introduction">
+              <Introduction />
+              <div id='separator'></div>
+              <TextColumns />
+              <CustomerQuote />
+              <AnimatedCards />
+              <MenuCards />
+              <hr className="mt-5" />
+              <OfferingCards />
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       </>
     );
   }

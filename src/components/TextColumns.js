@@ -20,8 +20,8 @@ class TextColumns extends React.Component {
     
     return(
       <>
-      <MDBContainer className='text-columns w-100 mw-100' style={styles.container}>
-        <MDBRow id='moreC2x'>
+      <MDBContainer id='moreC2x' className='text-columns w-100 mw-100' style={styles.container}>
+        <MDBRow>
           <MDBCol md='12' className='mx-auto'>
             <MDBRow>
               <MDBCol md='8' className='mx-auto pt-5 px-4'>
@@ -60,8 +60,10 @@ class TextColumns extends React.Component {
             <MDBRow>
               <MDBCol md='4' className='mx-auto'>
                 <MDBSmoothScroll className='mt-4 mx-auto text-center' to="categories">
-                  <MDBBtn color="danger" className='w-100 pt-4 pb-3 mx-auto btn--lg'>
-                    <h4 className='font-weight-bold'>Our Process <MDBIcon icon="arrow-circle-down" /> </h4>
+                  <MDBBtn color="danger" className='mt-1 pt-4 pb-3 w-100 btn--lg' to="categories">
+                    <h4 className='h4-responsive font-weight-bold'>
+                      Our Process <MDBIcon icon="arrow-circle-down" /> 
+                    </h4>
                   </MDBBtn>
                 </MDBSmoothScroll>
               </MDBCol>

@@ -10,15 +10,9 @@ import {
 class TextCarousel extends React.Component {
   render() {
     
-    const styles = {
-      container: {
-        color: '#00e5ff',
-      }
-    }
-    
     return(
         <>
-          <MDBContainer className='p-0 text-carousel' style={styles.container}>
+          <MDBContainer className='p-0 text-carousel'>
             <MDBCarousel
               activeItem={1}
               length={4}

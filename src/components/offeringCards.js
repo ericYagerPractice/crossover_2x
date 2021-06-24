@@ -56,6 +56,7 @@ function OfferingCards() {
     return (<></>)/*
       
         <MDBContainer>
+          <MDBRow>
           {console.log(offerings)}
           {
             offerings.map((offering, index) => (
@@ -91,6 +92,7 @@ function OfferingCards() {
               </MDBCol>
             ))
           }
+          </MDBRow>
         </MDBContainer>
     ) */
 }

@@ -23,57 +23,57 @@ export default function CardTextCarouselT() {
               <MDBCarouselInner>
                 <MDBCarouselItem itemId="1">
                   <MDBView>
-                    <h3>Zoom<br /> Training</h3>
+                    <h3 className="font-weight-bold">Zoom<br /> Training</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="2">
                   <MDBView>
-                    <h3>Touch<br /> Points</h3>
+                    <h3 className="font-weight-bold">Touch<br /> Points</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="3">
                   <MDBView>
-                    <h3>Technical<br /> Application</h3>
+                    <h3 className="font-weight-bold">Technical<br /> Application</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="4">
                   <MDBView>
-                    <h3>Train &<br /> Track</h3>
+                    <h3 className="font-weight-bold">Train &<br /> Track</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="5">
                   <MDBView>
-                    <h3>Trending<br />Topics</h3>
+                    <h3 className="font-weight-bold">Trending<br />Topics</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="6">
                   <MDBView>
-                    <h3>Tool<br /> Lens</h3>
+                    <h3 className="font-weight-bold">Tool<br /> Lens</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="7">
                   <MDBView>
-                    <h3>Toolsets<br /> In Focus</h3>
+                    <h3 className="font-weight-bold">Toolsets<br /> In Focus</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="8">
                   <MDBView>
-                    <h3>Tap Ur<br /> Talent</h3>
+                    <h3 className="font-weight-bold">Tap Ur<br /> Talent</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="9">
                   <MDBView>
-                    <h3>Topics<br /> In Focus</h3>
+                    <h3 className="font-weight-bold">Topics<br /> In Focus</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="10">
                   <MDBView>
-                    <h3>Hot<br /> Topics</h3>
+                    <h3 className="font-weight-bold">Hot<br /> Topics</h3>
                   </MDBView>
                 </MDBCarouselItem>
                 <MDBCarouselItem itemId="11">
                   <MDBView>
-                    <h3>Upskill<br /> Testing</h3>
+                    <h3 className="font-weight-bold">Upskill<br /> Testing</h3>
                   </MDBView>
                 </MDBCarouselItem>
               </MDBCarouselInner>

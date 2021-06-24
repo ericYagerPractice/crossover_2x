@@ -29,7 +29,7 @@ class Masthead extends React.Component {
     
     return(
       <>
-      <MDBContainer className='masthead w-100 mw-100'>
+      <MDBContainer className={'masthead masthead--' + (this.props.pageClass) + ' w-100 mw-100'}>
         <MDBRow>
           <MDBCol className='px-0'>
             <MDBJumbotron fluid className='w-100 mw-100 p-0 m-0 d-flex align-items-end align-items-lg-center justify-content-start'>
