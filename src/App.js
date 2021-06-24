@@ -77,5 +77,5 @@ const styles = {
   },
 }
 
-export default withAuthenticator(App)
+export default App
 
