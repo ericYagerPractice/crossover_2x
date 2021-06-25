@@ -24,7 +24,7 @@ const menuCardInfo = [
     title: 'Pick ur Channel',
     links: [
       {text: 'Habit Channel', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Sleep Channel', url: '/CourseOverview', icon: 'square-full'},
+      {text: 'Sleep Channel', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
       {text: 'Creative Channel', url: '/CourseOverview', icon: 'circle'},
     ],
     ctaUrl: '/CourseOverview',
@@ -35,7 +35,7 @@ const menuCardInfo = [
     title: 'Rise & Fall of',
     links: [
       {text: 'MoviePass', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'WeWork', url: '/CourseOverview', icon: 'square-full'},
+      {text: 'WeWork', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
       {text: 'Theranos', url: '/CourseOverview', icon: 'circle'},
     ],
     ctaUrl: '/CourseOverview',
@@ -46,7 +46,7 @@ const menuCardInfo = [
     title: 'Channel ur Efforts',
     links: [
       {text: 'Habit Challenge', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Sleep Challenge', url: '/CourseOverview', icon: 'square-full'},
+      {text: 'Sleep Challenge', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
       {text: 'Creative Challenge', url: '/CourseOverview', icon: 'circle'},
     ],
     ctaUrl: '/CourseOverview',
@@ -57,7 +57,7 @@ const menuCardInfo = [
     title: 'World-Beaters At X',
     links: [
       {text: 'Msft CEO S. Nadella', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Amzn CEO J. Bezos', url: '/CourseOverview', icon: 'square-full'},
+      {text: 'Amzn CEO J. Bezos', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
       {text: 'Showrunner S. Rimes', url: '/CourseOverview', icon: 'circle'},
     ],
     ctaUrl: '/CourseOverview',
@@ -68,7 +68,7 @@ const menuCardInfo = [
     title: 'Channel_T',
     links: [
       {text: 'Trending', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Technical', url: '/CourseOverview', icon: 'square-full'},
+      {text: 'Technical', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
       {text: 'Toolset', url: '/CourseOverview', icon: 'circle'},
     ],
     ctaUrl: '/CourseOverview',
@@ -79,7 +79,7 @@ const menuCardInfo = [
     title: 'Pod Process',
     links: [
       {text: 'Infusion', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Implement', url: '/CourseOverview', icon: 'square-full'},
+      {text: 'Implement', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
       {text: 'Iteration', url: '/CourseOverview', icon: 'circle'},
     ],
     ctaUrl: '/CourseOverview',
@@ -104,11 +104,11 @@ const menuCards = menuCardInfo.map((item, i) => {
               {item.title}
             </MDBCardTitle>
             <hr className="w-25 mt-2 ml-auto ml-sm-0 mr-auto text-left border-danger" />
-            <ul className="card-list mt-2 p-0">
-            {item.links.map((el, i) => (
-              <li key={i}>
-                <MDBIcon className="mr-2" icon={el.icon} />
-                <a href={el.url}>{el.text}</a>
+            <ul className="card-list mt-2 p-0 mx-auto">
+            {item.links.map((item, i) => (
+              <li key={i} className={item.rotateIcon === true ? 'rotate-icon' : null}>
+                <MDBIcon className="mr-2" icon={item.icon} />
+                <a href={item.url}>{item.text}</a>
               </li>
             ))}
             </ul>
@@ -141,6 +141,12 @@ function MenuCards() {
 
           <MDBRow className="mt-3">
             {menuCards}
+          </MDBRow>
+
+          <MDBRow className="mt-5">
+            <MDBCol>
+              <hr className="pt-5" />
+            </MDBCol>
           </MDBRow>
         </MDBCol>
       </MDBRow>

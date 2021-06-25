@@ -18,11 +18,11 @@ function CustomerQuote(props) {
         <MDBCol className="p-0 text-center text-white d-flex align-items-center justify-content-center flex-column">
           <h2>
             <MDBIcon icon="quote-left mr-2"/> 
-            C2X was an amazing learning experience and really helped me level up my skill set.
+            {props.quoteText}
             <MDBIcon icon="quote-right ml-2" fontSize="small" />
           </h2>
           <p className="font-weight-normal">
-            - Jim Davis, VP of Sales.
+            - {props.quoteAuthor}.
           </p>
         </MDBCol>
       </MDBRow>

@@ -66,7 +66,10 @@ function TextColumns(props) {
             {textColumns}
           </MDBRow>
           <MDBRow>
-            <CustomerQuote />  
+            <CustomerQuote
+              quoteText={props.quoteText}
+              quoteAuthor={props.quoteAuthor}
+            />  
           </MDBRow>
           <MDBRow>
             <MDBCol md="4" className="mx-auto">

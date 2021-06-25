@@ -31,9 +31,10 @@ const introTextP1 = 'Crossover Project (CP) is an online & onsite educational pl
 
 const introTextP2 = 'Our patented CP-360X method is a cutting edge approach to learning, offering maximum flexibility & optionality, and with a lot of meat on the bone. We inspire clients to be proactive in planning for life after ball.';
 
-const customerQuote = 'C2X was an amazing learning experience and really helped me level up my skill set.';
+const quoteText = 'C2X was an amazing learning experience and really helped me level up my skill set.';
+const quoteAuthor = 'Jim Davis, VP of Sales';
 
-//this is home
+
 function HomePage() {
   return (
     <>
@@ -42,11 +43,13 @@ function HomePage() {
         p1={introTextP1}
         p2={introTextP2}
       />
-      <TextColumns />
+      <TextColumns
+        quoteText={quoteText}
+        quoteAuthor={quoteAuthor}
+      />
       <AnimatedCards />
       <MenuCards />
       <OfferingCards />
-      <hr className="mt-5" />
     </>
   );
 }

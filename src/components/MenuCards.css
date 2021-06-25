@@ -18,3 +18,7 @@
 .menu-cards ul {
   list-style: none;
 }
+
+.menu-cards li.rotate-icon i {
+  transform: rotate(45deg);
+}

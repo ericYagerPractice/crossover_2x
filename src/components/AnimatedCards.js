@@ -19,7 +19,7 @@ import cardIconS from '../staticfiles/icons/card-icon--s.png';
 
 import './AnimatedCards.css';
 
-const animatedCardInfo = [
+const animatedCardData = [
   { 
     icon: cardIconC,
     animatedTitles: [
@@ -92,7 +92,7 @@ const animatedCardInfo = [
   }
 ];
 
-const animatedCards = animatedCardInfo.map((item, i) => {
+const animatedCards = animatedCardData.map((item, i) => {
   return(
     <MDBCol key={i} md="6" xl="3">
       <MDBAnimation reveal type="fadeInLeft">
