@@ -1,23 +1,24 @@
-.card-title {
-  font-size: 1.25em;
-}
-
-.card-category {
-  letter-spacing: 1px;
-}
-
-.card-icon {
+.menu-cards .card-icon {
   max-width: 80px;
 }
 
-.card-list {
-  padding: 0 0 0 20px;
+.menu-cards .card-list li a {
+  color: #000000;
 }
 
-.card-list a {
-  color: #000;
+.menu-cards .card-list li a:hover {
+  color: #FF3547;
 }
 
-.card-list a:hover {
-  color: #ff3547;
+.menu-cards .card-body .card-text {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.menu-cards ul {
+  list-style: none;
+}
+
+.menu-cards li.rotate-icon i {
+  transform: rotate(45deg);
 }

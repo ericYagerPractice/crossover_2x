@@ -1,160 +1,111 @@
 /* Custom Theming */
 
-/* Type + Text */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;600&display=swap');
-
 /* Base/Global Styles */
-body {
-	background: #FFFFFF;
+h1, h2, h3, h4 {
+  font-weight: 600;
 }
 
-h1, h2, h3, h4, h5 {
-	font-family: 'Montserrat', sans-serif;
+p, li {
+  font-weight: 400;
 }
 
-.title-font--primary {
-	font-family: 'Montserrat', sans-serif;
-}
+.mainContent {padding: 60px 0 100px;}
 
-.title-font--secondary {
-	font-family: 'Domine', serif;
+@media (min-width: 768px) {
+  .mainContent {padding: 90px 0;}
 }
 
 .navbar-brand img {
-	max-width: 240px;
-	width: 100%;
-}
-
-.sectionPage {
-  position: relative;
-  top: -15px;
-  margin-bottom: -125px;
-  min-height: 450px;
-}
-
-@media (min-width: 768px) {
-  .sectionPage {
-    min-height: 500px;
-  }
-}
-
-@media (min-width: 1380px) {
-  .sectionPage {
-    min-height: 600px;
-  }
-}
-
-.sectionPage::after {
-  content: '';
-  height: 140%;
+  max-width: 240px;
   width: 100%;
-  position: absolute;
-  background-position: top center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 .sectionPage--about::after {
-	background-image: url('./staticfiles/mastheads/lataviusJumbotron.jpg');
+  background-image: url('./staticfiles/mastheads/lataviusJumbotron.jpg');
 }
 
-.mainContent {
-	padding-bottom: 250px;
+.section-scroll-button button {
+  font-size: 24px;
+  line-height: 1;
 }
 
-#separator {
-	height: 150px;
+.section-title {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
 }
+
+@media (min-width: 768px) {
+  .section-title {font-size: 46px;}
+}
+
 /* END Base/Global Styles */
 
 /* Carousels */
-.carousel.carousel--home-intro .carousel-indicators {
-	margin: 0;
-	bottom: 5px;
-}
-
-.carousel.carousel--home-intro .carousel-indicators li {
-	width: 12px;
-	height: 12px;
-	margin: 0 4px;
-}
+.text-carousel h3 {line-height: 1;}
 
 .carousel.carousel--home-intro .carousel-control-prev,
 .carousel.carousel--home-intro .carousel-control-next {
-	background-size: cover;
-	position: absolute;
-	bottom: 0;
-	height: 50px;
-	top: auto;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  top: auto;
 }
 
 .carousel.carousel--home-intro .carousel-control-prev {
-	left: 20%;
-	right: auto;
+  left: 20%;
+  right: auto;
 }
 
 .carousel.carousel--home-intro .carousel-control-next {
-	right: 20%;
-	left: auto;
+  right: 20%;
+  left: auto;
 }
 
 .carousel.carousel--home-intro .carousel-control-prev-icon, 
 .carousel.carousel--home-intro .carousel-control-next-icon {
- 	width: 50px;
- 	height: 50px;
- 	position: absolute;
- 	top: 50%;
-    transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .carousel.carousel--home-intro .carousel-control-prev-icon {
-	left: 0;
+  left: 0;
 }
 
 .carousel.carousel--home-intro .carousel-control-next-icon {
-	right: 0;
+  right: 0;
 }
-
-.card-text-carousel h3 {
-	font-size: 20px;
-	line-height: 1.2;
-	font-style: italic;
-	text-transform: uppercase;
-}
-
-.text-carousel__title {
-	font-size: 60px;
-	line-height: 1;
-}
-
 /* END Carousels */
 
 /* Course Info Page */
 .course-info-intro {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 @media (min-width: 1200px) {
-	.course-info-intro {
-		max-width: 75%;
-	}
+  .course-info-intro {
+    max-width: 75%;
+  }
 }
 
 .course-info-intro .col:first-of-type {
-	background-color: #F8F8F8;
+  background-color: #F8F8F8;
 }
 
 .course-info-intro-list {
-	margin: 0;
-	font-size: 18px;
-	padding-left: 20px;
+  margin: 0;
+  font-size: 18px;
+  padding-left: 20px;
 }
 
 .course-info-intro-list:first-of-type {
-	list-style: none;
-	padding: 0;
-	margin: 20px 0 0;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
 }
 
 

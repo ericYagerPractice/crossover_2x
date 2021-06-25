@@ -1,36 +1,31 @@
 /* Masthead */
-.masthead h1 {
-	font-size: 46px;
-	line-height: 1;
-	font-weight: 600;
+
+.masthead--home-page .text-carousel h3 {font-size: 30px; padding-bottom: 10px;}
+
+@media (min-width: 321px) {
+  .masthead--home-page .text-carousel h3 {font-size: 42px;}
 }
 
-.masthead h2 {
-	font-size: 28px;
+@media (min-width: 768px) {
+  .masthead--home-page .text-carousel h3 {font-size: 64px;}
 }
 
 @media (min-width: 1000px) {
-	.masthead .card-body {
-		max-width: 500px;
-	}
+  .masthead .card-body {max-width: 500px;}
 }
 
 .jumbotron {
-	background-position: 60% center;
-	background-size: auto 100%;
-	min-height: 800px;
+  background-position: 75% center;
+  background-size: auto 100%;
+  min-height: 700px;
 }
 
 @media (min-width: 992px) {
-	.jumbotron {
-		min-height: 600px;
-		background-size: cover;
-		background-position: top center;
-	}
-}
-
-.masthead--home-page .jumbotron {
-	background-image: url('../staticfiles/mastheads/lataviusJumbotron.jpg');
+  .jumbotron {
+    min-height: 700px;
+    background-size: cover;
+    background-position: top center;
+  }
 }
 
 /* END Masthead */
