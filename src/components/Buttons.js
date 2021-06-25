@@ -9,8 +9,8 @@ export default function LoginButtons() {
   return (
     <div>
       <MDBDropdown>
-        <MDBDropdownToggle caret color="cyan accent-3">
-          <MDBIcon icon="user-astronaut" size="lg" />  Login / Signup
+        <MDBDropdownToggle className="d-flex align-items-center" caret color="cyan accent-3">
+          <MDBIcon className="mr-2" icon="user-astronaut" size="2x" />  Login / Signup
         </MDBDropdownToggle>
         <MDBDropdownMenu basic>
           <MDBDropdownItem href="/login"><FaEnvelope /> Email/Password</MDBDropdownItem>
