@@ -54,10 +54,10 @@ function App() {
 
   return (
     <Router>
-      <div style={styles.appContainer}>
+      <div>
         <Header updateFormState={updateFormState} />
-        <main className="mainContent" style={styles.postHeader}>
-        <Routes />
+        <main className="mainContent">
+          <Routes />
         </main>
         <Footer />
         <MessageButton /> 
@@ -66,14 +66,5 @@ function App() {
   )
 }
 
-const styles = {
-  appContainer: {
-    paddingTop: 0,
-  },
-  postHeader: {
-    marginTop: '5.5rem'
-  },
-}
-
-export default App
+export default App;
 

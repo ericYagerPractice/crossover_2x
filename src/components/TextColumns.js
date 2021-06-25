@@ -37,14 +37,14 @@ const textColumns = textColInfo.map((item, i) => {
   return(
     <MDBCol key={i} lg="4" className="text-center mx-auto mt-3 mt-lg-0">
       <i className={"fas fa-4x " + item.icon}></i>
-      <h3 className="mt-3 text-center text-uppercase">
+      <h3 className="mt-3 mb-0 text-center text-uppercase">
         {item.title}
       </h3>
-      <hr className="w-25 border-danger" />
-      <p className="text-center px-3">
+      <hr className="w-25 border-danger mb-0 mt-3" />
+      <p className="text-center px-3 mb-0 mt-3">
         {item.p1}
       </p>
-      <p className="text-center px-3 mt-1">
+      <p className="text-center px-3 mb-0 mt-1">
         {item.p2}
       </p>
     </MDBCol>
