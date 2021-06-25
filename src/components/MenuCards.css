@@ -9,3 +9,12 @@
 .menu-cards .card-list li a:hover {
   color: #FF3547;
 }
+
+.menu-cards .card-body .card-text {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.menu-cards ul {
+  list-style: none;
+}

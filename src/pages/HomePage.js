@@ -27,41 +27,28 @@ const FadeInDiv = styled.div`
   animation: 5s ${FadeInAnimation};
 `;
 
-//this is home
-class HomePage extends React.Component {
-  scrollToTop = () => window.scrollTo(0, 0);
-  state = {
-    buttonStyle: {
-      width: "100%"
-    }
-  }
+const introTextP1 = 'Crossover Project (CP) is an online & onsite educational platform created by serial entrepreneur & Professor Clay Crocker & Pro Bowl RB Latavius Murray to help high performing athletes repurpose their talents into the modern marketplace. We offer a range of services from 1:1 Coaching to hands-on Workshops & everything in between.';
 
-  render() {
-    
-    return (
-      <>
-        <Masthead pageClass='home-page' />
-        <MDBContainer className='main-container main-container--home'>
-          <MDBRow>
-            <MDBCol md='12' className='mt-4 px-4 mx-auto' id="introduction">
-              <Introduction />
-              <TextColumns />
-              <AnimatedCards />
-              <MenuCards />
-              <hr className="mt-5" />
-              <OfferingCards />
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </>
-    );
-  }
+const introTextP2 = 'Our patented CP-360X method is a cutting edge approach to learning, offering maximum flexibility & optionality, and with a lot of meat on the bone. We inspire clients to be proactive in planning for life after ball.';
+
+const customerQuote = 'C2X was an amazing learning experience and really helped me level up my skill set.';
+
+//this is home
+function HomePage() {
+  return (
+    <>
+      <Masthead pageClass='home-page' />
+      <Introduction 
+        p1={introTextP1}
+        p2={introTextP2}
+      />
+      <TextColumns />
+      <AnimatedCards />
+      <MenuCards />
+      <OfferingCards />
+      <hr className="mt-5" />
+    </>
+  );
 }
 
 export default HomePage;
-
-const styles = {
-  appContainer: {
-    paddingBottom: 80,
-  }
-}

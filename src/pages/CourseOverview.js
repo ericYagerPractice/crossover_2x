@@ -17,10 +17,8 @@ import {
 
 class CourseOverview extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
+  
   state = {
-    buttonStyle: {
-      width: "100%"
-    },
     collapseID: ''
   };
 
@@ -60,7 +58,7 @@ class CourseOverview extends React.Component {
                       <li>S_Pod (Sim./Shipping Options)</li>
                     </ul>
                     <MDBSmoothScroll className="px-0" to="courseInfo">
-                      <MDBBtn color="danger" className='mt-3 mx-0 px-0 pt-4 pb-3 w-100 btn--lg'>
+                      <MDBBtn color="danger" className='mt-3 mx-0 px-0 pt-4 pb-3 w-100'>
                         <h4 className='h4-responsive font-weight-bold'>Buy In<MDBIcon icon="arrow-circle-down ml-2" size="lg" /> </h4>
                       </MDBBtn>
                     </MDBSmoothScroll>
@@ -113,7 +111,7 @@ class CourseOverview extends React.Component {
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                 </ul>
-                <MDBBtn color="danger" className='mt-3 pt-4 pb-3 w-100 btn--lg'>
+                <MDBBtn color="danger" className='mt-3 pt-4 pb-3'>
                   <h4 className='h4-responsive font-weight-bold'>CTA 1<MDBIcon icon="caret-right ml-3" size="lg" /> </h4>
                 </MDBBtn>
               </MDBCardBody>
@@ -148,7 +146,7 @@ class CourseOverview extends React.Component {
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                 </ul>
-                <MDBBtn color="danger" className='mt-3 pt-4 pb-3 w-100 btn--lg'>
+                <MDBBtn color="danger" className='mt-3 pt-4 pb-3'>
                   <h4 className='h4-responsive font-weight-bold'>CTA 2<MDBIcon icon="caret-right ml-3" size="lg" /> </h4>
                 </MDBBtn>
               </MDBCardBody>
@@ -183,7 +181,7 @@ class CourseOverview extends React.Component {
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                 </ul>
-                <MDBBtn color="danger" className='mt-3 pt-4 pb-3 w-100 btn--lg'>
+                <MDBBtn color="danger" className='mt-3 pt-4 pb-3'>
                   <h4 className='h4-responsive font-weight-bold'>CTA 3<MDBIcon icon="caret-right ml-3" size="lg" /> </h4>
                 </MDBBtn>
               </MDBCardBody>
@@ -218,7 +216,7 @@ class CourseOverview extends React.Component {
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                   <li><a href="/CourseOverview" className="text-danger">PDF/Resource/Instructions Link</a></li>
                 </ul>
-                <MDBBtn color="danger" className='mt-3 pt-4 pb-3 w-100 btn--lg'>
+                <MDBBtn color="danger" className='mt-3 pt-4 pb-3'>
                   <h4 className='h4-responsive font-weight-bold'>CTA 4<MDBIcon icon="caret-right ml-3" size="lg" /> </h4>
                 </MDBBtn>
               </MDBCardBody>

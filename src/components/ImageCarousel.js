@@ -23,7 +23,7 @@ import slide14 from '../staticfiles/carousel-slides/c2x-intro-slide-14.jpg';
 import slide15 from '../staticfiles/carousel-slides/c2x-intro-slide-15.jpg';
 import slide16 from '../staticfiles/carousel-slides/c2x-intro-slide-16.jpg';
 
-const slideUrls = [
+const slideList = [
   slide1,
   slide2,
   slide3,
@@ -42,6 +42,20 @@ const slideUrls = [
   slide16,
 ];
 
+const slides = slideList.map((item, i) => {
+  return(
+    <MDBCarouselItem key={i} itemId={i + 1}>
+      <MDBView>
+        <img
+          className="d-block w-100"
+          src={item}
+          alt={'C2X Intro Slide ' + i}
+        />
+      </MDBView>
+    </MDBCarouselItem>
+  )
+});
+
 function ImageCarousel() {
   
   return(
@@ -55,17 +69,7 @@ function ImageCarousel() {
         interval={false}
       >
         <MDBCarouselInner>
-          {slideUrls.map((url, i) => (
-          <MDBCarouselItem key={i} itemId={i + 1}>
-            <MDBView>
-              <img
-                className="d-block w-100"
-                src={url}
-                alt={'C2X Intro Slide ' + i}
-              />
-            </MDBView>
-          </MDBCarouselItem>
-          ))}
+          {slides}
         </MDBCarouselInner>
       </MDBCarousel>
     </MDBContainer>
