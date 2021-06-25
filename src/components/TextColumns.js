@@ -32,7 +32,7 @@ class TextColumns extends React.Component {
               </MDBCol>
             </MDBRow>
             <MDBRow className='mt-4 mt-lg-5'>
-              <MDBCol lg='4' className='text-center mx-auto'>
+              <MDBCol lg='4' className='text-center mx-auto mt-3 mt-lg-0'>
                 <i className="fas fa-podcast fa-4x"></i>
                 <h3 className='mt-3 text-center text-uppercase'>
                   Podcasting
@@ -41,7 +41,7 @@ class TextColumns extends React.Component {
                 <p className="text-center px-3">Now's the time to Start your Podcast. Get Best Practices for Riding a Wave. Study the Greats & ‘Steal Like Artists’. Workshop Material & Format. ACE your Voice: Authentic, Confident, Expressive.</p>
                 <p className="text-center px-3 mt-1">Now, Ship your Pilot Episode. <span className="text-danger">C2</span>P</p>
               </MDBCol>
-              <MDBCol lg='4' className='text-center mx-auto'>
+              <MDBCol lg='4' className='text-center mx-auto mt-3 mt-lg-0'>
                 <i className="fas fa-microphone-alt fa-4x"></i>
                 <h3 className='mt-3 text-center text-uppercase'>
                   Ted Talk
@@ -50,7 +50,7 @@ class TextColumns extends React.Component {
                 <p className="text-center px-3">Get the Playbook to ‘Talk Like Ted’. Use Ikigai to find Ideas Worth Spreading. Practice 4EX Speech & Do Madman &gt; Architect &gt; Carpenter &gt; Judge Process. Write to Engage. Talk how you talk.</p> 
                 <p className="text-center px-3 mt-1">Now, Write your damn Talk. <span className="text-danger">C2</span>T</p>
               </MDBCol>
-              <MDBCol lg='4' className='text-center mx-auto'>
+              <MDBCol lg='4' className='text-center mx-auto mt-3 mt-lg-0'>
                 <i className="far fa-lightbulb fa-4x"></i>
                 <h3 className='mt-3 text-center text-uppercase'>
                   Shark Tank
