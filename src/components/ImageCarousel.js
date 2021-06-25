@@ -61,7 +61,7 @@ function ImageCarousel() {
               <img
                 className="d-block w-100"
                 src={url}
-                alt="Crossover 2X Intro Slide 1"
+                alt={'C2X Intro Slide ' + i}
               />
             </MDBView>
           </MDBCarouselItem>
