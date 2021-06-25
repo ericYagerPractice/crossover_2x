@@ -37,7 +37,7 @@ function Introduction(props) {
       <MDBRow>
         <MDBCol md="4" className="mx-auto mt-5">
           <SectionScrollButton
-            btnText="Learn More"
+            btnText="More"
             color="danger"
             icon="arrow-circle-down"
             scrollTo="moreC2x"

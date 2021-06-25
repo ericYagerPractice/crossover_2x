@@ -61,7 +61,7 @@ function ImageCarousel() {
   return(
     <MDBContainer className="p-0">
       <MDBCarousel
-        className="carousel--home-intro pb-5 bg-dark"
+        className="pb-5 bg-dark"
         activeItem={1}
         length={16}
         showControls={true}

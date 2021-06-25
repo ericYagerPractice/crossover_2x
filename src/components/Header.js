@@ -65,19 +65,25 @@ export default function Header() {
 
   return (
       <>
-        <MDBNavbar color='elegant-color' className='border-danger border-bottom border-top-0 border-left-0 border-right-0' dark expand='md' fixed='top' scrolling>
+        <MDBNavbar color='elegant-color' 
+          className='border-danger border-bottom p-3 px-md-5 py-md-2' 
+          dark 
+          expand='md' 
+          fixed='top' 
+          scrolling
+        >
           <MDBNavbarBrand href='/' className='py-0 font-weight-bold mr-4'>
-              <img
-                  src={c2xlogonav}
-                  alt="Crossover2X"
-                  style={{width:"250px"}}
-              />
+            <img
+                src={c2xlogonav}
+                alt="Crossover2X"
+                style={{maxWidth: "240px"}}
+            />
           </MDBNavbarBrand>
           <MDBNavbarToggler
             onClick={() => setcollapseID(!collapseID)}
           />
           <MDBCollapse id='mainNavbarCollapse' navbar isOpen={collapseID}>
-            <MDBNavbarNav left>
+            {/*<MDBNavbarNav left>
               <MDBNavItem>
                 <MDBNavLink
                   exact
@@ -103,7 +109,7 @@ export default function Header() {
                   <strong>FAQs</strong>
                 </MDBNavLink>
               </MDBNavItem>
-            </MDBNavbarNav>
+            </MDBNavbarNav>*/}
             <MDBNavbarNav right>
               {
                 userState.loading && (
@@ -129,8 +135,7 @@ export default function Header() {
               }
             </MDBNavbarNav>
           </MDBCollapse>
-        </MDBNavbar>
-    
+       </MDBNavbar>
     </>
   );
 }
