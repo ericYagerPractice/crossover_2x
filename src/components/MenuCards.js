@@ -104,7 +104,7 @@ const menuCards = menuCardInfo.map((item, i) => {
               {item.title}
             </MDBCardTitle>
             <hr className="w-25 mt-2 ml-auto ml-sm-0 mr-auto text-left border-danger" />
-            <ul className="card-list mt-2 p-0 mx-auto">
+            <ul className="card-list mt-2 p-0 mx-auto text-center text-sm-left">
             {item.links.map((item, i) => (
               <li key={i} className={item.rotateIcon === true ? 'rotate-icon' : null}>
                 <MDBIcon className="mr-2" icon={item.icon} />
@@ -128,7 +128,7 @@ const menuCards = menuCardInfo.map((item, i) => {
 
 function MenuCards() {
   return(
-    <MDBContainer className="menu-cards w-100 pt-5">
+    <MDBContainer className="menu-cards w-100 mt-5 pt-2 pt-md-5">
       <MDBRow>
         <MDBCol md="12" className="mx-auto">
           <MDBRow>

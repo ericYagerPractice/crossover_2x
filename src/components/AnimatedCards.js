@@ -130,7 +130,7 @@ const animatedCards = animatedCardData.map((item, i) => {
 
 function AnimatedCards(props) {
   return(
-  <MDBContainer id="categories" className="animated-cards w-100 pt-5">
+  <MDBContainer id="categories" className="animated-cards w-100 mt-5 pt-2 pt-md-5">
     <MDBRow>
       <MDBCol md="12" className="mx-auto">
         

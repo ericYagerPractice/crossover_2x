@@ -15,21 +15,17 @@
 }
 
 .jumbotron {
-	background-position: 60% center;
+	background-position: 75% center;
 	background-size: auto 100%;
-	min-height: 800px;
+	min-height: 600px;
 }
 
 @media (min-width: 992px) {
 	.jumbotron {
-		min-height: 600px;
+		min-height: 700px;
 		background-size: cover;
 		background-position: top center;
 	}
-}
-
-.masthead--home-page .jumbotron {
-	background-image: url('../staticfiles/mastheads/lataviusJumbotron.jpg');
 }
 
 /* END Masthead */

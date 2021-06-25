@@ -27,6 +27,12 @@ const FadeInDiv = styled.div`
   animation: 5s ${FadeInAnimation};
 `;
 
+import lataviusBg from '../staticfiles/mastheads/lataviusJumbotron.jpg';
+
+const pageClass = 'home-page';
+
+const mastheadBg = lataviusBg;
+
 const introTextP1 = 'Crossover Project (CP) is an online & onsite educational platform created by serial entrepreneur & Professor Clay Crocker & Pro Bowl RB Latavius Murray to help high performing athletes repurpose their talents into the modern marketplace. We offer a range of services from 1:1 Coaching to hands-on Workshops & everything in between.';
 
 const introTextP2 = 'Our patented CP-360X method is a cutting edge approach to learning, offering maximum flexibility & optionality, and with a lot of meat on the bone. We inspire clients to be proactive in planning for life after ball.';
@@ -38,7 +44,10 @@ const quoteAuthor = 'Jim Davis, VP of Sales';
 function HomePage() {
   return (
     <>
-      <Masthead pageClass='home-page' />
+      <Masthead
+        bgImg={mastheadBg}
+        pageClass={pageClass} 
+      />
       <Introduction 
         p1={introTextP1}
         p2={introTextP2}

@@ -1,5 +1,6 @@
 import React from 'react';
 import TextCarousel from '../components/TextCarousel';
+import SectionScrollButton from '../components/SectionScrollButton';
 import { 
     MDBContainer,
     MDBRow,
@@ -27,12 +28,19 @@ const animatedTitles = [
 ];
 
 function Masthead(props) {
+  
+  const bgImg = props.bgImg;
+
+  const jumboStyle = {
+    backgroundImage: 'url(' + bgImg + ')',
+  };
+  
   return(
     <>
     <MDBContainer className={'masthead masthead--' + (props.pageClass) + ' w-100 mw-100'}>
       <MDBRow>
         <MDBCol className="px-0">
-          <MDBJumbotron fluid className="w-100 mw-100 p-0 m-0 d-flex align-items-end align-items-lg-center justify-content-start">
+          <MDBJumbotron fluid style={jumboStyle} className="w-100 mw-100 p-0 m-0 d-flex align-items-end align-items-lg-center justify-content-start">
             <MDBCardBody className="py-5 text-center bg-white text-dark ml-lg-5">
               <FadeInDiv>
                 <h1 className="h1-responsive m-0 text-uppercase display-5 font-weight-bold">
@@ -47,13 +55,16 @@ function Masthead(props) {
                 titles={animatedTitles}
                 items={animatedTitles.length} 
               />
-              <MDBSmoothScroll to="introduction">
-                <MDBBtn color="danger" className="mt-1 py-4 w-100">
-                  <h4 className="h4-responsive display-3 m-0 font-weight-bold">
-                    Learn More <MDBIcon icon="arrow-circle-down" /> 
-                  </h4>
-                </MDBBtn>
-              </MDBSmoothScroll>
+              <MDBRow>
+                <MDBCol className="mt-2">
+                  <SectionScrollButton
+                    btnText="Learn More"
+                    color="danger"
+                    icon="arrow-circle-down"
+                    scrollTo="introduction"
+                  />
+                </MDBCol>
+              </MDBRow>
             </MDBCardBody>
           </MDBJumbotron>
         </MDBCol>

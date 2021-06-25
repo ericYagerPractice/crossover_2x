@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomerQuote from '../components/CustomerQuote';
+import SectionScrollButton from '../components/SectionScrollButton';
 import { 
     MDBContainer,
     MDBRow,
@@ -52,7 +53,7 @@ const textColumns = textColInfo.map((item, i) => {
 
 function TextColumns(props) {
   return(
-    <MDBContainer id="moreC2x" className="text-columns w-100 pt-5">
+    <MDBContainer id="moreC2x" className="text-columns w-100 mt-5 pt-2 pt-md-5">
       <MDBRow>
         <MDBCol md="12" className="mx-auto">
           <MDBRow>
@@ -72,14 +73,13 @@ function TextColumns(props) {
             />  
           </MDBRow>
           <MDBRow>
-            <MDBCol md="4" className="mx-auto">
-              <MDBSmoothScroll className="mt-4 mx-auto text-center" to="categories">
-                <MDBBtn color="danger" className="mt-1 pt-4 pb-3 w-100" to="categories">
-                  <h4 className="h4-responsive font-weight-bold">
-                    Our Process <MDBIcon icon="arrow-circle-down" /> 
-                  </h4>
-                </MDBBtn>
-              </MDBSmoothScroll>
+            <MDBCol md="4" className="mx-auto mt-5">
+              <SectionScrollButton
+                btnText="Our Process"
+                color="danger"
+                icon="arrow-circle-down"
+                scrollTo="categories"
+              />
             </MDBCol>
           </MDBRow>
         </MDBCol>
