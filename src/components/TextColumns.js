@@ -59,7 +59,7 @@ function TextColumns(props) {
           <MDBRow>
             <MDBCol md="8" className="mx-auto px-4">
               <h2 className="section-title m-0 text-center text-uppercase display-5">
-                A Masterclass<br/> for Your Next Move
+                A Masterclass for Your Next Move
               </h2>
             </MDBCol>
           </MDBRow>

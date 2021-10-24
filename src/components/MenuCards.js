@@ -11,82 +11,11 @@ import {
   MDBAnimation,
   MDBNavLink,
 } from 'mdbreact';
-import cardIcon1 from '../staticfiles/icons/cm-atomic-icon-2.png';
-import cardIcon2 from '../staticfiles/icons/cx-catalyst-atomic-icon.png';
-import cardIcon3 from '../staticfiles/icons/px-atomic-icon.png';
 
+import MenuCardData from './MenuCardData';
 import './MenuCards.css';
 
-const menuCardInfo = [
-  { 
-    icon: cardIcon1,
-    introTitle: 'Challenge POD',
-    title: 'Pick ur Channel',
-    links: [
-      {text: 'Habit Channel', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Sleep Channel', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
-      {text: 'Creative Channel', url: '/CourseOverview', icon: 'circle'},
-    ],
-    ctaUrl: '/CourseOverview',
-  },
-  { 
-    icon: cardIcon1,
-    introTitle: 'CaseMasters',
-    title: 'Rise & Fall of',
-    links: [
-      {text: 'MoviePass', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'WeWork', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
-      {text: 'Theranos', url: '/CourseOverview', icon: 'circle'},
-    ],
-    ctaUrl: '/CourseOverview',
-  },
-  { 
-    icon: cardIcon3,
-    introTitle: 'Weekly POD Options',
-    title: 'Channel ur Efforts',
-    links: [
-      {text: 'Habit Challenge', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Sleep Challenge', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
-      {text: 'Creative Challenge', url: '/CourseOverview', icon: 'circle'},
-    ],
-    ctaUrl: '/CourseOverview',
-  },
-  { 
-    icon: cardIcon3,
-    introTitle: 'Champions Of Series',
-    title: 'World-Beaters At X',
-    links: [
-      {text: 'Msft CEO S. Nadella', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Amzn CEO J. Bezos', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
-      {text: 'Showrunner S. Rimes', url: '/CourseOverview', icon: 'circle'},
-    ],
-    ctaUrl: '/CourseOverview',
-  },
-  { 
-    icon: cardIcon2,
-    introTitle: 'Option2X',
-    title: 'Channel_T',
-    links: [
-      {text: 'Trending', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Technical', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
-      {text: 'Toolset', url: '/CourseOverview', icon: 'circle'},
-    ],
-    ctaUrl: '/CourseOverview',
-  },
-  { 
-    icon: cardIcon1,
-    introTitle: '4XImprove',
-    title: 'Pod Process',
-    links: [
-      {text: 'Infusion', url: '/CourseOverview', icon: 'square-full'},
-      {text: 'Implement', url: '/CourseOverview', icon: 'square-full', rotateIcon: true},
-      {text: 'Iteration', url: '/CourseOverview', icon: 'circle'},
-    ],
-    ctaUrl: '/CourseOverview',
-  },
-];
-
-const menuCards = menuCardInfo.map((item, i) => {
+const menuCards = MenuCardData.map((item, i) => {
   return(
     <MDBCol key={i} md="6" xl="4" className="px-2">
       <MDBAnimation reveal type="fadeInLeft">
